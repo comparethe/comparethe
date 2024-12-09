@@ -1,4 +1,4 @@
-# Compare the __ 🔍
+# Compare the \_\_ 🔍
 
 ## *Collaborative product comparison*
 
