@@ -18,7 +18,18 @@ This is a good site ... and a good example of doing comparison (there's this nif
 
 ### Pricing
 
+| Plan             | Personal | Business | Commerce Basic | Commerce Advanced |
+|------------------|----------|----------|----------------|-------------------|
+| Price (€/mo)     | €11      | €17      | €24            | €36               |
+
 ![image](https://github.com/user-attachments/assets/898f90a3-eff0-4282-b599-2f7dc50e7481)
+
+| Plan                 | Price (€/mo) | Annual Savings    | Description                                                     |
+|----------------------|--------------|-------------------|-----------------------------------------------------------------|
+| Personal             | €11          | Save 26% annually | Our foundational plan with access to fully customizable, best-in-class templates. |
+| Business             | €17          | Save 29% annually | For those looking to grow their audience and begin taking payments. |
+| Commerce Basic       | €24          | Save 14% annually | Selling tools to help grow your business. No transaction fees.   |
+| Commerce Advanced    | €36          | Save 14% annually | All the tools necessary for the more advanced seller. No transaction fees. |
 
 
 # Dumping stuff here
