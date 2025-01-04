@@ -1,0 +1,72 @@
+---
+authors: rufuspollock
+---
+
+# Screen recording and video messaging apps
+
+Screen recording and video messaging category offers tools for capturing, editing, and sharing video messages that combine screen content with webcam footage.
+
+## Screenity
+
+💰 Free (and open source)
+
+2025-01-04 Looks great. Unfortunately may be abandoned as amazing lead developer got a job at a startup and no major updates on github for 11m.
+
+Have used and its excellent. Simple, clean etc. No cloud uploading though so you have DIY.
+
+![image](https://github.com/user-attachments/assets/c9848e29-5fe1-466a-ba32-abb00a0ec105)
+
+## Kap
+
+💰 Free (and open source)
+
+https://getkap.co
+
+A nice open-source solution.
+
+2025-01-04 🚩 unfortunately very buggy and i think largely unmaintained now.
+
+![image](https://github.com/user-attachments/assets/13f247f0-5787-44b5-893d-912eeab21bc5)
+
+## Loom
+
+https://loom.com
+
+💰 Free for 25 videos. Then $15/user/mo.
+
+The big daddy. The one everyone knows about. Acquired by Atlassian in 2023 so who knows where this is going. (probably higher prices)
+
+![image](https://github.com/user-attachments/assets/a43318e5-d8c8-41be-bab1-31b8775dc972)
+
+![image](https://github.com/user-attachments/assets/6c5472ff-782e-4c64-b7e8-2d19ec49fd86)
+
+## Jam.dev
+
+https://jam.dev
+
+![image](https://github.com/user-attachments/assets/ab730eff-afff-4ae9-b84b-6294d2df2c1e)
+
+## OBS Studio
+
+💰 Free (and open source 🎉)
+
+An open-source screen recording and streaming software offering customizable options for video and audio capture, suitable for users seeking advanced features. OBS Studio is free to use. ￼
+
+## ScreenRec
+
+https://screenrec.com
+
+💰 Free with charging for storage space
+
+A free screen recording tool that allows users to capture their screen and webcam, offering instant sharing capabilities without time limits or watermarks. ScreenRec is available at no cost. ￼
+
+![image](https://github.com/user-attachments/assets/f5a84487-4934-489a-b315-8cf558a1ce7a)
+
+![image](https://github.com/user-attachments/assets/aa3d3830-fc8f-43cd-9249-e16033faee68)
+
+
+# Inbox
+
+Other options i have not yet investigated.
+
+3.	Screencast-O-Matic: A versatile screen recording and video editing software suitable for educators and team collaborations, providing robust editing tools and cloud service integrations. It offers a free version with basic features and a premium version for a fee. ￼
