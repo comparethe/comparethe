@@ -64,9 +64,19 @@ A free screen recording tool that allows users to capture their screen and webca
 
 ![image](https://github.com/user-attachments/assets/aa3d3830-fc8f-43cd-9249-e16033faee68)
 
+## Clickup Clips
+
+https://clickup.com/features/clips
+
+💰 Unclear ... [^1]
+
+![image](https://github.com/user-attachments/assets/8e4fb4bf-dcc1-42e4-9fa1-f5bb4b673b51)
+
+[^1]: "Clips are available on every plan. If you're on the Free Forever Plan, Clip recordings use storage space." -- https://help.clickup.com/hc/en-us/articles/6311242882967-Record-and-manage-Clip-screen-recordings
 
 # Inbox
 
 Other options i have not yet investigated.
 
-3.	Screencast-O-Matic: A versatile screen recording and video editing software suitable for educators and team collaborations, providing robust editing tools and cloud service integrations. It offers a free version with basic features and a premium version for a fee. ￼
+- https://clickup.com/pricing
+- Screencast-O-Matic: A versatile screen recording and video editing software suitable for educators and team collaborations, providing robust editing tools and cloud service integrations. It offers a free version with basic features and a premium version for a fee. ￼
