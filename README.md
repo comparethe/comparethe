@@ -16,6 +16,8 @@ Examples
 
 - What is best AI chat: https://github.com/orgs/comparethe/discussions/5
 - What is the best tool for social media posting? https://github.com/orgs/comparethe/discussions/4
+- What are the best [[Habit tracking apps]]?
+- What are the best [[AI Code Editors]]?
 
 ## Motivation
 
