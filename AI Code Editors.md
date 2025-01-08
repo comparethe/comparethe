@@ -4,6 +4,7 @@ Options
 
 - Cursor - https://cursor.com
 - Windsurf - https://codeium.com
+- IDX (from Google) - https://idx.dev
 - Use Visual Studio code or similar with a plugin (e.g. github copilot or just openai)
 
 ## Cursor
@@ -13,6 +14,11 @@ Options
 ## Windsurf
 
 ![image](https://github.com/user-attachments/assets/92571fdd-ff5c-467a-bc56-f2b3aac1ffe9)
+
+## IDX
+
+![image](https://github.com/user-attachments/assets/5f421557-1ccc-4ec8-9b24-79f31d32f67e)
+
 
 ## Comments
 
