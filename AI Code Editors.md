@@ -2,8 +2,8 @@
 
 Options
 
-- cursor.com
-- windsurf.dev
+- Cursor - https://cursor.com
+- Windsurf - https://codeium.com
 - Use Visual Studio code or similar with a plugin (e.g. github copilot or just openai)
 
 ## Cursor
