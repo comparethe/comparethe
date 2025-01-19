@@ -18,6 +18,8 @@ Examples
 - What is the best tool for social media posting? https://github.com/orgs/comparethe/discussions/4
 - What are the best [[Habit tracking apps]]?
 - What are the best [[AI Code Editors]]?
+- What are the best [[Website builders]]?
+- What are the best [[AI website builders]]?
 
 ## Motivation
 
