@@ -2,9 +2,14 @@
 
 Screen recording and video messaging category offers tools for capturing, editing, and sharing video messages that combine screen content with webcam footage.
 
+## Recommendation
+
+- If you are happy with local only: **Screenity** https://screenity.io/en/
+
 ## Screenity
 
-💰 Free (and open source)
+- 💰 Free (and open source)
+- 🔗 https://screenity.io/en/
 
 2025-01-04 Looks great. Unfortunately may be abandoned as amazing lead developer got a job at a startup and no major updates on github for 11m.
 
