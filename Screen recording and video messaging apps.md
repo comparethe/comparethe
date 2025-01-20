@@ -1,7 +1,3 @@
----
-authors: rufuspollock
----
-
 # Screen recording and video messaging apps
 
 Screen recording and video messaging category offers tools for capturing, editing, and sharing video messages that combine screen content with webcam footage.
