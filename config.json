@@ -1,0 +1,14 @@
+{
+  "sidebar": true,
+  "nav": {
+    "logo": "magnifying-glass.png",
+    "title": "CompareThe__",
+    "social": [
+      {
+        "label": "github",
+        "name": "GitHub Profile",
+        "href": "https://github.com/comparethe/comparethe"
+      }
+    ]
+  }
+}
