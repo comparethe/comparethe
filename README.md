@@ -2,7 +2,7 @@
 
 ## *Open, collaborative product comparison*
 
-### *A simple, open product comparison wiki powered by markdown and github*
+### *A simple, open product comparison wiki powered by Markdown, Github and [Flowershow](https://flowershow.app)*
 
 Welcome 👋 to **CompareThe__ 🔍**
 
