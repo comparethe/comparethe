@@ -1,6 +1,6 @@
 # 🔍 Compare the ＿
 
-## *Collaborative product comparison*
+## *Open, collaborative product comparison*
 
 ### *A simple, open product comparison wiki powered by markdown and github*
 
