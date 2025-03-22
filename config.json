@@ -1,5 +1,5 @@
 {
-  "sidebar": true,
+  "showSidebar": true,
   "nav": {
     "logo": "magnifying-glass.png",
     "title": "CompareThe__",
