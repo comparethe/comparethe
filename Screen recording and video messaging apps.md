@@ -51,7 +51,9 @@ https://jam.dev
 
 💰 Free (and open source 🎉)
 
-An open-source screen recording and streaming software offering customizable options for video and audio capture, suitable for users seeking advanced features. OBS Studio is free to use. ￼
+An open-source screen recording and streaming software offering customizable options for video and audio capture, suitable for users seeking advanced features. OBS Studio is free to use.
+
+![image](https://github.com/user-attachments/assets/f9d297ba-b825-4f9d-ad1e-16ac77c0842d)
 
 ## ScreenRec
 
@@ -62,8 +64,6 @@ https://screenrec.com
 A free screen recording tool that allows users to capture their screen and webcam, offering instant sharing capabilities without time limits or watermarks. ScreenRec is available at no cost. ￼
 
 ![image](https://github.com/user-attachments/assets/f5a84487-4934-489a-b315-8cf558a1ce7a)
-
-![image](https://github.com/user-attachments/assets/aa3d3830-fc8f-43cd-9249-e16033faee68)
 
 ## Clickup Clips
 
