@@ -12,7 +12,7 @@ Here's an in progress comparison of features on the **free** plan.
 |----------------|------------------|---------------|---------------------|
 | Screenity      | ✅               | ✅   | ✅                  |
 | ClickUp Clips  | ✅               | ❌          | ❌[^xx]                  |
-| Loom           | ✅ (paid plans)  | ✅ (paid plans)  | ✅                  |
+| Loom           | ❌ (paid plans)  | ❌ (paid plans)  | ✅                  |
 
 
 [^xx]: https://feedback.clickup.com/feature-requests/p/camera-option-in-screen-recording
