@@ -6,6 +6,14 @@ Screen recording and video messaging category offers tools for capturing, editin
 
 - If you are happy with local only: **Screenity** https://screenity.io/en/
 
+Here's an in progress comparison of features on the **free** plan.
+
+| Tool           | Allows Downloads | Editor        | Picture-in-Picture |
+|----------------|------------------|---------------|---------------------|
+| Screenity      | ✅               | ✅   | ✅                  |
+| ClickUp Clips  | ✅               | ❌          | ❌                  |
+| Loom           | ✅ (paid plans)  | ✅ (paid plans)  | ✅                  |
+
 ## Screenity
 
 - 💰 Free (and open source)
