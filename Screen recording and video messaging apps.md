@@ -11,8 +11,11 @@ Here's an in progress comparison of features on the **free** plan.
 | Tool           | Allows Downloads | Editor        | Picture-in-Picture |
 |----------------|------------------|---------------|---------------------|
 | Screenity      | ✅               | ✅   | ✅                  |
-| ClickUp Clips  | ✅               | ❌          | ❌                  |
+| ClickUp Clips  | ✅               | ❌          | ❌[^xx]                  |
 | Loom           | ✅ (paid plans)  | ✅ (paid plans)  | ✅                  |
+
+
+[^xx]: https://feedback.clickup.com/feature-requests/p/camera-option-in-screen-recording
 
 ## Screenity
 
