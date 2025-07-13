@@ -2,7 +2,7 @@
 description: Welcome 👋 to CompareThe＿ 🔍. We provide super-simple product comparisons in an accessible, non-spammy way.
 ---
 
-# 🔍 Compare The ＿
+# 🔍 CompareThe＿
 
 ## *Simple, open product comparison*
 
