@@ -1,22 +1,24 @@
-# 🔍 Compare the ＿
+---
+description: Welcome 👋 to CompareThe＿ 🔍. We provide super-simple product comparisons in an accessible, non-spammy way.
+---
 
-## *Open, collaborative product comparison*
+# 🔍 Compare The ＿
+
+## *Simple, open product comparison*
 
 ### *A simple, open product comparison wiki powered by Markdown, Github and [Flowershow](https://flowershow.app)*
 
-Welcome 👋 to **CompareThe__ 🔍**
+Welcome 👋 to **CompareThe＿ 🔍**
 
 We provide **super-simple** product comparisons in an accessible, non-spammy way. We do this by collaborating to collect info from the web and organizing it in an open, accessible way. 
 
 ## Get started
 
-To get started check out the [💬 discussions section](https://github.com/orgs/comparethe/discussions)
-
 Examples
 
-- What is best AI chat: https://github.com/orgs/comparethe/discussions/5
-- What is the best tool for social media posting? https://github.com/orgs/comparethe/discussions/4
-- What are the best [[Habit tracking apps]]?
+- [[AI Chat|What is best AI chat?]]
+- [[Screen Recorder|What is the best tool for screen recording?]]
+- [[Habit tracking apps|What are the best habit tracking apps?]]
 - What are the best [[AI Code Editors]]?
 - What are the best [[Website builders]]?
 - What are the best [[AI website builders]]?
