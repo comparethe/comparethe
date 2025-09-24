@@ -21,7 +21,7 @@ Examples
 - [[Habit tracking apps|What are the best habit tracking apps?]]
 - What are the best [[AI Code Editors]]?
 - What are the best [[Website builders]]?
-- What are the best [[AI website builders]]?
+- What are the best [[AI Website Builders]]?
 
 ## Motivation
 
