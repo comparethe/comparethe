@@ -1,4 +1,4 @@
-# Workflow Automatiion Tools
+# Workflow Automation Tools
 
 Workflow automation platforms enable people and organizations to streamline routine digital tasks by connecting different tools and services into coherent, self-running processes. They allow users to define triggers (“when this happens”) and actions (“do that”), creating automated chains that move information, send notifications, update databases, or synchronize records across systems.
 
