@@ -1,0 +1,3 @@
+- riverside.fm
+- squadcast.fm
+- podcastle
