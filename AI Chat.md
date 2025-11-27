@@ -1,6 +1,11 @@
+---
+created: 2024-07-06
+updated: 2025-11-27
+---
+
 Compare AI chat like ChatGPT, Gemini, Claude etc.
 
-The best large scale systematic comparison could be https://chat.lmsys.org
+The best large scale systematic comparison is probably https://lmarena.ai/leaderboard
 
 You can "play" with it and it'll send the prompt to a couple of LLMs for you to choose which one is a "better" answers. 
 
