@@ -1,8 +1,21 @@
 ---
 created: 2024-12-06
+updated: 2025-11-28
 ---
 
 # AI Website Builders & Designers
+
+## Latest 2025-11-28
+
+For pure design, Stich from Google is now very impressive.
+
+https://stitch.withgoogle.com/
+
+<img width="2991" height="2059" alt="image" src="https://github.com/user-attachments/assets/f289b96e-fb5f-4caf-aa34-0b9b28684b21" />
+
+Check out the demo here:
+
+https://x.com/stitchbygoogle/status/1991614483681411161
 
 ## lovable.dev
 
