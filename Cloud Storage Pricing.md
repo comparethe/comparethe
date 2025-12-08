@@ -5,7 +5,7 @@ syntax: mdx
 Cloud storage providers like Amazon S3, Cloudflare R2 etc.
 
 <FlatUiTable
-    data={{ url: "/assets/cloud-storage-pricing.csv" }}
+    data={{ url: "/data/cloud-storage-pricing.csv" }}
 />
 
 ## Data
