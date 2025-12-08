@@ -54,5 +54,5 @@ A collaborative approach **collecting product comparisons using simple, open mar
 
 An initiative of the [DataHub Data Collective](https://datahub.io/) and [Datopian](https://datopian.com).
 
-It was started by @rufuspollock and [add your name here »](https://github.com/orgs/comparethe/discussions/2).
+It was started by [@rufuspollock](https://rufuspollock.com/).
 
