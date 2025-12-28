@@ -1,18 +1,28 @@
-# Voice to Text Applications for 2025
+# Voice to Text Apps
 
-Voice-to-text applications transform speech into written text, helping developers and other professionals streamline note-taking, coding, and documentation.
+Voice-to-text applications convert spoken language into written text, increasingly using modern ASR and LLM tooling to support dictation, note-taking, coding, and documentation workflows.
 
-The market here has exploded with advent of AI and especially the open-source whisper model released by OpenAI.
+The category has expanded rapidly following the release and commodification of high-quality speech models (notably Whisper-based systems), with a growing split between cloud-hosted convenience tools and privacy-preserving local apps.
 
-| App | Link | Price |
-| --- | --- | --- |
-| VoiceInk | https://tryvoiceink.com/ | $25 one time |
-| Aqua Voice | https://withaqua.com/ | (not specified) |
-| Wispr Flow | https://wisprflow.ai/ | $15 / month |
-| Willow Voice | https://willowvoice.com/ | $15 / month |
-| SpeechPulse | https://speechpulse.com/ | $159 one time |
-| Whispering | https://whispering.bradenwong.com/ | Free |
+| App          | Link                                                                     | Price                     |
+| ------------ | ------------------------------------------------------------------------ | ------------------------- |
+| SuperWhisper | [https://superwhisper.com/](https://superwhisper.com/)                   | $8.99 / month (free tier) |
+| VoiceInk     | [https://tryvoiceink.com/](https://tryvoiceink.com/)                     | $25 one time              |
+| Aqua Voice   | [https://withaqua.com/](https://withaqua.com/)                           | (not specified)           |
+| Wispr Flow   | [https://wisprflow.ai/](https://wisprflow.ai/)                           | $15 / month               |
+| Willow Voice | [https://willowvoice.com/](https://willowvoice.com/)                     | $15 / month               |
+| SpeechPulse  | [https://speechpulse.com/](https://speechpulse.com/)                     | $159 one time             |
+| Whispering   | [https://whispering.bradenwong.com/](https://whispering.bradenwong.com/) | Free                      |
 
+### SuperWhisper
+
+URL: https://superwhisper.com/
+
+💰 $8.99 / month (free tier available)
+
+Short description: SuperWhisper is a polished dictation application built around high-quality speech recognition with strong system-wide integration, making it popular with writers and developers who want reliable, low-friction voice input across apps.
+
+Assessment: Excellent overall quality and UX, but ongoing subscription costs can add up if you need Pro features, especially compared with one-time-purchase or local-first alternatives.
 
 ### VoiceInk
 
