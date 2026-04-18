@@ -56,3 +56,8 @@ An initiative of the [DataHub Data Collective](https://datahub.io/) and [Datopia
 
 It was started by [@rufuspollock](https://rufuspollock.com/).
 
+## TODO
+
+- Add a comparison for lifecycle email / customer engagement platforms.
+- Add a separate comparison for transactional email APIs such as SES, Postmark, and Resend.
+- Add a separate comparison for newsletter / creator email platforms.
