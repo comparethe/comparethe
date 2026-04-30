@@ -25,8 +25,8 @@ https://www.pipedrive.com/
 
 https://attio.com/ - modern, AI driven, let's automate everything.
 
-💰 $0 / month for up to 3 seats and minimal plan
-💰 $29 / month / seat
+- 💰 $0 / month for up to 3 seats and minimal plan
+- 💰 $29 / month / seat
 
 ![image](https://github.com/user-attachments/assets/35b9aa57-3c6d-4620-a383-40227f017b90)
 
