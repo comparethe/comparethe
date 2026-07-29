@@ -1,7 +1,7 @@
 ---
 title: Loops vs Resend vs Brevo: Pricing and Best Email Signup Tool for CRM Routing
 description: Compare Loops, Resend, and Brevo pricing, signup forms, APIs, webhooks, AI tooling, and CRM routing for teams with up to 10,000 contacts.
-website: https://loops.so/
+website: "https://loops.so/"
 category: lifecycle-email
 quality: 4.5
 free_tier: yes
