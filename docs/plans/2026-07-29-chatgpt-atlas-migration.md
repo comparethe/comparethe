@@ -26,7 +26,7 @@ Check first-party documentation and pricing for Dia and Perplexity Comet. Record
 
 **Step 3: Verify conventional-browser integrations**
 
-Check first-party documentation and pricing for Gemini in Chrome, Claude in Chrome, Brave Leo, and Edge Copilot. Record availability constraints and whether each product offers page-aware chat, multi-tab context, or agentic actions.
+Check first-party documentation and pricing for Gemini in Chrome, Claude in Chrome, Zen, Brave Leo, and Edge Copilot. Record availability constraints and whether each product offers page-aware chat, multi-tab context, or agentic actions.
 
 **Step 4: Choose the recommendation**
 
@@ -66,6 +66,7 @@ Keep unresolved hands-on judgments explicit. Provide first-party sources and a c
 **Files:**
 - Verify: `ChatGPT Atlas is shutting down.md`
 - Verify: `assets/dia-browser-chat.png`
+- Verify: `config.json`
 - Verify: `docs/plans/2026-07-29-chatgpt-atlas-migration.md`
 
 **Step 1: Check document structure**

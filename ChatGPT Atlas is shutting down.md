@@ -1,6 +1,6 @@
 ---
 title: ChatGPT Atlas Is Shutting Down. What Browser Should I Use Instead?
-description: A first-person comparison of ChatGPT's browser, Dia, Comet, Chrome AI extensions, Brave Leo, and Edge Copilot after Atlas.
+description: A first-person comparison of ChatGPT's browser, Dia, Comet, Zen, Brave Leo, Chrome AI extensions, and Edge Copilot after Atlas.
 created: 2026-07-29
 updated: 2026-07-29
 ---
@@ -37,7 +37,7 @@ There are now three different approaches:
 
 - **AI app with a browser:** ChatGPT desktop contains its own browser. The browser moves inside the AI app.
 - **AI-native browser:** Dia and Comet put the assistant inside a full browser. This is closest to the Atlas shape.
-- **Normal browser with AI attached:** Chrome, Brave, and Edge remain conventional browsers but add a sidebar, extension, or agent.
+- **Normal browser with AI attached:** Chrome, Zen, Brave, and Edge remain conventional browsers but add a sidebar, extension, or agent.
 
 Atlas made those categories feel like one thing. Its replacements split them apart again.
 
@@ -53,7 +53,8 @@ Prices below are list prices or plan requirements visible on 29 July 2026, befor
 | [Perplexity Comet](https://www.perplexity.ai/comet) | Browser and basic AI are free; Pro is $17/mo annually and Max $167/mo annually | macOS, Windows, iOS, Android | Assistant in the browser sidebar | Current page and multiple tabs | Yes | Best single-product browser-plus-agent alternative, but it moves me into Perplexity's chat ecosystem |
 | [Chrome + Claude](https://support.claude.com/en/articles/12012173-get-started-with-claude-in-chrome) | Paid Claude plan required; Pro is $20/mo or $17/mo annually | Desktop Google Chrome | Claude side panel | Multiple tabs placed in Claude's tab group | Yes | Powerful automation, but adds a subscription and browser work consumes the same Claude allowance faster |
 | [Chrome + Gemini](https://www.google.com/chrome/ai-innovations/) | Basic browser integration varies; auto browse requires Google AI Pro or Ultra | macOS, Windows, ChromeOS | Gemini side panel | Current and open tabs | Yes, but consumer auto browse is currently US-only | Interesting direction, not an immediate agentic replacement for me in Europe |
-| [Brave + Leo](https://brave.com/leo/) | Free; optional Premium raises limits and adds models | macOS, Windows, Linux, iOS, Android | Leo is built into Brave | Current tab; can organize tabs | No general webpage-action agent documented | Best free, privacy-oriented page chat; weaker Atlas replacement for automation |
+| [Zen + AI chatbot sidebar](https://zen-browser.app/) | Free and open source; currently in beta | macOS, Windows, Linux | Choice of ChatGPT, Claude, Gemini, Mistral, or Copilot in a Firefox-derived sidebar | Selected text and current-page summaries; no native multi-tab AI context documented | No | Calm, flexible browser with ChatGPT visibly beside the page, but far less integrated than Atlas |
+| [Brave + Leo](https://brave.com/leo/) | Free; optional Premium raises limits and adds models | macOS, Windows, Linux, iOS, Android | Leo is built into Brave | Current tab; can organize tabs; local chat history | No general webpage-action agent documented | Best free, privacy-oriented native page chat; weaker Atlas replacement for automation |
 | [Edge + Copilot](https://support.microsoft.com/en-us/microsoft-copilot/getting-started-with-copilot-in-microsoft-edge) | Page chat is free; Browse with Copilot is rolling out to Microsoft 365 Premium users in the US | macOS, Windows, Linux, iOS, Android | Copilot sidebar | Current page, open tabs, and browser history | Yes, where rollout is available | Surprisingly complete on paper, but the agent rollout is not an immediate European option |
 
 ## First Test: Chrome With the ChatGPT Extension
@@ -134,11 +135,23 @@ Claude's official Chrome extension is already a capable agent. It can read, clic
 
 This may be the best choice for someone already paying for Claude. It is less attractive for me because it adds another subscription and another chat history. Anthropic also warns that browser interactions are compute-intensive and count against the same plan limits as Claude and Claude Code.
 
+### Zen Browser
+
+[Zen](https://zen-browser.app/) deserves a place in this comparison because its overall browser experience may be closer to what I want than Chrome's, even though its AI is less ambitious. It is a free, open-source, Firefox-based browser built around vertical tabs, workspaces, split views, and a calmer interface. It is available on macOS, Windows, and Linux, although the project still labels it beta.
+
+Zen inherits Firefox's optional AI chatbot sidebar. I can put ChatGPT, Claude, Gemini, Le Chat Mistral, or Copilot beside the page and switch providers. Zen documents **Alt-Ctrl-X** as the shortcut for toggling that sidebar. The integration can send selected text or the current page to the chosen provider for prompts such as summarize, explain, or proofread.
+
+This has one potentially important advantage: it is a straightforward provider sidebar, so ChatGPT can visibly live inside the browser without forcing all browsing through ChatGPT Work or Codex. I still need to test whether signing into ChatGPT there gives me the ordinary chat-history experience I want.
+
+The limitations are clear. Zen does not document native multi-tab AI context, browser memory, or an agent that clicks and types across sites. It uses Firefox extensions, so I cannot assume OpenAI's or Anthropic's Chrome-only agent extensions will work. Zen is therefore a serious alternative to **Chrome or Brave as my pleasant everyday browser**, but not a replacement for ChatGPT desktop when I want browser automation.
+
 ### Brave Leo
 
-Leo is the cleanest free option for having AI beside a page. It can summarize the current tab, PDFs, Google Docs, and Sheets; organize tabs; and store chat history locally. It does not require an account, and Brave says chats are not retained for model training.
+Brave is a stronger AI product than Zen out of the box. Leo is built into the browser rather than embedding my choice of an external chatbot. It can summarize the current tab, PDFs, Google Docs, and Sheets; organize tabs; search with Brave Search; and store chat history locally. It does not require an account, and Brave says chats are not retained for model training. It also supports local or remote bring-your-own models.
 
-I would choose Brave over Chrome if privacy-first browsing and free contextual chat mattered more than keeping ChatGPT nearby. I would not choose it primarily for agentic automation.
+The trade-off is continuity. Leo is its own chat surface rather than my normal ChatGPT history. Although Brave is Chromium-based, OpenAI and Anthropic currently say their browser extensions support Google Chrome rather than other Chromium browsers, so I would not choose Brave on the assumption that those agents will work.
+
+I would choose **Brave over Zen** if I wanted the more capable native AI assistant with stronger page context. I would choose **Zen over Brave** if I wanted a calmer Firefox-style browser and the freedom to keep the actual ChatGPT or Claude web app in the sidebar. Neither currently replaces Atlas's general agent mode.
 
 ### Gemini in Chrome and Copilot in Edge
 
@@ -198,6 +211,11 @@ A follow-up should run a one-week diary and a small repeatable test suite rather
 - [Anthropic plans](https://claude.com/pricing)
 - [Google: AI in Chrome](https://www.google.com/chrome/ai-innovations/)
 - [Google: Gemini auto browse requirements](https://support.google.com/chrome/answer/16821166)
+- [Zen Browser](https://zen-browser.app/)
+- [Zen: supported platforms and downloads](https://zen-browser.app/download/)
+- [Zen: AI chatbot sidebar shortcut](https://docs.zen-browser.app/user-manual/shortcuts)
+- [Zen: Firefox extension compatibility](https://docs.zen-browser.app/user-manual/extensions)
+- [Mozilla: AI chatbot providers and page context](https://support.mozilla.org/en-US/kb/ai-chatbot)
 - [Brave Leo](https://brave.com/leo/)
 - [Microsoft: Copilot in Edge](https://support.microsoft.com/en-us/microsoft-copilot/getting-started-with-copilot-in-microsoft-edge)
 - [Microsoft: Browse with Copilot](https://support.microsoft.com/en-us/microsoft-copilot/browse-with-copilot)

@@ -2,6 +2,9 @@
   "analytics": "G-J96LDWRQBX",
   "showSidebar": true,
   "showEditLink": true,
+  "contentExclude": [
+    "/docs"
+  ],
   "nav": {
     "logo": "magnifying-glass.png",
     "title": "CompareThe__",
