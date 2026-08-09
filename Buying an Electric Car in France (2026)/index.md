@@ -12,8 +12,8 @@ This is a working research log, not a finished comparison — think of it as the
 
 ## Still to do
 
-- [ ] ⏭️ Real price-vs-quality efficient frontier — weight charging speed, safety, boot space, brand reliability etc. instead of range-only
-- [ ] Used vs. new market pricing comparison
+- [ ] ⏭️ Secondhand market pricing survey — actual used listing prices (not just aggregate depreciation stats) for the shortlist plus a few higher-end cars worth a look secondhand even though they're out of range new, especially **Tesla Model 3** and **Tesla Model Y** in France; other used candidates welcome too. Sources: La Centrale, LeBonCoin, AutoScout24 — capture price, mileage, age, battery health/warranty where listed.
+- [ ] Real price-vs-quality efficient frontier — weight charging speed, safety, boot space, brand reliability etc. instead of range-only; do this for both new and used prices so the two are comparable
 - [ ] Final recommendation and purchase decision
 
 Once those land, this page becomes the actual story: what I was optimizing for, what the frontier looked like, and what I bought.
