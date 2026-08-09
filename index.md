@@ -22,6 +22,7 @@ Examples
 - What are the best [[AI Code Editors]]?
 - What are the best [[Website builders]]?
 - What are the best [[AI Website Builders]]?
+- [[Buying an Electric Car in France (2026)|Which electric car should I buy in France?]]
 
 ## Motivation
 
