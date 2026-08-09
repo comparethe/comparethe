@@ -1,0 +1,32 @@
+{
+  "description": "Starting price (new, EUR) and WLTP range (km) for EVs surveyed for sale in France, 2026. priceOk/rangeOk mark whether the figure was directly confirmed via search this session vs. a typical/estimated figure. shortlist marks the three models flagged in the early buy/used-vs-new recommendation. Kia EV3 and BYD Dolphin Surf are each split into two trims after an initial pass wrongly paired one trim's starting price with a different (higher) trim's max range — see 02-model-tco-survey.md for the correction note.",
+  "segments": {
+    "budget": "Budget / city, <€25k",
+    "main": "Mainstream, €25-40k",
+    "premium": "Premium, €40k+"
+  },
+  "models": [
+    { "name": "Dacia Spring", "price": 16900, "range": 220, "seg": "budget", "priceOk": true, "rangeOk": false },
+    { "name": "Leapmotor T03", "price": 17900, "range": 265, "seg": "budget", "priceOk": true, "rangeOk": false },
+    { "name": "BYD Dolphin Surf (Active)", "price": 19990, "range": 220, "seg": "budget", "priceOk": true, "rangeOk": true },
+    { "name": "BYD Dolphin Surf (Boost)", "price": 24490, "range": 322, "seg": "budget", "priceOk": true, "rangeOk": true },
+    { "name": "Renault Twingo E-Tech", "price": 19990, "range": 263, "seg": "budget", "priceOk": true, "rangeOk": true, "shortlist": true },
+    { "name": "Citroën ë-C3", "price": 23300, "range": 320, "seg": "budget", "priceOk": true, "rangeOk": true },
+    { "name": "Fiat 500e", "price": 23900, "range": 320, "seg": "budget", "priceOk": true, "rangeOk": true },
+    { "name": "Peugeot e-208", "price": 21950, "range": 433, "seg": "budget", "priceOk": true, "rangeOk": true, "shortlist": true },
+    { "name": "Renault 5 E-Tech", "price": 24000, "range": 400, "seg": "budget", "priceOk": true, "rangeOk": true },
+    { "name": "BYD Dolphin", "price": 27990, "range": 340, "seg": "main", "priceOk": true, "rangeOk": true },
+    { "name": "MG4 Standard", "price": 29990, "range": 350, "seg": "main", "priceOk": true, "rangeOk": true },
+    { "name": "Mini Cooper Electric", "price": 33000, "range": 402, "seg": "main", "priceOk": false, "rangeOk": true },
+    { "name": "BYD Atto 3", "price": 33990, "range": 420, "seg": "main", "priceOk": true, "rangeOk": true },
+    { "name": "Renault Megane E-Tech", "price": 35200, "range": 450, "seg": "main", "priceOk": true, "rangeOk": false },
+    { "name": "Kia EV3 (Air)", "price": 35990, "range": 436, "seg": "main", "priceOk": true, "rangeOk": true },
+    { "name": "Kia EV3 (Earth Long Range)", "price": 44990, "range": 571, "seg": "premium", "priceOk": true, "rangeOk": true },
+    { "name": "Hyundai Ioniq 5", "price": 42000, "range": 570, "seg": "premium", "priceOk": false, "rangeOk": false },
+    { "name": "Tesla Model 3", "price": 42990, "range": 629, "seg": "premium", "priceOk": true, "rangeOk": true, "shortlist": true },
+    { "name": "Tesla Model Y", "price": 45000, "range": 550, "seg": "premium", "priceOk": false, "rangeOk": true },
+    { "name": "Peugeot E-3008", "price": 45000, "range": 701, "seg": "premium", "priceOk": false, "rangeOk": true },
+    { "name": "Kia EV6", "price": 48000, "range": 490, "seg": "premium", "priceOk": false, "rangeOk": false },
+    { "name": "BMW iX3 (Neue Klasse)", "price": 65000, "range": 685, "seg": "premium", "priceOk": false, "rangeOk": true }
+  ]
+}

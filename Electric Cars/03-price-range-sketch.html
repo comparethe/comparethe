@@ -1,0 +1,442 @@
+<title>Price vs. Range — EV Survey, France 2026</title>
+<style>
+  .viz-root {
+    --page:          #f4f5f3;
+    --surface:       #ffffff;
+    --ink:           #14171a;
+    --ink-secondary: #4d5560;
+    --muted:         #8b9099;
+    --rule:          #dde1e4;
+    --rule-strong:   #c7ccd1;
+    --accent:        #2a78d6;
+    --s-budget:      #2a78d6;
+    --s-main:        #eb6834;
+    --s-premium:     #1baf7a;
+    --tag-bg:        #eef2f6;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .viz-root {
+      --page:          #0f1113;
+      --surface:       #17191c;
+      --ink:           #f2f3f1;
+      --ink-secondary: #b9bec4;
+      --muted:         #82878e;
+      --rule:          #2a2d31;
+      --rule-strong:   #383c41;
+      --accent:        #3987e5;
+      --s-budget:      #3987e5;
+      --s-main:        #d95926;
+      --s-premium:     #199e70;
+      --tag-bg:        #1d2b3a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] .viz-root {
+    --page:          #0f1113;
+    --surface:       #17191c;
+    --ink:           #f2f3f1;
+    --ink-secondary: #b9bec4;
+    --muted:         #82878e;
+    --rule:          #2a2d31;
+    --rule-strong:   #383c41;
+    --accent:        #3987e5;
+    --s-budget:      #3987e5;
+    --s-main:        #d95926;
+    --s-premium:     #199e70;
+    --tag-bg:        #1d2b3a;
+    color-scheme: dark;
+  }
+
+  .viz-root {
+    background: var(--page);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: 16px;
+    color: var(--ink-secondary);
+    max-width: 62ch;
+    margin: 0 0 6px;
+  }
+  .lede + .lede { margin-top: 10px; }
+
+  .callout {
+    margin: 28px 0 0;
+    padding: 14px 18px;
+    background: var(--tag-bg);
+    border-radius: 6px;
+    font-size: 13.5px;
+    color: var(--ink-secondary);
+    border-left: 3px solid var(--accent);
+  }
+  .callout b { color: var(--ink); }
+
+  .card {
+    margin-top: 32px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 20px 16px;
+  }
+  .card h2 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-secondary);
+    margin: 0 0 4px;
+  }
+  .card .sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+
+  .chart-scroll { overflow-x: auto; }
+  svg.chart { width: 100%; min-width: 640px; height: auto; display: block; overflow: visible; }
+  .axis-label { fill: var(--muted); font-size: 11px; }
+  .axis-title { fill: var(--ink-secondary); font-size: 12px; font-weight: 600; }
+  .gridline { stroke: var(--rule); stroke-width: 1; }
+  .baseline { stroke: var(--rule-strong); stroke-width: 1; }
+  .pt { cursor: pointer; }
+  .pt circle { stroke-width: 2; transition: r 0.12s ease; }
+  .pt:hover circle, .pt:focus circle { r: 8.5; }
+  .pt:focus { outline: none; }
+  .pt .ptlabel {
+    font-size: 11px;
+    font-weight: 600;
+    fill: var(--ink-secondary);
+    pointer-events: none;
+  }
+
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--page);
+    font-size: 12.5px;
+    line-height: 1.45;
+    padding: 8px 11px;
+    border-radius: 6px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 12px));
+    transition: opacity 0.1s ease;
+    white-space: nowrap;
+    z-index: 5;
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip .t-name { font-weight: 700; margin-bottom: 2px; }
+  .tooltip .t-flag { color: var(--muted); font-size: 11px; }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 18px 2px 4px;
+    font-size: 12.5px;
+    color: var(--ink-secondary);
+  }
+  .legend .grp { display: flex; align-items: center; gap: 14px; }
+  .legend .item { display: flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .swatch.hollow { background: transparent; border: 2px solid var(--muted); box-sizing: border-box; }
+  .swatch.filled { border: 2px solid; }
+  .divider-v { width: 1px; align-self: stretch; background: var(--rule); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", monospace;
+    font-size: 12.5px;
+    margin-top: 8px;
+  }
+  th {
+    text-align: left;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--rule);
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  td.model { font-family: ui-sans-serif, system-ui, sans-serif; font-weight: 600; }
+  td.num { text-align: right; }
+  .seg-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 7px; }
+  .flag { font-size: 10.5px; padding: 1px 6px; border-radius: 999px; font-family: ui-sans-serif, system-ui, sans-serif; font-weight: 600; }
+  .flag.confirmed { background: var(--tag-bg); color: var(--accent); }
+  .flag.estimated { color: var(--muted); border: 1px solid var(--rule-strong); }
+  .table-scroll { overflow-x: auto; }
+
+  footer {
+    margin-top: 28px;
+    font-size: 12.5px;
+    color: var(--muted);
+    max-width: 68ch;
+  }
+  footer p { margin: 6px 0; }
+  footer a { color: var(--accent); }
+</style>
+
+<div class="viz-root">
+  <div class="wrap">
+    <p class="eyebrow">Electric Car Research &amp; Purchase — working sketch</p>
+    <h1>Starting price vs. range, 22 EVs sold in France</h1>
+    <p class="lede">Range (WLTP) stands in for "quality" here because it's the one spec that's consistently reported across the market — not a weighted score. Price is the new sticker price, not a full TCO figure: depreciation, incentives and running costs aren't priced in yet.</p>
+    <p class="lede">Hollow points are figures I couldn't confirm directly this session (typical/estimated) — filled points are sourced. Treat this as a first cut for shortlisting, not a final number.</p>
+
+    <div class="callout">
+      <b>Correction (2026-08-09):</b> the Kia EV3 and BYD Dolphin Surf were originally each plotted as one point pairing a base trim's starting price with a higher trim's max range ("from €X, up to Ykm" language glued two different cars together). Both are now split into their real trims — Kia EV3 Air (€35,990/436km) vs. Earth Long Range (€44,990/571km); BYD Dolphin Surf Active (€19,990/220km) vs. Boost (€24,490/322km). Worth the same scrutiny on any "from/up to" spec you read elsewhere.
+    </div>
+    <div class="callout">
+      <b>On reading the trend forward:</b> a chunk of today's steep EV depreciation is Tesla cutting its own new prices, not the market souring — and that pressure looks structural (Chinese manufacturing overcapacity), not a one-off that reverses. Rising battery raw-material costs pull the other way. Net: don't treat current used discounts as a floor, but they're not obviously a blip either.
+    </div>
+
+    <div class="card">
+      <h2>Price vs. range</h2>
+      <p class="sub">€16.9k–€65k · 220–701km WLTP · bubble labels mark the three models discussed as an early shortlist</p>
+      <div class="chart-scroll">
+        <svg class="chart" id="chart" viewBox="0 0 900 540" role="img" aria-label="Scatter plot of starting price against WLTP range for 20 electric vehicles sold in France, coloured by price segment"></svg>
+      </div>
+      <div class="legend">
+        <div class="grp">
+          <span class="item"><span class="swatch filled" style="border-color:var(--s-budget)"></span>Budget / city (&lt;€25k)</span>
+          <span class="item"><span class="swatch filled" style="border-color:var(--s-main)"></span>Mainstream (€25–40k)</span>
+          <span class="item"><span class="swatch filled" style="border-color:var(--s-premium)"></span>Premium (€40k+)</span>
+        </div>
+        <div class="divider-v"></div>
+        <div class="grp">
+          <span class="item"><span class="swatch filled" style="border-color:var(--muted)"></span>Sourced</span>
+          <span class="item"><span class="swatch hollow"></span>Estimated</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Full data</h2>
+      <p class="sub">Same 22 models/trims, sorted by segment then price — for exact lookup</p>
+      <div class="table-scroll">
+        <table id="table"></table>
+      </div>
+    </div>
+
+    <footer>
+      <p>Detailed sourcing for tax incentives and the model/TCO survey is logged in the project file (<code>projects/2026-electric-car-research-purchase.md</code>) appendices.</p>
+      <p>Next to sharpen this: real feature weights (charging speed, safety, boot space, brand reliability) in place of range-only, and actual secondhand listing prices in place of aggregate depreciation stats.</p>
+    </footer>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+(function () {
+  var data = [
+    { name: "Dacia Spring",        price: 16900, range: 220, seg: "budget",  priceOk: true,  rangeOk: false },
+    { name: "Leapmotor T03",       price: 17900, range: 265, seg: "budget",  priceOk: true,  rangeOk: false },
+    { name: "BYD Dolphin Surf (Active)", price: 19990, range: 220, seg: "budget", priceOk: true, rangeOk: true },
+    { name: "BYD Dolphin Surf (Boost)",  price: 24490, range: 322, seg: "budget", priceOk: true, rangeOk: true },
+    { name: "Renault Twingo E-Tech", price: 19990, range: 263, seg: "budget", priceOk: true, rangeOk: true, shortlist: true },
+    { name: "Citroën ë-C3",        price: 23300, range: 320, seg: "budget",  priceOk: true,  rangeOk: true },
+    { name: "Fiat 500e",           price: 23900, range: 320, seg: "budget",  priceOk: true,  rangeOk: true },
+    { name: "Peugeot e-208",       price: 21950, range: 433, seg: "budget",  priceOk: true,  rangeOk: true, shortlist: true },
+    { name: "Renault 5 E-Tech",    price: 24000, range: 400, seg: "budget",  priceOk: true,  rangeOk: true },
+    { name: "BYD Dolphin",         price: 27990, range: 340, seg: "main",    priceOk: true,  rangeOk: true },
+    { name: "MG4 Standard",        price: 29990, range: 350, seg: "main",    priceOk: true,  rangeOk: true },
+    { name: "Mini Cooper Electric",price: 33000, range: 402, seg: "main",    priceOk: false, rangeOk: true },
+    { name: "BYD Atto 3",          price: 33990, range: 420, seg: "main",    priceOk: true,  rangeOk: true },
+    { name: "Renault Megane E-Tech",price:35200, range: 450, seg: "main",    priceOk: true,  rangeOk: false },
+    { name: "Kia EV3 (Air)",             price: 35990, range: 436, seg: "main",    priceOk: true, rangeOk: true },
+    { name: "Kia EV3 (Earth Long Range)",price: 44990, range: 571, seg: "premium", priceOk: true, rangeOk: true },
+    { name: "Hyundai Ioniq 5",     price: 42000, range: 570, seg: "premium", priceOk: false, rangeOk: false },
+    { name: "Tesla Model 3",       price: 42990, range: 629, seg: "premium", priceOk: true,  rangeOk: true, shortlist: true },
+    { name: "Tesla Model Y",       price: 45000, range: 550, seg: "premium", priceOk: false, rangeOk: true },
+    { name: "Peugeot E-3008",      price: 45000, range: 701, seg: "premium", priceOk: false, rangeOk: true },
+    { name: "Kia EV6",             price: 48000, range: 490, seg: "premium", priceOk: false, rangeOk: false },
+    { name: "BMW iX3 (Neue Klasse)",price:65000, range: 685, seg: "premium", priceOk: false, rangeOk: true }
+  ];
+
+  var segMeta = {
+    budget:  { label: "Budget / city",  varName: "--s-budget" },
+    main:    { label: "Mainstream",     varName: "--s-main" },
+    premium: { label: "Premium",        varName: "--s-premium" }
+  };
+
+  var svgNS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("chart");
+  var root = document.querySelector(".viz-root");
+  var cs = getComputedStyle(root);
+
+  var W = 900, H = 540, ML = 66, MR = 24, MT = 20, MB = 56;
+  var plotW = W - ML - MR, plotH = H - MT - MB;
+
+  var xMin = 15000, xMax = 68000, yMin = 180, yMax = 730;
+  function xPix(p) { return ML + (p - xMin) / (xMax - xMin) * plotW; }
+  function yPix(r) { return MT + (yMax - r) / (yMax - yMin) * plotH; }
+
+  function el(tag, attrs) {
+    var e = document.createElementNS(svgNS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  // gridlines + axis labels
+  var xTicks = [20000, 30000, 40000, 50000, 60000];
+  xTicks.forEach(function (v) {
+    var x = xPix(v);
+    svg.appendChild(el("line", { class: "gridline", x1: x, x2: x, y1: MT, y2: MT + plotH }));
+    var t = el("text", { class: "axis-label", x: x, y: MT + plotH + 20, "text-anchor": "middle" });
+    t.textContent = "€" + (v / 1000) + "k";
+    svg.appendChild(t);
+  });
+  var yTicks = [200, 300, 400, 500, 600, 700];
+  yTicks.forEach(function (v) {
+    var y = yPix(v);
+    svg.appendChild(el("line", { class: "gridline", x1: ML, x2: ML + plotW, y1: y, y2: y }));
+    var t = el("text", { class: "axis-label", x: ML - 10, y: y + 4, "text-anchor": "end" });
+    t.textContent = v;
+    svg.appendChild(t);
+  });
+  svg.appendChild(el("line", { class: "baseline", x1: ML, x2: ML + plotW, y1: MT + plotH, y2: MT + plotH }));
+  svg.appendChild(el("line", { class: "baseline", x1: ML, x2: ML, y1: MT, y2: MT + plotH }));
+
+  var xTitle = el("text", { class: "axis-title", x: ML + plotW / 2, y: H - 8, "text-anchor": "middle" });
+  xTitle.textContent = "Starting price, new (€)";
+  svg.appendChild(xTitle);
+
+  var yTitle = el("text", { class: "axis-title", x: 0, y: 0, "text-anchor": "middle", transform: "translate(18," + (MT + plotH / 2) + ") rotate(-90)" });
+  yTitle.textContent = "WLTP range (km)";
+  svg.appendChild(yTitle);
+
+  var tooltip = document.getElementById("tooltip");
+  var chartCard = svg.closest(".card");
+  chartCard.style.position = "relative";
+
+  data.forEach(function (d) {
+    var color = cs.getPropertyValue(segMeta[d.seg].varName).trim();
+    var g = el("g", { class: "pt", tabindex: "0" });
+    var estimated = !(d.priceOk && d.rangeOk);
+    var circle = el("circle", {
+      cx: xPix(d.price), cy: yPix(d.range), r: 6.5,
+      fill: estimated ? "transparent" : color,
+      stroke: color
+    });
+    g.appendChild(circle);
+
+    if (d.shortlist) {
+      var label = el("text", {
+        class: "ptlabel",
+        x: xPix(d.price) + 10,
+        y: yPix(d.range) - 10
+      });
+      label.textContent = d.name;
+      g.appendChild(label);
+    }
+
+    function show(evt) {
+      var flagText = estimated
+        ? (!d.priceOk && !d.rangeOk ? "price & range estimated" : (!d.priceOk ? "price estimated" : "range estimated"))
+        : "sourced";
+      tooltip.innerHTML = '<div class="t-name">' + d.name + '</div>' +
+        '€' + d.price.toLocaleString('en-GB') + ' &middot; ' + d.range + 'km WLTP' +
+        '<div class="t-flag">' + segMeta[d.seg].label + ' &middot; ' + flagText + '</div>';
+      var r = circle.getBoundingClientRect();
+      var cardR = chartCard.getBoundingClientRect();
+      tooltip.style.left = (r.left - cardR.left + r.width / 2) + "px";
+      tooltip.style.top = (r.top - cardR.top) + "px";
+      tooltip.classList.add("show");
+    }
+    function hide() { tooltip.classList.remove("show"); }
+
+    g.addEventListener("mouseenter", show);
+    g.addEventListener("mouseleave", hide);
+    g.addEventListener("focus", show);
+    g.addEventListener("blur", hide);
+
+    svg.appendChild(g);
+  });
+
+  chartCard.appendChild(tooltip);
+
+  // data table
+  var order = { budget: 0, main: 1, premium: 2 };
+  var sorted = data.slice().sort(function (a, b) {
+    return order[a.seg] - order[b.seg] || a.price - b.price;
+  });
+  var table = document.getElementById("table");
+  var thead = el("thead", {});
+  var headRow = document.createElement("tr");
+  ["Model", "Segment", "Price", "Range (km)", "Confidence"].forEach(function (h) {
+    var th = document.createElement("th");
+    th.textContent = h;
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+  var tbody = document.createElement("tbody");
+  sorted.forEach(function (d) {
+    var color = cs.getPropertyValue(segMeta[d.seg].varName).trim();
+    var tr = document.createElement("tr");
+    var estimated = !(d.priceOk && d.rangeOk);
+
+    var tdModel = document.createElement("td");
+    tdModel.className = "model";
+    tdModel.textContent = d.name + (d.shortlist ? " ★" : "");
+    tr.appendChild(tdModel);
+
+    var tdSeg = document.createElement("td");
+    tdSeg.innerHTML = '<span class="seg-dot" style="background:' + color + '"></span>' + segMeta[d.seg].label;
+    tr.appendChild(tdSeg);
+
+    var tdPrice = document.createElement("td");
+    tdPrice.className = "num";
+    tdPrice.textContent = "€" + d.price.toLocaleString('en-GB') + (d.priceOk ? "" : "*");
+    tr.appendChild(tdPrice);
+
+    var tdRange = document.createElement("td");
+    tdRange.className = "num";
+    tdRange.textContent = d.range + (d.rangeOk ? "" : "*");
+    tr.appendChild(tdRange);
+
+    var tdFlag = document.createElement("td");
+    var flag = document.createElement("span");
+    flag.className = "flag " + (estimated ? "estimated" : "confirmed");
+    flag.textContent = estimated ? "estimated" : "sourced";
+    tdFlag.appendChild(flag);
+    tr.appendChild(tdFlag);
+
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+})();
+</script>
