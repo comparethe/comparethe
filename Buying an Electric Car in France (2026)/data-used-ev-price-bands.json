@@ -1,0 +1,42 @@
+{
+  "description": "Used-listing price bands for EVs surveyed for sale in France, 2026, backing 05-secondhand-price-bands.html. bothBounds marks whether both the low and high price were sourced vs. only one bound (open range). Tesla rows are broken out by trim tier (base = Propulsion/SR+, lr = Grande Autonomie/Long Range, perf = Performance) and year/mileage band, since trim drives price far more than nameplate alone for used Teslas.",
+  "tiers": {
+    "base": "Propulsion / SR+ (base RWD trim)",
+    "lr": "Grande Autonomie / Long Range",
+    "perf": "Performance"
+  },
+  "segments": {
+    "budget": "Budget / city, matches new-car segment in data-ev-models.json",
+    "main": "Mainstream, matches new-car segment in data-ev-models.json"
+  },
+  "tesla": [
+    { "model": "Model 3", "trim": "Propulsion / SR+", "tier": "base", "year": "2019", "mileage": "100-150k km", "lo": 13000, "hi": 17000, "bothBounds": true },
+    { "model": "Model 3", "trim": "Propulsion / SR+", "tier": "base", "year": "2020", "mileage": "70-120k km", "lo": 16000, "hi": 21000, "bothBounds": true },
+    { "model": "Model 3", "trim": "Propulsion / SR+", "tier": "base", "year": "2021", "mileage": "50-90k km", "lo": 19000, "hi": 25000, "bothBounds": true },
+    { "model": "Model 3", "trim": "Propulsion / SR+", "tier": "base", "year": "2022", "mileage": "30-70k km", "lo": 22000, "hi": 28000, "bothBounds": true },
+    { "model": "Model 3", "trim": "Propulsion / SR+", "tier": "base", "year": "2023", "mileage": "20-50k km", "lo": 26000, "hi": 32000, "bothBounds": true },
+    { "model": "Model 3", "trim": "Propulsion / SR+ (Highland facelift)", "tier": "base", "year": "2024", "mileage": "<30k km", "lo": 28000, "hi": 35000, "bothBounds": true },
+    { "model": "Model 3", "trim": "Grande Autonomie", "tier": "lr", "year": "2019-2020", "mileage": "80-130k km", "lo": 18000, "hi": 25000, "bothBounds": true },
+    { "model": "Model 3", "trim": "Grande Autonomie", "tier": "lr", "year": "2021", "mileage": "50-90k km", "lo": 24000, "hi": 30000, "bothBounds": true },
+    { "model": "Model 3", "trim": "Grande Autonomie", "tier": "lr", "year": "2022-2023", "mileage": "20-60k km", "lo": 27000, "hi": 36000, "bothBounds": true },
+    { "model": "Model 3", "trim": "Performance", "tier": "perf", "year": "2020-2021", "mileage": "40-80k km", "lo": 26000, "hi": 33000, "bothBounds": true },
+    { "model": "Model 3", "trim": "Performance", "tier": "perf", "year": "2022", "mileage": "20-50k km", "lo": 30000, "hi": 37000, "bothBounds": true },
+    { "model": "Model Y", "trim": "Propulsion", "tier": "base", "year": "2022", "mileage": "40-80k km", "lo": 27000, "hi": 33000, "bothBounds": true },
+    { "model": "Model Y", "trim": "Propulsion", "tier": "base", "year": "2023", "mileage": "20-50k km", "lo": 31000, "hi": 38000, "bothBounds": true },
+    { "model": "Model Y", "trim": "Propulsion (Juniper facelift)", "tier": "base", "year": "2024", "mileage": "<25k km", "lo": 36000, "hi": 43000, "bothBounds": true },
+    { "model": "Model Y", "trim": "Grande Autonomie AWD", "tier": "lr", "year": "2022", "mileage": "30-70k km", "lo": 33000, "hi": 40000, "bothBounds": true },
+    { "model": "Model Y", "trim": "Grande Autonomie AWD", "tier": "lr", "year": "2023", "mileage": "15-45k km", "lo": 37000, "hi": 44000, "bothBounds": true },
+    { "model": "Model Y", "trim": "Grande Autonomie AWD (Juniper facelift)", "tier": "lr", "year": "2024", "mileage": "<20k km", "lo": 42000, "hi": 49000, "bothBounds": true },
+    { "model": "Model Y", "trim": "Performance", "tier": "perf", "year": "2022-2023", "mileage": "20-50k km", "lo": 38000, "hi": 47000, "bothBounds": true }
+  ],
+  "other": [
+    { "model": "Dacia Spring", "seg": "budget", "note": "from €6,500 — no confirmed ceiling", "lo": 6500, "hi": 10000, "bothBounds": false },
+    { "model": "Renault Zoe", "seg": "budget", "note": "phase 2 (52kWh), 2020-22 cluster €14-19k", "lo": 9500, "hi": 19500, "bothBounds": true },
+    { "model": "Nissan Leaf", "seg": "budget", "note": "40kWh or 62kWh pack, 2019-2024", "lo": 11500, "hi": 22500, "bothBounds": true },
+    { "model": "Peugeot e-208", "seg": "budget", "note": "near-new (<10k km) cluster €24-31k", "lo": 18000, "hi": 35000, "bothBounds": true },
+    { "model": "Hyundai Kona Electric", "seg": "main", "note": "2022 facelift, ~40k km ≈ €20k", "lo": 13000, "hi": 20000, "bothBounds": true },
+    { "model": "Volkswagen ID.3", "seg": "main", "note": "from €18,060 — no confirmed ceiling", "lo": 18060, "hi": 24000, "bothBounds": false },
+    { "model": "BYD Atto 3", "seg": "main", "note": "little discount off new (€37,990+) — too new to France for real depreciation yet", "lo": 24990, "hi": 36990, "bothBounds": true },
+    { "model": "Renault Mégane E-Tech", "seg": "main", "note": "single example: 2022 EV60 220, 57k km, €15,990", "lo": 14500, "hi": 17500, "bothBounds": false }
+  ]
+}
