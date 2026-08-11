@@ -11,6 +11,7 @@ This is a working research log, not a finished comparison — think of it as the
 - [**Price vs. range chart**](03-price-range-sketch.html) — an interactive scatter of price against WLTP range for 22 EV trims sold in France ([data](data-ev-models.json)). Range stands in for "quality" here only because it's the one spec reported consistently — not a real weighted score yet.
 - [**Secondhand market survey**](04-secondhand-market-survey.md) — used-listing price ranges by year/mileage for **Tesla Model 3** and **Tesla Model Y** (both worth a look secondhand despite being above new-car budget), plus e-208, Mégane E-Tech, Zoe, Leaf, Kona Electric, ID.3, Atto 3, and Dacia Spring. First pass at what a used Model 3 actually costs vs. new-car alternatives on the price/range chart.
 - [**Secondhand price-band chart**](05-secondhand-price-bands.html) — a separate chart from the new-car scatter above, because used prices aren't one point per model: it's a horizontal range-bar chart with **Tesla broken out by trim tier** (Propulsion/SR+, Grande Autonomie, Performance) and year/mileage, since trim drives used price far more than nameplate alone ([data](data-used-ev-price-bands.json)).
+- [**Price vs. mileage — Pareto sketch**](06-secondhand-price-vs-mileage.html) — used price plotted against mileage (mileage as a rough "quality" proxy: lower is fresher), coloured by make and shaped by Tesla trim, with a computed Pareto frontier. Points are band midpoints from the sources above, not individual listings — see the caveats on the chart itself.
 
 ## Still to do
 

@@ -1,0 +1,483 @@
+<title>Price vs. Mileage — Secondhand EV Sketch, France 2026</title>
+<style>
+  .viz-root {
+    --page:          #f4f5f3;
+    --surface:       #ffffff;
+    --ink:           #14171a;
+    --ink-secondary: #4d5560;
+    --muted:         #8b9099;
+    --rule:          #dde1e4;
+    --rule-strong:   #c7ccd1;
+    --accent:        #2a78d6;
+    --series-1:      #2a78d6;
+    --series-2:      #eb6834;
+    --series-3:      #1baf7a;
+    --tag-bg:        #eef2f6;
+    --frontier:      #14171a;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .viz-root {
+      --page:          #0f1113;
+      --surface:       #17191c;
+      --ink:           #f2f3f1;
+      --ink-secondary: #b9bec4;
+      --muted:         #82878e;
+      --rule:          #2a2d31;
+      --rule-strong:   #383c41;
+      --accent:        #3987e5;
+      --series-1:      #3987e5;
+      --series-2:      #d95926;
+      --series-3:      #199e70;
+      --tag-bg:        #1d2b3a;
+      --frontier:      #f2f3f1;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] .viz-root {
+    --page:          #0f1113;
+    --surface:       #17191c;
+    --ink:           #f2f3f1;
+    --ink-secondary: #b9bec4;
+    --muted:         #82878e;
+    --rule:          #2a2d31;
+    --rule-strong:   #383c41;
+    --accent:        #3987e5;
+    --series-1:      #3987e5;
+    --series-2:      #d95926;
+    --series-3:      #199e70;
+    --tag-bg:        #1d2b3a;
+    --frontier:      #f2f3f1;
+    color-scheme: dark;
+  }
+
+  .viz-root {
+    background: var(--page);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: 16px;
+    color: var(--ink-secondary);
+    max-width: 68ch;
+    margin: 0 0 6px;
+  }
+  .lede + .lede { margin-top: 10px; }
+
+  .callout {
+    margin: 28px 0 0;
+    padding: 14px 18px;
+    background: var(--tag-bg);
+    border-radius: 6px;
+    font-size: 13.5px;
+    color: var(--ink-secondary);
+    border-left: 3px solid var(--accent);
+  }
+  .callout b { color: var(--ink); }
+
+  .card {
+    margin-top: 32px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 20px 18px;
+  }
+  .card h2 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-secondary);
+    margin: 0 0 4px;
+  }
+  .card .sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+
+  .chart-scroll { overflow-x: auto; }
+  svg.chart { width: 100%; min-width: 680px; height: auto; display: block; overflow: visible; }
+  .axis-label { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .axis-title { fill: var(--ink-secondary); font-size: 12px; font-weight: 600; }
+  .gridline { stroke: var(--rule); stroke-width: 1; }
+  .baseline { stroke: var(--rule-strong); stroke-width: 1; }
+  .frontier-line { stroke: var(--frontier); stroke-width: 1.5; stroke-dasharray: 3 4; fill: none; opacity: 0.55; }
+  .zone-label { fill: var(--muted); font-size: 10.5px; font-style: italic; }
+
+  .pt { cursor: pointer; }
+  .pt .ring { fill: var(--surface); }
+  .pt .mark { transition: transform 0.12s ease; transform-origin: center; transform-box: fill-box; }
+  .pt:hover .mark, .pt:focus .mark { transform: scale(1.25); }
+  .pt:focus { outline: none; }
+  .pt.frontier .mark { stroke: var(--frontier); stroke-width: 1.5; }
+  .pt-year {
+    font-size: 9.5px;
+    font-weight: 600;
+    fill: var(--ink-secondary);
+    pointer-events: none;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--page);
+    font-size: 12.5px;
+    line-height: 1.45;
+    padding: 8px 11px;
+    border-radius: 6px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 12px));
+    transition: opacity 0.1s ease;
+    white-space: nowrap;
+    z-index: 5;
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip .t-name { font-weight: 700; margin-bottom: 2px; }
+  .tooltip .t-flag { color: var(--muted); font-size: 11px; }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 18px 2px 4px;
+    font-size: 12.5px;
+    color: var(--ink-secondary);
+  }
+  .legend .grp { display: flex; align-items: center; gap: 14px; }
+  .legend .item { display: flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .shape-key { width: 12px; height: 12px; display: inline-flex; align-items: center; justify-content: center; }
+  .divider-v { width: 1px; align-self: stretch; background: var(--rule); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", monospace;
+    font-size: 12.5px;
+    margin-top: 8px;
+  }
+  th {
+    text-align: left;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--rule);
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  td.model { font-family: ui-sans-serif, system-ui, sans-serif; font-weight: 600; }
+  td.num { text-align: right; }
+  .flag { font-size: 10.5px; padding: 1px 6px; border-radius: 999px; font-family: ui-sans-serif, system-ui, sans-serif; font-weight: 600; }
+  .flag.frontier-flag { background: var(--tag-bg); color: var(--accent); }
+  .table-scroll { overflow-x: auto; }
+
+  footer {
+    margin-top: 28px;
+    font-size: 12.5px;
+    color: var(--muted);
+    max-width: 70ch;
+  }
+  footer p { margin: 6px 0; }
+  footer a { color: var(--accent); }
+</style>
+
+<div class="viz-root">
+  <div class="wrap">
+    <p class="eyebrow">Electric Car Research &amp; Purchase — secondhand market, working sketch</p>
+    <h1>Price vs. mileage: a Pareto sketch for used EVs</h1>
+    <p class="lede">Mileage as a rough stand-in for "quality" — lower is better (fresher car, more life left). Colour is make/model; marker shape is Tesla trim tier (circle = Propulsion/SR+, square = Grande Autonomie, triangle = Performance). Numbers by each point are the model year. The dashed line traces the <b>Pareto frontier</b>: points on it aren't beaten on both price and mileage by any other point on the chart.</p>
+    <p class="lede">Bottom-left is the "good" corner — cheaper <i>and</i> lower mileage. A point above/right of the frontier is dominated: something else on the chart is at least as good on both axes.</p>
+
+    <div class="callout">
+      <b>Data gap:</b> only Tesla (full trim/year bands) and two other models with a specific mileage figure sourced (Kona Electric, Mégane E-Tech) are plotted. The rest of the used candidates — Zoe, Leaf, e-208, ID.3, Atto 3, Dacia Spring — don't have mileage tied to their price ranges yet in <a href="04-secondhand-market-survey.md">04-secondhand-market-survey.md</a>; that's the next research pass before they can join this chart.
+    </div>
+    <div class="callout">
+      <b>Tesla points are band midpoints, not real listings:</b> each is the middle of a sourced mileage range and price range (e.g. "2021 Propulsion, 50-90k km, €19-25k" → plotted at 70,000km / €22,000), not an actual advertised car. Treat the shape of the frontier as directional, not exact — see the "still needed" section in the secondhand survey for the plan to replace this with real listings.
+    </div>
+
+    <div class="card">
+      <h2>Price vs. mileage</h2>
+      <p class="sub">20 points · Tesla by trim tier + 2 other sourced examples · dashed line = Pareto frontier</p>
+      <div class="chart-scroll">
+        <svg class="chart" id="chart" viewBox="0 0 900 560" role="img" aria-label="Scatter plot of used EV price against mileage, coloured by model and shaped by Tesla trim tier, with a Pareto frontier line"></svg>
+      </div>
+      <div class="legend">
+        <div class="grp">
+          <span class="item"><span class="swatch" style="background:var(--series-1)"></span>Tesla Model 3</span>
+          <span class="item"><span class="swatch" style="background:var(--series-2)"></span>Tesla Model Y</span>
+          <span class="item"><span class="swatch" style="background:var(--series-3)"></span>Other (Kona Electric, Mégane E-Tech)</span>
+        </div>
+        <div class="divider-v"></div>
+        <div class="grp">
+          <span class="item"><span class="shape-key"><svg width="10" height="10"><circle cx="5" cy="5" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>Propulsion / SR+ (or n/a)</span>
+          <span class="item"><span class="shape-key"><svg width="10" height="10"><rect x="1" y="1" width="8" height="8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>Grande Autonomie</span>
+          <span class="item"><span class="shape-key"><svg width="11" height="10"><polygon points="5.5,0 11,10 0,10" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>Performance</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Full data</h2>
+      <p class="sub">All 20 plotted points — frontier points flagged</p>
+      <div class="table-scroll">
+        <table id="table"></table>
+      </div>
+    </div>
+
+    <footer>
+      <p>Draft sketch, published for review before it goes into the comparethe repo. Source ranges: <a href="04-secondhand-market-survey.md">04-secondhand-market-survey.md</a> and the trim-level bands in <a href="05-secondhand-price-bands.html">05-secondhand-price-bands.html</a>.</p>
+      <p>Once real per-listing data replaces band midpoints, this becomes the actual price-vs-quality frontier the project is aiming for — probably with a proper feature-weighted quality score instead of mileage alone.</p>
+    </footer>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+(function () {
+  var series = {
+    model3: { label: "Tesla Model 3", varName: "--series-1" },
+    modely: { label: "Tesla Model Y", varName: "--series-2" },
+    other:  { label: "Other",         varName: "--series-3" }
+  };
+
+  var data = [
+    { model: "Tesla Model 3", ser: "model3", trim: "Propulsion / SR+",  tier: "base", year: 2019, mileage: 125000, price: 15000,  src: "100-150k km × €13-17k" },
+    { model: "Tesla Model 3", ser: "model3", trim: "Propulsion / SR+",  tier: "base", year: 2020, mileage: 95000,  price: 18500,  src: "70-120k km × €16-21k" },
+    { model: "Tesla Model 3", ser: "model3", trim: "Propulsion / SR+",  tier: "base", year: 2021, mileage: 70000,  price: 22000,  src: "50-90k km × €19-25k" },
+    { model: "Tesla Model 3", ser: "model3", trim: "Propulsion / SR+",  tier: "base", year: 2022, mileage: 50000,  price: 25000,  src: "30-70k km × €22-28k" },
+    { model: "Tesla Model 3", ser: "model3", trim: "Propulsion / SR+",  tier: "base", year: 2023, mileage: 35000,  price: 29000,  src: "20-50k km × €26-32k" },
+    { model: "Tesla Model 3", ser: "model3", trim: "Propulsion / SR+ (Highland)", tier: "base", year: 2024, mileage: 15000, price: 31500, src: "<30k km × €28-35k" },
+    { model: "Tesla Model 3", ser: "model3", trim: "Grande Autonomie",  tier: "lr",   year: 2020, mileage: 105000, price: 21500,  src: "2019-20, 80-130k km × €18-25k" },
+    { model: "Tesla Model 3", ser: "model3", trim: "Grande Autonomie",  tier: "lr",   year: 2021, mileage: 70000,  price: 27000,  src: "50-90k km × €24-30k" },
+    { model: "Tesla Model 3", ser: "model3", trim: "Grande Autonomie",  tier: "lr",   year: 2023, mileage: 40000,  price: 31500,  src: "2022-23, 20-60k km × €27-36k" },
+    { model: "Tesla Model 3", ser: "model3", trim: "Performance",       tier: "perf", year: 2021, mileage: 60000,  price: 29500,  src: "2020-21, 40-80k km × €26-33k" },
+    { model: "Tesla Model 3", ser: "model3", trim: "Performance",       tier: "perf", year: 2022, mileage: 35000,  price: 33500,  src: "20-50k km × €30-37k" },
+
+    { model: "Tesla Model Y", ser: "modely", trim: "Propulsion",        tier: "base", year: 2022, mileage: 60000,  price: 30000,  src: "40-80k km × €27-33k" },
+    { model: "Tesla Model Y", ser: "modely", trim: "Propulsion",        tier: "base", year: 2023, mileage: 35000,  price: 34500,  src: "20-50k km × €31-38k" },
+    { model: "Tesla Model Y", ser: "modely", trim: "Propulsion (Juniper)", tier: "base", year: 2024, mileage: 12500, price: 39500, src: "<25k km × €36-43k" },
+    { model: "Tesla Model Y", ser: "modely", trim: "Grande Autonomie AWD", tier: "lr", year: 2022, mileage: 50000, price: 36500,  src: "30-70k km × €33-40k" },
+    { model: "Tesla Model Y", ser: "modely", trim: "Grande Autonomie AWD", tier: "lr", year: 2023, mileage: 30000, price: 40500,  src: "15-45k km × €37-44k" },
+    { model: "Tesla Model Y", ser: "modely", trim: "Grande Autonomie AWD (Juniper)", tier: "lr", year: 2024, mileage: 10000, price: 45500, src: "<20k km × €42-49k" },
+    { model: "Tesla Model Y", ser: "modely", trim: "Performance",       tier: "perf", year: 2023, mileage: 35000,  price: 42500,  src: "2022-23, 20-50k km × €38-47k" },
+
+    { model: "Hyundai Kona Electric", ser: "other", trim: null, tier: "base", year: 2022, mileage: 40000, price: 20000, src: "sourced example, not a band" },
+    { model: "Renault Mégane E-Tech", ser: "other", trim: "EV60 220", tier: "base", year: 2022, mileage: 57202, price: 15990, src: "sourced example, not a band" }
+  ];
+
+  var svgNS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("chart");
+  var root = document.querySelector(".viz-root");
+  var cs = getComputedStyle(root);
+
+  var W = 900, H = 560, ML = 66, MR = 24, MT = 20, MB = 56;
+  var plotW = W - ML - MR, plotH = H - MT - MB;
+
+  var xMin = 0, xMax = 160000, yMin = 10000, yMax = 50000;
+  function xPix(m) { return ML + (m - xMin) / (xMax - xMin) * plotW; }
+  function yPix(p) { return MT + (yMax - p) / (yMax - yMin) * plotH; }
+
+  function el(tag, attrs) {
+    var e = document.createElementNS(svgNS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  function fmtE(v) { return "€" + v.toLocaleString("en-GB"); }
+  function fmtKm(v) { return v.toLocaleString("en-GB") + "km"; }
+
+  // gridlines + axis labels
+  var xTicks = [0, 25000, 50000, 75000, 100000, 125000, 150000];
+  xTicks.forEach(function (v) {
+    var x = xPix(v);
+    svg.appendChild(el("line", { class: "gridline", x1: x, x2: x, y1: MT, y2: MT + plotH }));
+    var t = el("text", { class: "axis-label", x: x, y: MT + plotH + 20, "text-anchor": "middle" });
+    t.textContent = (v / 1000) + "k";
+    svg.appendChild(t);
+  });
+  var yTicks = [10000, 20000, 30000, 40000, 50000];
+  yTicks.forEach(function (v) {
+    var y = yPix(v);
+    svg.appendChild(el("line", { class: "gridline", x1: ML, x2: ML + plotW, y1: y, y2: y }));
+    var t = el("text", { class: "axis-label", x: ML - 10, y: y + 4, "text-anchor": "end" });
+    t.textContent = "€" + (v / 1000) + "k";
+    svg.appendChild(t);
+  });
+  svg.appendChild(el("line", { class: "baseline", x1: ML, x2: ML + plotW, y1: MT + plotH, y2: MT + plotH }));
+  svg.appendChild(el("line", { class: "baseline", x1: ML, x2: ML, y1: MT, y2: MT + plotH }));
+
+  var xTitle = el("text", { class: "axis-title", x: ML + plotW / 2, y: H - 8, "text-anchor": "middle" });
+  xTitle.textContent = "Mileage (km) — lower is fresher";
+  svg.appendChild(xTitle);
+
+  var yTitle = el("text", { class: "axis-title", x: 0, y: 0, "text-anchor": "middle", transform: "translate(18," + (MT + plotH / 2) + ") rotate(-90)" });
+  yTitle.textContent = "Price (€)";
+  svg.appendChild(yTitle);
+
+  var zoneLabel = el("text", { class: "zone-label", x: xPix(3000), y: yPix(12500), "text-anchor": "start" });
+  zoneLabel.textContent = "← better value";
+  svg.appendChild(zoneLabel);
+
+  // Pareto frontier: minimize both mileage and price
+  var byMileage = data.slice().sort(function (a, b) { return a.mileage - b.mileage; });
+  var frontier = [];
+  var minPriceSoFar = Infinity;
+  byMileage.forEach(function (d) {
+    if (d.price < minPriceSoFar) {
+      frontier.push(d);
+      minPriceSoFar = d.price;
+    }
+  });
+  var frontierIds = {};
+  frontier.forEach(function (d) { frontierIds[d.model + d.year + d.trim] = true; });
+
+  if (frontier.length > 1) {
+    var pathD = "M " + xPix(frontier[0].mileage) + " " + yPix(frontier[0].price);
+    for (var i = 1; i < frontier.length; i++) {
+      pathD += " L " + xPix(frontier[i].mileage) + " " + yPix(frontier[i-1].price);
+      pathD += " L " + xPix(frontier[i].mileage) + " " + yPix(frontier[i].price);
+    }
+    svg.appendChild(el("path", { class: "frontier-line", d: pathD }));
+  }
+
+  var tooltip = document.getElementById("tooltip");
+  var chartCard = svg.closest(".card");
+  chartCard.style.position = "relative";
+
+  function shapeMark(tier, cx, cy, color, isFrontier) {
+    var g = el("g", { class: "mark" });
+    var r = 6;
+    if (tier === "lr") {
+      g.appendChild(el("rect", { x: cx - r * 0.85, y: cy - r * 0.85, width: r * 1.7, height: r * 1.7, fill: color, stroke: isFrontier ? "var(--frontier)" : "none", "stroke-width": isFrontier ? 1.5 : 0 }));
+    } else if (tier === "perf") {
+      var s = r * 1.15;
+      g.appendChild(el("polygon", { points: cx + "," + (cy - s) + " " + (cx + s) + "," + (cy + s * 0.8) + " " + (cx - s) + "," + (cy + s * 0.8), fill: color, stroke: isFrontier ? "var(--frontier)" : "none", "stroke-width": isFrontier ? 1.5 : 0 }));
+    } else {
+      g.appendChild(el("circle", { cx: cx, cy: cy, r: r, fill: color, stroke: isFrontier ? "var(--frontier)" : "none", "stroke-width": isFrontier ? 1.5 : 0 }));
+    }
+    return g;
+  }
+
+  data.forEach(function (d) {
+    var color = cs.getPropertyValue(series[d.ser].varName).trim();
+    var cx = xPix(d.mileage), cy = yPix(d.price);
+    var isFrontier = !!frontierIds[d.model + d.year + d.trim];
+
+    var g = el("g", { class: "pt" + (isFrontier ? " frontier" : ""), tabindex: "0" });
+    g.appendChild(el("circle", { class: "ring", cx: cx, cy: cy, r: 9 }));
+    g.appendChild(shapeMark(d.tier, cx, cy, color, isFrontier));
+
+    var yearLabel = el("text", { class: "pt-year", x: cx + 9, y: cy - 8 });
+    yearLabel.textContent = d.year;
+    g.appendChild(yearLabel);
+
+    function show() {
+      tooltip.innerHTML = '<div class="t-name">' + d.model + (d.trim ? " · " + d.trim : "") + '</div>' +
+        fmtE(d.price) + ' &middot; ' + fmtKm(d.mileage) +
+        '<div class="t-flag">' + d.year + (isFrontier ? " · on frontier" : "") + '</div>' +
+        '<div class="t-flag">' + d.src + '</div>';
+      var r2 = chartCard.getBoundingClientRect();
+      tooltip.style.left = (cx / W) * r2.width + "px";
+      tooltip.style.top = (cy / H) * (r2.height - 40) + "px";
+      tooltip.classList.add("show");
+    }
+    function hide() { tooltip.classList.remove("show"); }
+    g.addEventListener("mouseenter", show);
+    g.addEventListener("mouseleave", hide);
+    g.addEventListener("focus", show);
+    g.addEventListener("blur", hide);
+
+    svg.appendChild(g);
+  });
+
+  chartCard.appendChild(tooltip);
+
+  // data table
+  var sorted = data.slice().sort(function (a, b) { return a.mileage - b.mileage; });
+  var table = document.getElementById("table");
+  var thead = el("thead", {});
+  var headRow = document.createElement("tr");
+  ["Model", "Trim", "Year", "Mileage", "Price", "Frontier?"].forEach(function (h) {
+    var th = document.createElement("th");
+    th.textContent = h;
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+  var tbody = document.createElement("tbody");
+  sorted.forEach(function (d) {
+    var isFrontier = !!frontierIds[d.model + d.year + d.trim];
+    var tr = document.createElement("tr");
+
+    var tdModel = document.createElement("td");
+    tdModel.className = "model";
+    tdModel.textContent = d.model;
+    tr.appendChild(tdModel);
+
+    var tdTrim = document.createElement("td");
+    tdTrim.textContent = d.trim || "—";
+    tr.appendChild(tdTrim);
+
+    var tdYear = document.createElement("td");
+    tdYear.textContent = d.year;
+    tr.appendChild(tdYear);
+
+    var tdMileage = document.createElement("td");
+    tdMileage.className = "num";
+    tdMileage.textContent = fmtKm(d.mileage);
+    tr.appendChild(tdMileage);
+
+    var tdPrice = document.createElement("td");
+    tdPrice.className = "num";
+    tdPrice.textContent = fmtE(d.price);
+    tr.appendChild(tdPrice);
+
+    var tdFlag = document.createElement("td");
+    if (isFrontier) {
+      var flag = document.createElement("span");
+      flag.className = "flag frontier-flag";
+      flag.textContent = "frontier";
+      tdFlag.appendChild(flag);
+    } else {
+      tdFlag.textContent = "—";
+    }
+    tr.appendChild(tdFlag);
+
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+})();
+</script>
