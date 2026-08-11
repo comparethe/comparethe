@@ -644,6 +644,8 @@ This is where the Tesla Model 3 recommendation above comes from. A "used Tesla M
 
 Other used candidates surveyed (Zoe, Leaf, Kona Electric, ID.3, Atto 3, Dacia Spring) mostly go well under new-car prices, except the Peugeot e-208 and BYD Atto 3, which barely discount at all. Full sourcing and caveats: [04-secondhand-market-survey.md](04-secondhand-market-survey.md).
 
+**A real listing, checked against this:** a 2023 Model Y Performance near me on LeBonCoin, priced meaningfully below the band above — is it actually a good deal, and what would I check before trusting that? Full walkthrough, with the ad itself: [07-reading-a-real-listing.md](07-reading-a-real-listing.md). Getting to an answer took more than the ad could offer on its own, which is the whole subject of [08-why-buying-a-used-car-is-hard.md](08-why-buying-a-used-car-is-hard.md) (a stub for now).
+
 ## Price vs. mileage: a first Pareto cut
 
 Putting price against mileage (as a rough stand-in for "quality" — lower mileage roughly means more life left) gives a first, imperfect version of the actual price-vs-quality frontier this project is aiming for. Worth being precise about what this is: each Tesla point below is the *midpoint* of a sourced price-and-mileage range from an aggregator article, not a real advertised car — there's no scraper here pulling live listings off La Centrale or LeBonCoin, just search results and the summary tables other sites have already built. So the frontier's overall shape (used Model 3 Propulsion trims dominating the lower-left) is a reasonable signal; the exact numbers aren't.
@@ -871,4 +873,4 @@ Replacing these midpoints with real individual listings is the next research ste
 
 ## What's next
 
-The weighted frontier (real feature weights, not range/mileage as a stand-in), a deeper pass on actual used listings, and a final purchase decision. Tracked in [plan.md](plan.md).
+The weighted frontier (real feature weights, not range/mileage as a stand-in), a deeper pass on actual used listings, and a final purchase decision. Also underway: [07-reading-a-real-listing.md](07-reading-a-real-listing.md), a worked example of pricing a real ad against this research, and [08-why-buying-a-used-car-is-hard.md](08-why-buying-a-used-car-is-hard.md), the start of a piece on why that's hard in general — it may eventually outgrow this folder and become its own piece. Tracked in [plan.md](plan.md).
