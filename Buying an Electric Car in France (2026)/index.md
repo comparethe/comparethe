@@ -4,13 +4,22 @@ I'm in the market for an electric car in France — new or secondhand, open budg
 
 ## So what should I actually buy?
 
-Here's the honest current read, based on the research below. It's not a final decision — the weighted frontier (charging speed, safety, boot space, brand reliability, not just range/mileage) and a deeper pass on individual used listings still need to happen — but two clear leading options have emerged, for two different priorities:
+The real picture turned out to be two households' worth of car, not one: a cheap runabout for short local trips, and a nicer everyday family car. Splitting into two tracks rather than forcing one answer:
 
-**Optimizing for lowest total cost:** a new **Renault Twingo E-Tech** (€19,990) or **Peugeot e-208** (€21,950). Both are eligible for the bonus écologique (up to €5,700 off for lower-income households, more with the EU-battery surbonus), and the e-208 in particular holds its resale value unusually well — around 62% after 3 years, better than its petrol equivalent — so buying new barely costs more than buying "used," and you skip the used-car uncertainty entirely.
+**Track A — budget, secondhand, short-range (school run, 50-200km trips):** range barely matters at this distance, so this is a pure price play, and the secondhand research backs that up hard:
 
-**Optimizing for range and charging speed at a reasonable price:** a **secondhand Tesla Model 3**, specifically a base Propulsion/SR+ trim from around 2021-2022 with 50-90,000km on the clock — roughly €19,000-25,000. That lands inside the price band of several *new* mainstream cars while very likely beating them on real-world range and charging network, which is the strongest argument in this research so far for going used rather than new. The caveat: trim matters enormously here — a Grande Autonomie or Performance Model 3 is a meaningfully different (and pricier) car, so this only holds for the base trim specifically.
+- **Fiat 500e**, secondhand — €13,990-18,350 for 2023 cars with 5,000-35,000km. New prices for the current generation jumped to €28,900-37,900, so this is one of the widest new-vs-used gaps found in this whole project — a 500e barely 2-3 years old for roughly half its new price.
+- **Dacia Spring**, secondhand — from ~€6,500, the cheapest entry point surveyed by a wide margin.
+- **Renault Zoe**, secondhand — €9,500-19,500; verify battery-lease-vs-owned status before trusting a listing price.
+- Renault Twingo E-Tech and Citroën ë-C3 are both too new to have a real secondhand market yet — new-only options for now (see [04-secondhand-market-survey.md](04-secondhand-market-survey.md)).
 
-Both are genuine shortlist candidates, not a final answer — see [what's still open](plan.md).
+Even the shortest-range car surveyed (Dacia Spring, 220km WLTP) comfortably covers 50-200km round trips with margin, so this track can genuinely ignore range and chase price alone.
+
+**Track B — a nicer everyday family car, not premium but a step up:** a **secondhand Tesla Model 3**, base Propulsion/SR+ trim, around 2021-2022 with 50-90,000km — roughly €19,000-25,000. Lands inside the price band of several *new* mainstream cars while very likely beating them on range and charging network. Trim matters enormously here — Grande Autonomie or Performance is a meaningfully different, pricier car — and the Model Y is worth a look for the extra boot space, at a real premium; see [07-reading-a-real-listing.md](07-reading-a-real-listing.md) for both compared directly, plus a real listing priced against this research. If secondhand risk isn't wanted, new **Peugeot e-208** (€21,950) is the fallback — it holds resale value so well that buying new barely costs more than buying used anyway.
+
+**Also now answered: is an EV actually better value than a cheap petrol car once purchase price and depreciation are counted, not just running costs?** Worked through for both a budget and mainstream pairing in [09-ev-vs-ice-total-cost.md](09-ev-vs-ice-total-cost.md) — short answer: yes, EV wins on both, even before incentives, for anyone driving close to the French average annual mileage.
+
+Neither track is a final answer — the weighted frontier (charging speed, safety, boot space, brand reliability, not just range/mileage) and a deeper pass on individual used listings still need to happen. See [what's still open](plan.md).
 
 ## Price vs. range: the new-car market
 
