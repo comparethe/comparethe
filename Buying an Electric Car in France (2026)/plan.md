@@ -20,6 +20,7 @@ Working task list for this piece — the [index.md](index.md) article is the wri
 - [x] Added BYD Dolphin Surf and Peugeot e-208 to the safety pass — both also 5★, genuinely competing with the Leaf recommendation, not just fallbacks
 - [x] **Correction:** the Citroën ë-C3's earlier "0-star" rating was for a different, India-spec car (Global NCAP), not the France-market ë-C3, which is actually unrated — fixed in 04 and index.md
 - [x] Full comparison table — new + secondhand, price, ~75%-incentive net price, safety, range, maintenance/yr, and total running cost/yr at 10,000km — see [10-budget-ev-shortlist-comparison.md](10-budget-ev-shortlist-comparison.md)
+- [x] Stacked bar chart, base price + 3yr maintenance per car, sorted by total — see [11-budget-shortlist-cost-bars.html](11-budget-shortlist-cost-bars.html)
 
 ## Still to do
 
@@ -47,5 +48,6 @@ Working task list for this piece — the [index.md](index.md) article is the wri
 - `08-why-buying-a-used-car-is-hard.md` — stub piece on the general problem
 - `09-ev-vs-ice-total-cost.md` — is EV actually better value than petrol, purchase price + depreciation + running costs
 - `10-budget-ev-shortlist-comparison.md` — full table: new/secondhand, price, incentive-adjusted price, safety, range, running costs
+- `11-budget-shortlist-cost-bars.html` — stacked bar chart, base price + 3yr maintenance per car
 - `assets/leboncoin-model-y-listing.png` — the listing screenshot used in 07
 - `data-ev-models.json` / `data-used-ev-price-bands.json` — datasets behind the charts

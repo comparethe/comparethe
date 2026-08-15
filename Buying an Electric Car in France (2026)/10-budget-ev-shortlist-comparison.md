@@ -35,6 +35,10 @@ Worth explaining, since a 0-1 star result on a car sold today is genuinely surpr
 
 ††Charging (~€230-270/yr at 10,000km home charging) + insurance (~€550-700/yr, budget-city-car bracket) + maintenance (above) combined. This uses a different methodology and a much lower annual mileage than the "~€4,300/yr" blended EV running-cost figure elsewhere in this project ([02](02-model-tco-survey.md), [09](09-ev-vs-ice-total-cost.md)) — that figure assumes something closer to the French average annual mileage (~13,000km), not your actual ~10,000km/year, which is why the numbers here are noticeably lower.
 
+## Same data, as a chart
+
+Base price with 3 years of maintenance stacked on top, per car, sorted cheapest-total-first: [11-budget-shortlist-cost-bars.html](11-budget-shortlist-cost-bars.html).
+
 ## Reading this table
 
 - **Nissan Leaf remains the strongest single recommendation** — best safety-to-price ratio, real market, no open questions.

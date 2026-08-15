@@ -6,7 +6,13 @@ I'm in the market for an electric car in France — new or secondhand, open budg
 
 The real picture turned out to be two households' worth of car, not one: a cheap runabout for short local trips, and a nicer everyday family car. Splitting into two tracks rather than forcing one answer:
 
-**Track A — budget, secondhand, short-range (school run, 50-200km trips):** range barely matters at this distance, so price looked like it would settle this outright — until Euro NCAP safety ratings got checked, which reshuffled the list more than price did. Full sortable table with prices, incentive-adjusted net prices, safety, range, and rough running costs: [10-budget-ev-shortlist-comparison.md](10-budget-ev-shortlist-comparison.md).
+**Track A — budget, secondhand, short-range (school run, 50-200km trips):** range barely matters at this distance, so price looked like it would settle this outright — until Euro NCAP safety ratings got checked, which reshuffled the list more than price did. Full sortable table with prices, incentive-adjusted net prices, safety, range, and rough running costs: [10-budget-ev-shortlist-comparison.md](10-budget-ev-shortlist-comparison.md). Visualized as base price + 3 years of maintenance stacked per car, since the sticker price alone understates what each option actually costs:
+
+<div style="margin: 20px 0;">
+  <iframe src="11-budget-shortlist-cost-bars.html" style="width:100%; height:820px; border:1px solid #dde1e4; border-radius:10px;" loading="lazy" title="Budget EV shortlist — base price plus 3 years of maintenance, per car"></iframe>
+</div>
+
+[Open the interactive chart →](11-budget-shortlist-cost-bars.html)
 
 - **Nissan Leaf** (2018+ shape), secondhand — **still the pick.** €11,500-22,500, and **5-star Euro NCAP** (93% adult, 86% child). Real secondhand market, proper 5-door practicality, and even the smaller 40kWh pack (~220km real range) comfortably covers 50-200km trips at ~10,000km/year with home charging.
 - **Two more genuine 5-star options turned up on a closer look:** **BYD Dolphin Surf** (new, €19,990-24,490) scored the best raw safety of anything here (82%/86%/76%, tested under the newest 2025 protocol) — but its bonus écologique eligibility is mid-transition from Chinese to Hungarian production, so confirm build origin before assuming the discount applies. **Peugeot e-208** (new €21,950, secondhand €18,000-35,000) also retested at 5 stars — longest range here (433km) and the best resale of anything surveyed, making it the strongest new-car pick if secondhand risk isn't wanted.

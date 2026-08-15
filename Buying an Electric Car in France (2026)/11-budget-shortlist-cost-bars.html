@@ -1,0 +1,324 @@
+<title>Budget EV Shortlist — Price + 3yr Maintenance, France 2026</title>
+<style>
+  .viz-root {
+    --page:          #f4f5f3;
+    --surface:       #ffffff;
+    --ink:           #14171a;
+    --ink-secondary: #4d5560;
+    --muted:         #8b9099;
+    --rule:          #dde1e4;
+    --rule-strong:   #c7ccd1;
+    --accent:        #2a78d6;
+    --c-new:         #2a78d6;
+    --c-used:        #eb6834;
+    --tag-bg:        #eef2f6;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .viz-root {
+      --page:          #0f1113;
+      --surface:       #17191c;
+      --ink:           #f2f3f1;
+      --ink-secondary: #b9bec4;
+      --muted:         #82878e;
+      --rule:          #2a2d31;
+      --rule-strong:   #383c41;
+      --accent:        #3987e5;
+      --c-new:         #3987e5;
+      --c-used:        #d95926;
+      --tag-bg:        #1d2b3a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] .viz-root {
+    --page:          #0f1113;
+    --surface:       #17191c;
+    --ink:           #f2f3f1;
+    --ink-secondary: #b9bec4;
+    --muted:         #82878e;
+    --rule:          #2a2d31;
+    --rule-strong:   #383c41;
+    --accent:        #3987e5;
+    --c-new:         #3987e5;
+    --c-used:        #d95926;
+    --tag-bg:        #1d2b3a;
+    color-scheme: dark;
+  }
+
+  .viz-root {
+    background: var(--page);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: 16px;
+    color: var(--ink-secondary);
+    max-width: 66ch;
+    margin: 0 0 6px;
+  }
+  .lede + .lede { margin-top: 10px; }
+
+  .callout {
+    margin: 28px 0 0;
+    padding: 14px 18px;
+    background: var(--tag-bg);
+    border-radius: 6px;
+    font-size: 13.5px;
+    color: var(--ink-secondary);
+    border-left: 3px solid var(--accent);
+  }
+  .callout b { color: var(--ink); }
+
+  .card {
+    margin-top: 32px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 20px 18px;
+  }
+  .card h2 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-secondary);
+    margin: 0 0 4px;
+  }
+  .card .sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+
+  .chart-scroll { overflow-x: auto; }
+  svg.chart { width: 100%; min-width: 640px; height: auto; display: block; overflow: visible; }
+  .axis-label { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .axis-title { fill: var(--ink-secondary); font-size: 12px; font-weight: 600; }
+  .row-label { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .row-sub { fill: var(--muted); font-size: 10.5px; }
+  .gridline { stroke: var(--rule); stroke-width: 1; }
+  .baseline { stroke: var(--rule-strong); stroke-width: 1; }
+
+  .bar { cursor: pointer; }
+  .bar rect { transition: opacity 0.12s ease, filter 0.12s ease; }
+  .bar:hover rect, .bar:focus rect { filter: brightness(1.08); }
+  .bar:focus { outline: none; }
+  .bar-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    fill: var(--ink-secondary);
+    font-variant-numeric: tabular-nums;
+    pointer-events: none;
+  }
+
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--page);
+    font-size: 12.5px;
+    line-height: 1.45;
+    padding: 8px 11px;
+    border-radius: 6px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 12px));
+    transition: opacity 0.1s ease;
+    white-space: nowrap;
+    z-index: 5;
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip .t-name { font-weight: 700; margin-bottom: 2px; }
+  .tooltip .t-flag { color: var(--muted); font-size: 11px; }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 18px 2px 4px;
+    font-size: 12.5px;
+    color: var(--ink-secondary);
+  }
+  .legend .grp { display: flex; align-items: center; gap: 14px; }
+  .legend .item { display: flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .swatch.hatched { background-image: repeating-linear-gradient(135deg, var(--muted), var(--muted) 2px, transparent 2px, transparent 4px); opacity: 0.6; }
+  .divider-v { width: 1px; align-self: stretch; background: var(--rule); }
+
+  footer {
+    margin-top: 28px;
+    font-size: 12.5px;
+    color: var(--muted);
+    max-width: 68ch;
+  }
+  footer p { margin: 6px 0; }
+  footer a { color: var(--accent); }
+</style>
+
+<div class="viz-root">
+  <div class="wrap">
+    <p class="eyebrow">Electric Car Research &amp; Purchase — budget/family shortlist, working sketch</p>
+    <h1>The sticker price isn't the whole cost</h1>
+    <p class="lede">Each bar is the base price (new or secondhand) with three years of maintenance stacked on top — one year alone is too small to see next to a car's price, so this uses the same 3-year horizon as the EV-vs-petrol comparison elsewhere in this project. Maintenance-only, not the fuller running-cost figure (charging + insurance + maintenance) from the comparison table — that one's harder to stack meaningfully since insurance and charging track distance driven, not the car itself.</p>
+    <p class="lede">Secondhand bars use the midpoint of the sourced price range, not a real listing — same caveat as the rest of this project's secondhand data.</p>
+
+    <div class="card">
+      <h2>Base price + 3yr maintenance</h2>
+      <p class="sub">Sorted by total, cheapest first · hatched segment = 3 years of maintenance</p>
+      <div class="chart-scroll">
+        <svg class="chart" id="chart" role="img" aria-label="Stacked horizontal bar chart of base price plus three years of maintenance cost, per car, sorted ascending"></svg>
+      </div>
+      <div class="legend">
+        <div class="grp">
+          <span class="item"><span class="swatch" style="background:var(--c-new)"></span>New — base price</span>
+          <span class="item"><span class="swatch" style="background:var(--c-used)"></span>Secondhand — base price</span>
+        </div>
+        <div class="divider-v"></div>
+        <div class="grp">
+          <span class="item"><span class="swatch hatched"></span>+3yr maintenance</span>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Data and full detail (safety, range, running costs, incentive-adjusted price): <a href="10-budget-ev-shortlist-comparison.md">10-budget-ev-shortlist-comparison.md</a>.</p>
+      <p>Maintenance estimates are rough, same-ballpark assumptions across similar-segment cars, not model-specific figures — see the table for the exact per-car numbers used here.</p>
+    </footer>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+(function () {
+  var data = [
+    { name: "Dacia Spring",        cond: "used", price: 6500,  priceLabel: "from €6,500", maint: 400 },
+    { name: "Renault Zoe",         cond: "used", price: 14500, priceLabel: "€9,500–19,500", maint: 450 },
+    { name: "Fiat 500e",           cond: "used", price: 16170, priceLabel: "€13,990–18,350", maint: 450 },
+    { name: "Dacia Spring",        cond: "new",  price: 16900, priceLabel: "€16,900", maint: 420 },
+    { name: "Nissan Leaf",         cond: "used", price: 17000, priceLabel: "€11,500–22,500", maint: 500 },
+    { name: "Renault Twingo E-Tech", cond: "new", price: 19990, priceLabel: "€19,990", maint: 420 },
+    { name: "Peugeot e-208",       cond: "new",  price: 21950, priceLabel: "€21,950", maint: 500 },
+    { name: "Citroën ë-C3",        cond: "new",  price: 22120, priceLabel: "€20,390–23,850", maint: 450 },
+    { name: "BYD Dolphin Surf",    cond: "new",  price: 22240, priceLabel: "€19,990–24,490", maint: 420 },
+    { name: "Peugeot e-208",       cond: "used", price: 26500, priceLabel: "€18,000–35,000", maint: 500 }
+  ];
+  data.forEach(function (d) { d.total = d.price + d.maint * 3; });
+  data.sort(function (a, b) { return a.total - b.total; });
+
+  var svgNS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("chart");
+  var root = document.querySelector(".viz-root");
+  var cs = getComputedStyle(root);
+  var tooltip = document.getElementById("tooltip");
+
+  var W = 900, ML = 185, MR = 24, MT = 12, MB = 44;
+  var rowH = 30, rowGap = 10;
+  var plotW = W - ML - MR;
+  var plotH = data.length * (rowH + rowGap) - rowGap;
+  var H = plotH + MT + MB;
+
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+
+  var xMax = 30000;
+  function xPix(v) { return ML + (v / xMax) * plotW; }
+
+  function el(tag, attrs) {
+    var e = document.createElementNS(svgNS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  function fmtE(v) { return "€" + Math.round(v).toLocaleString("en-GB"); }
+
+  var xTicks = [0, 5000, 10000, 15000, 20000, 25000, 30000];
+  xTicks.forEach(function (v) {
+    var x = xPix(v);
+    svg.appendChild(el("line", { class: "gridline", x1: x, x2: x, y1: MT, y2: MT + plotH }));
+    var t = el("text", { class: "axis-label", x: x, y: MT + plotH + 20, "text-anchor": "middle" });
+    t.textContent = "€" + (v / 1000) + "k";
+    svg.appendChild(t);
+  });
+  svg.appendChild(el("line", { class: "baseline", x1: ML, x2: ML, y1: MT, y2: MT + plotH }));
+
+  var xTitle = el("text", { class: "axis-title", x: ML + plotW / 2, y: H - 8, "text-anchor": "middle" });
+  xTitle.textContent = "Price (€) + 3 years of maintenance";
+  svg.appendChild(xTitle);
+
+  var chartCard = svg.closest(".card");
+  chartCard.style.position = "relative";
+  chartCard.appendChild(tooltip);
+
+  data.forEach(function (d, i) {
+    var cy = MT + i * (rowH + rowGap);
+    var baseColor = cs.getPropertyValue(d.cond === "new" ? "--c-new" : "--c-used").trim();
+
+    var label = el("text", { class: "row-label", x: ML - 10, y: cy + rowH / 2 + 4, "text-anchor": "end" });
+    label.textContent = d.name;
+    svg.appendChild(label);
+    var sub = el("text", { class: "row-sub", x: ML - 10, y: cy + rowH / 2 + 16, "text-anchor": "end" });
+    sub.textContent = d.cond === "new" ? "new" : "secondhand";
+    svg.appendChild(sub);
+
+    var g = el("g", { class: "bar", tabindex: "0" });
+
+    var baseX2 = xPix(d.price);
+    var baseRect = el("rect", { x: ML, y: cy, width: baseX2 - ML, height: rowH, fill: baseColor, opacity: 0.88 });
+    g.appendChild(baseRect);
+
+    var maint3 = d.maint * 3;
+    var maintX2 = xPix(d.price + maint3);
+    var hatchId = "hatch-cost-" + i;
+    var pattern = el("pattern", { id: hatchId, width: 6, height: 6, patternTransform: "rotate(45)", patternUnits: "userSpaceOnUse" });
+    pattern.appendChild(el("rect", { width: 6, height: 6, fill: baseColor, opacity: 0.25 }));
+    pattern.appendChild(el("rect", { width: 3, height: 6, fill: baseColor, opacity: 0.55 }));
+    svg.appendChild(pattern);
+    var maintRect = el("rect", { x: baseX2, y: cy, width: maintX2 - baseX2, height: rowH, fill: "url(#" + hatchId + ")" });
+    g.appendChild(maintRect);
+
+    var totalLabel = el("text", { class: "bar-label", x: maintX2 + 8, y: cy + rowH / 2 + 4 });
+    totalLabel.textContent = fmtE(d.total);
+    g.appendChild(totalLabel);
+
+    function show() {
+      tooltip.innerHTML = '<div class="t-name">' + d.name + ' — ' + (d.cond === "new" ? "new" : "secondhand") + '</div>' +
+        'Price: ' + d.priceLabel + ' (chart uses ' + fmtE(d.price) + ')<br>' +
+        '+ 3yr maintenance (~' + fmtE(d.maint) + '/yr): ' + fmtE(maint3) + '<br>' +
+        '<div class="t-flag">Total shown: ' + fmtE(d.total) + '</div>';
+      var cardR = chartCard.getBoundingClientRect();
+      var svgR = svg.getBoundingClientRect();
+      var scale = svgR.width / W;
+      var barMidPix = xPix(d.price + maint3 / 2);
+      tooltip.style.left = ((barMidPix * scale) + (svgR.left - cardR.left)) + "px";
+      tooltip.style.top = ((cy * scale) + (svgR.top - cardR.top)) + "px";
+      tooltip.classList.add("show");
+    }
+    function hide() { tooltip.classList.remove("show"); }
+    g.addEventListener("mouseenter", show);
+    g.addEventListener("mouseleave", hide);
+    g.addEventListener("focus", show);
+    g.addEventListener("blur", hide);
+
+    svg.appendChild(g);
+  });
+})();
+</script>
