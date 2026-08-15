@@ -1,5 +1,7 @@
 # Buying an Electric Car in France (2026)
 
+*Part of [Buy a Car](../Buy%20a%20Car/) — CompareThe＿'s umbrella page for car-buying research.*
+
 I'm in the market for an electric car in France — new or secondhand, open budget, no segment preference. Rather than wade through spammy SEO listicles and manufacturer marketing, I'm doing this the CompareThe＿ way: facts and figures, sourced, with a real price-vs-quality efficient frontier instead of "it depends on your needs."
 
 ## So what should I actually buy?

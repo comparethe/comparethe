@@ -22,6 +22,7 @@ Working task list for this piece — the [index.md](index.md) article is the wri
 - [x] Full comparison table — new + secondhand, price, ~75%-incentive net price, safety, range, maintenance/yr, and total running cost/yr at 10,000km — see [10-budget-ev-shortlist-comparison.md](10-budget-ev-shortlist-comparison.md)
 - [x] Stacked bar chart, base price + 3yr maintenance per car, sorted by total — see [11-budget-shortlist-cost-bars.html](11-budget-shortlist-cost-bars.html)
 - [x] Added VW ID.3 to Track B — new price (€34,990-48,100), secondhand (€17,790-39,990), 5-star Euro NCAP, fast charging — see [04-secondhand-market-survey.md](04-secondhand-market-survey.md) and index.md
+- [x] Created a top-level "Buy a Car" hub page — links here as the current project, highlights 4 key sub-pages as cards; a home for future car-buying research beyond just this one — see [../Buy a Car/index.md](../Buy%20a%20Car/)
 
 ## Still to do
 
