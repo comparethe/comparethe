@@ -6,14 +6,14 @@ I'm in the market for an electric car in France — new or secondhand, open budg
 
 The real picture turned out to be two households' worth of car, not one: a cheap runabout for short local trips, and a nicer everyday family car. Splitting into two tracks rather than forcing one answer:
 
-**Track A — budget, secondhand, short-range (school run, 50-200km trips):** range barely matters at this distance, so this is a pure price play, and the secondhand research backs that up hard:
+**Track A — budget, secondhand, short-range (school run, 50-200km trips):** range barely matters at this distance, so price looked like it would settle this outright — until Euro NCAP safety ratings got checked, which reshuffled the list more than price did:
 
-- **Fiat 500e**, secondhand — €13,990-18,350 for 2023 cars with 5,000-35,000km. New prices for the current generation jumped to €28,900-37,900, so this is one of the widest new-vs-used gaps found in this whole project — a 500e barely 2-3 years old for roughly half its new price.
-- **Dacia Spring**, secondhand — from ~€6,500, the cheapest entry point surveyed by a wide margin.
-- **Renault Zoe**, secondhand — €9,500-19,500; verify battery-lease-vs-owned status before trusting a listing price.
-- Renault Twingo E-Tech and Citroën ë-C3 are both too new to have a real secondhand market yet — new-only options for now (see [04-secondhand-market-survey.md](04-secondhand-market-survey.md)).
+- **Nissan Leaf** (2018+ shape), secondhand — **the pick.** €11,500-22,500, and **5-star Euro NCAP** (93% adult, 86% child) — the best safety of anything surveyed, new or used. Real secondhand market, proper 5-door practicality, and even the smaller 40kWh pack (~220km real range) comfortably covers 50-200km trips at ~10,000km/year with home charging.
+- **Fiat 500e**, secondhand — €13,990-18,350 for 2023 cars with 5,000-35,000km, and a solid **4-star** rating. New prices for the current generation jumped to €28,900-37,900, so this is roughly half-price for a 2-3 year old car — the #2 pick, worth checking rear-seat/ISOFIX practicality since it's a smaller car than the Leaf.
+- **Ruled out on safety, despite attractive prices:** Dacia Spring (secondhand from ~€6,500, but **1-star** — weak chest/head/neck protection in testing), Renault Zoe (€9,500-19,500, but **0-star** after failing Euro NCAP's updated 2021 protocol), and Citroën ë-C3 (**0-star adult** rating). A 0-1 star gap from 4-5 stars isn't a rounding error, and this is a car doing regular school runs.
+- Renault Twingo E-Tech is too new to have a secondhand market *or* a crash-test rating yet — an open question either way, not a recommendation.
 
-Even the shortest-range car surveyed (Dacia Spring, 220km WLTP) comfortably covers 50-200km round trips with margin, so this track can genuinely ignore range and chase price alone.
+This also settles new-vs-secondhand for this track: the only cheap *new* options (Spring, ë-C3) fail safety badly, so a secondhand Leaf beats "new with incentive" on both price and safety right now. Full detail: [04-secondhand-market-survey.md](04-secondhand-market-survey.md).
 
 **Track B — a nicer everyday family car, not premium but a step up:** a **secondhand Tesla Model 3**, base Propulsion/SR+ trim, around 2021-2022 with 50-90,000km — roughly €19,000-25,000. Lands inside the price band of several *new* mainstream cars while very likely beating them on range and charging network. Trim matters enormously here — Grande Autonomie or Performance is a meaningfully different, pricier car — and the Model Y is worth a look for the extra boot space, at a real premium; see [07-reading-a-real-listing.md](07-reading-a-real-listing.md) for both compared directly, plus a real listing priced against this research. If secondhand risk isn't wanted, new **Peugeot e-208** (€21,950) is the fallback — it holds resale value so well that buying new barely costs more than buying used anyway.
 

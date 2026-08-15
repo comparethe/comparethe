@@ -15,16 +15,18 @@ Working task list for this piece — the [index.md](index.md) article is the wri
 - [x] Two concrete recommendation tracks in index.md — budget/secondhand/short-range vs. nicer everyday family car — replacing the earlier single-list recommendation
 - [x] Extended secondhand survey to the budget segment: Fiat 500e has a real (and wide) secondhand market; confirmed Twingo E-Tech and ë-C3 are too new to have one yet — see [04-secondhand-market-survey.md](04-secondhand-market-survey.md)
 - [x] EV vs. petrol (ICE) total cost of ownership, purchase price + depreciation + running costs together — see [09-ev-vs-ice-total-cost.md](09-ev-vs-ice-total-cost.md)
+- [x] Euro NCAP safety pass on the budget/family shortlist — decisive, reshuffled the list: Leaf (5★) now the top budget pick, Fiat 500e (4★) second, Dacia Spring/Zoe/ë-C3 (0-1★) ruled out despite price — see [04-secondhand-market-survey.md](04-secondhand-market-survey.md)
+- [x] Budget-track recommendation confirmed: secondhand Nissan Leaf, per real annual mileage (~10,000km/yr, confirmed low-mileage isn't a risk to the EV-vs-ICE case) and home-charging-dependent range math
 
 ## Still to do
 
 - [ ] **Charts embed via iframe, not inline HTML/JS — known limitation, not fixed.** Flowershow renders plain `.md` raw-HTML blocks via something like `innerHTML`, which browsers never execute `<script>` tags from — confirmed live: our inline `<script>` code survives in the published page source untouched, but the SVGs/tables it should populate stay empty. Flowershow does have a `<CustomHtml html={...}/>` component built for exactly this (their own example embeds a Tally form's script), but it requires MDX rendering (`syntaxMode: mdx` in frontmatter, or a `.mdx` file extension) and its docs don't confirm whether inline `<script>` logic (not just external `script src=`) executes through it — untested. Worth revisiting if iframe's mobile UX (fixed height, nested scroll) becomes a real problem.
-- [ ] ⏭️ Real price-vs-quality efficient frontier — weight charging speed, safety, boot space, brand reliability etc. instead of range/mileage-only; run it on new *and* used prices together
-- [ ] Deeper used-market pass — individual listing samples (not aggregate/aggregator-summary bands) and battery SOH figures where sellers disclose them
+- [ ] ⏭️ Real price-vs-quality efficient frontier — weight charging speed, safety, boot space, brand reliability etc. instead of range/mileage-only; run it on new *and* used prices together. Safety data now exists for the budget shortlist (Leaf/500e/Spring/Zoe/ë-C3) and should be a weighted factor, not just a filter
+- [ ] Deeper used-market pass — individual listing samples (not aggregate/aggregator-summary bands) and battery SOH figures where sellers disclose them, especially for the Nissan Leaf now that it's the leading budget pick
 - [ ] Extend the price-vs-mileage chart to the used candidates that don't have mileage sourced yet: Zoe, Leaf, e-208, ID.3, Atto 3, Dacia Spring, Fiat 500e
-- [ ] Recompute the EV-vs-ICE model at low annual mileage (the actual school-run use case), not just the French average — flagged in 09 as the biggest thing that could weaken the EV case
+- [ ] Confirm home charging access — the Leaf recommendation assumes overnight home charging; public-only charging would weaken the case
 - [ ] Flesh out 08-why-buying-a-used-car-is-hard.md — more worked examples, a proper checklist; decide if/when it splits into its own piece outside this folder
-- [ ] Final recommendation and purchase decision
+- [ ] Final recommendation and purchase decision — Track A (budget) is now largely settled on Nissan Leaf; Track B (family) still open
 
 ## Files
 
