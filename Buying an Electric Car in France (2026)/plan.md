@@ -21,6 +21,7 @@ Working task list for this piece — the [index.md](index.md) article is the wri
 - [x] **Correction:** the Citroën ë-C3's earlier "0-star" rating was for a different, India-spec car (Global NCAP), not the France-market ë-C3, which is actually unrated — fixed in 04 and index.md
 - [x] Full comparison table — new + secondhand, price, ~75%-incentive net price, safety, range, maintenance/yr, and total running cost/yr at 10,000km — see [10-budget-ev-shortlist-comparison.md](10-budget-ev-shortlist-comparison.md)
 - [x] Stacked bar chart, base price + 3yr maintenance per car, sorted by total — see [11-budget-shortlist-cost-bars.html](11-budget-shortlist-cost-bars.html)
+- [x] Added VW ID.3 to Track B — new price (€34,990-48,100), secondhand (€17,790-39,990), 5-star Euro NCAP, fast charging — see [04-secondhand-market-survey.md](04-secondhand-market-survey.md) and index.md
 
 ## Still to do
 
@@ -32,7 +33,8 @@ Working task list for this piece — the [index.md](index.md) article is the wri
 - [ ] Extend the price-vs-mileage chart to the used candidates that don't have mileage sourced yet: Zoe, Leaf, e-208, ID.3, Atto 3, Dacia Spring, Fiat 500e
 - [ ] Confirm home charging access — the Leaf recommendation assumes overnight home charging; public-only charging would weaken the case
 - [ ] Flesh out 08-why-buying-a-used-car-is-hard.md — more worked examples, a proper checklist; decide if/when it splits into its own piece outside this folder
-- [ ] Final recommendation and purchase decision — Track A (budget) narrowed to Leaf/e-208/Dolphin Surf pending the incentive question; Track B (family) still open
+- [ ] Weigh VW ID.3 properly against Model 3/e-208 in Track B — currently just added as a name with data, not yet compared in any depth
+- [ ] Final recommendation and purchase decision — Track A (budget) narrowed to Leaf/e-208/Dolphin Surf pending the incentive question; Track B (family) still open, now three-way between Model 3, e-208, and ID.3
 
 ## Files
 
