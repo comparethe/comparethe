@@ -52,6 +52,8 @@ What an annualized-cost axis needs, roughly:
 
 This reframes the x-axis for *both* frontier charts, not just one — the same fix applies to 03 (new) and 06 (used) once a per-model depreciation curve exists.
 
+**Update:** a first attempt now exists — [13-five-year-cost-of-ownership.html](13-five-year-cost-of-ownership.html) computes this for 8 cars across both tracks. It's a genuine first pass, not the rigorous version described above: several exit (5-year resale) values are estimated rather than sourced (BYD Dolphin Surf, VW ID.7 — both too new to have real 5-year-old examples), running costs lean on project-established brackets rather than full distributions, and there's still no damage/repair-risk line item. Worth reading alongside its caveats, not as a finished answer — but it's real progress on this axis specifically.
+
 ---
 
 Nothing here is decided — this is a map of the problem on both axes, not a plan of record.

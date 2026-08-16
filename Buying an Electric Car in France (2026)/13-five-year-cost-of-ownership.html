@@ -1,0 +1,457 @@
+<title>5-Year Cost of Ownership — EV Survey, France 2026</title>
+<style>
+  .viz-root {
+    --page:          #f4f5f3;
+    --surface:       #ffffff;
+    --ink:           #14171a;
+    --ink-secondary: #4d5560;
+    --muted:         #8b9099;
+    --rule:          #dde1e4;
+    --rule-strong:   #c7ccd1;
+    --accent:        #2a78d6;
+    --c-dep:         #2a78d6;
+    --c-run:         #eb6834;
+    --tag-bg:        #eef2f6;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .viz-root {
+      --page:          #0f1113;
+      --surface:       #17191c;
+      --ink:           #f2f3f1;
+      --ink-secondary: #b9bec4;
+      --muted:         #82878e;
+      --rule:          #2a2d31;
+      --rule-strong:   #383c41;
+      --accent:        #3987e5;
+      --c-dep:         #3987e5;
+      --c-run:         #d95926;
+      --tag-bg:        #1d2b3a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] .viz-root {
+    --page:          #0f1113;
+    --surface:       #17191c;
+    --ink:           #f2f3f1;
+    --ink-secondary: #b9bec4;
+    --muted:         #82878e;
+    --rule:          #2a2d31;
+    --rule-strong:   #383c41;
+    --accent:        #3987e5;
+    --c-dep:         #3987e5;
+    --c-run:         #d95926;
+    --tag-bg:        #1d2b3a;
+    color-scheme: dark;
+  }
+
+  .viz-root {
+    background: var(--page);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: 16px;
+    color: var(--ink-secondary);
+    max-width: 68ch;
+    margin: 0 0 6px;
+  }
+  .lede + .lede { margin-top: 10px; }
+
+  .callout {
+    margin: 28px 0 0;
+    padding: 14px 18px;
+    background: var(--tag-bg);
+    border-radius: 6px;
+    font-size: 13.5px;
+    color: var(--ink-secondary);
+    border-left: 3px solid var(--accent);
+  }
+  .callout b { color: var(--ink); }
+
+  .card {
+    margin-top: 32px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 20px 18px;
+  }
+  .card h2 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-secondary);
+    margin: 0 0 4px;
+  }
+  .card .sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+
+  .chart-scroll { overflow-x: auto; }
+  svg.chart { width: 100%; min-width: 640px; height: auto; display: block; overflow: visible; }
+  .axis-label { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .axis-title { fill: var(--ink-secondary); font-size: 12px; font-weight: 600; }
+  .row-label { fill: var(--ink); font-size: 12px; font-weight: 600; }
+  .row-sub { fill: var(--muted); font-size: 10.5px; }
+  .gridline { stroke: var(--rule); stroke-width: 1; }
+  .baseline { stroke: var(--rule-strong); stroke-width: 1; }
+
+  .bar { cursor: pointer; }
+  .bar rect { transition: opacity 0.12s ease, filter 0.12s ease; }
+  .bar:hover rect, .bar:focus rect { filter: brightness(1.08); }
+  .bar:focus { outline: none; }
+  .bar-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    fill: var(--ink-secondary);
+    font-variant-numeric: tabular-nums;
+    pointer-events: none;
+  }
+  .bar-peryear {
+    font-size: 9.5px;
+    fill: var(--muted);
+    font-variant-numeric: tabular-nums;
+    pointer-events: none;
+  }
+
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--page);
+    font-size: 12.5px;
+    line-height: 1.45;
+    padding: 9px 12px;
+    border-radius: 6px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 12px));
+    transition: opacity 0.1s ease;
+    white-space: nowrap;
+    z-index: 5;
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip .t-name { font-weight: 700; margin-bottom: 4px; }
+  .tooltip .t-row { display: flex; justify-content: space-between; gap: 14px; }
+  .tooltip .t-flag { color: var(--muted); font-size: 11px; margin-top: 4px; }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 18px 2px 4px;
+    font-size: 12.5px;
+    color: var(--ink-secondary);
+  }
+  .legend .grp { display: flex; align-items: center; gap: 14px; }
+  .legend .item { display: flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .swatch.hatched { background-image: repeating-linear-gradient(135deg, var(--muted), var(--muted) 2px, transparent 2px, transparent 4px); opacity: 0.6; }
+  .divider-v { width: 1px; align-self: stretch; background: var(--rule); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", monospace;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  th {
+    text-align: left;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    padding: 8px 9px;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  td {
+    padding: 7px 9px;
+    border-bottom: 1px solid var(--rule);
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  td.model { font-family: ui-sans-serif, system-ui, sans-serif; font-weight: 600; white-space: normal; }
+  td.num { text-align: right; }
+  .est { color: var(--muted); font-style: italic; }
+  .table-scroll { overflow-x: auto; }
+
+  footer {
+    margin-top: 28px;
+    font-size: 12.5px;
+    color: var(--muted);
+    max-width: 70ch;
+  }
+  footer p { margin: 6px 0; }
+  footer a { color: var(--accent); }
+</style>
+
+<div class="viz-root">
+  <div class="wrap">
+    <p class="eyebrow">Electric Car Research &amp; Purchase — cost-of-ownership sketch</p>
+    <h1>5-year cost of ownership, 8 cars</h1>
+    <p class="lede">(Entry price − value 5 years later) + 5 years of insurance/maintenance/charging, not sticker price. Full write-up, entry-basis explanation, findings, and caveats: <a href="index.md">index.md</a>. Method notes: <a href="12-weighted-quality-score-notes.md">12-weighted-quality-score-notes.md</a>.</p>
+
+    <div class="card">
+      <h2>Total 5-year cost</h2>
+      <p class="sub">Sorted cheapest first · solid = depreciation (entry − 5yr resale) · hatched = 5 years of insurance + maintenance + charging</p>
+      <div class="chart-scroll">
+        <svg class="chart" id="chart" role="img" aria-label="Stacked horizontal bar chart of 5-year cost of ownership, depreciation plus 5 years of running costs, per car, sorted ascending"></svg>
+      </div>
+      <div class="legend">
+        <div class="grp">
+          <span class="item"><span class="swatch" style="background:var(--c-dep)"></span>Depreciation (entry − 5yr resale)</span>
+        </div>
+        <div class="divider-v"></div>
+        <div class="grp">
+          <span class="item"><span class="swatch hatched"></span>+ 5yr running costs (insurance + maintenance + charging)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Full data</h2>
+      <p class="sub">All figures € · <span class="est">italic = estimated, not directly sourced</span></p>
+      <div class="table-scroll">
+        <table id="table"></table>
+      </div>
+    </div>
+
+    <footer>
+      <p>Entry basis per car: Spring, e-208, Dolphin Surf, Model 3, Model Y, ID.3, ID.7 = new sticker price. Leaf = near-new secondhand (not sold new in France in 2026 — the ZE1 shape this project recommends is discontinued; the unrelated new-generation Leaf launching at €35,300 is a different car).</p>
+      <p>Exit value = a real 5-year-old (or nearest available age, extrapolated) secondhand listing where one exists; otherwise estimated from the general EV depreciation curve documented in <a href="02-model-tco-survey.md">02-model-tco-survey.md</a> (50-60% lost over 3 years, roughly 65-70% by 5 years for a new car; flatter for cars entering already-depreciated).</p>
+      <p>Running costs assume ~10,000km/yr home charging, matching the assumption in <a href="10-budget-ev-shortlist-comparison.md">10-budget-ev-shortlist-comparison.md</a>. Not a risk/damage line item yet — see <a href="12-weighted-quality-score-notes.md">12</a> for why that's still missing.</p>
+    </footer>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+(function () {
+  var data = [
+    {
+      name: "Nissan Leaf", entryLabel: "near-new secondhand (not sold new)",
+      entry: 20000, entryOk: false,
+      exit: 11000, exitOk: false, exitNote: "estimated — already-depreciated EVs flatten out; no 5yr-forward real data",
+      ins: 625, insOk: false, maint: 450, maintOk: false, charge: 250, chargeOk: false
+    },
+    {
+      name: "Dacia Spring", entryLabel: "new",
+      entry: 16900, entryOk: true,
+      exit: 7500, exitOk: true, exitNote: "real listing, 2021, 40,517km",
+      ins: 625, insOk: false, maint: 450, maintOk: false, charge: 250, chargeOk: false
+    },
+    {
+      name: "Peugeot e-208", entryLabel: "new",
+      entry: 21950, entryOk: true,
+      exit: 10300, exitOk: false, exitNote: "estimated — extrapolated from sourced 62%-retained-at-3yr figure",
+      ins: 625, insOk: false, maint: 500, maintOk: true, charge: 250, chargeOk: false
+    },
+    {
+      name: "BYD Dolphin Surf (Active)", entryLabel: "new",
+      entry: 19990, entryOk: true,
+      exit: 6400, exitOk: false, exitNote: "estimated — no real secondhand market old enough yet",
+      ins: 400, insOk: true, maint: 420, maintOk: true, charge: 230, chargeOk: false
+    },
+    {
+      name: "Tesla Model Y (Propulsion)", entryLabel: "new",
+      entry: 40990, entryOk: true,
+      exit: 30990, exitOk: true, exitNote: "real listing, 2021, 87,214km",
+      ins: 938, insOk: true, maint: 600, maintOk: true, charge: 320, chargeOk: false
+    },
+    {
+      name: "Volkswagen ID.3", entryLabel: "new (Trend, 170ch/50kWh)",
+      entry: 34990, entryOk: true,
+      exit: 21600, exitOk: false, exitNote: "extrapolated from a real 2022/86,804km/€23,480 listing (~4yr), one more year assumed",
+      ins: 1100, insOk: false, maint: 225, maintOk: true, charge: 280, chargeOk: false
+    },
+    {
+      name: "Tesla Model 3 (Propulsion/SR+)", entryLabel: "new",
+      entry: 42990, entryOk: true,
+      exit: 23500, exitOk: true, exitNote: "real listing, 2021, 55,000km",
+      ins: 1009, insOk: true, maint: 900, maintOk: true, charge: 300, chargeOk: false
+    },
+    {
+      name: "Volkswagen ID.7 (Pro)", entryLabel: "new",
+      entry: 49990, entryOk: true,
+      exit: 24000, exitOk: false, exitNote: "estimated — no secondhand market exists yet, car too new",
+      ins: 850, insOk: false, maint: 300, maintOk: false, charge: 320, chargeOk: false
+    }
+  ];
+
+  data.forEach(function (d) {
+    d.dep = d.entry - d.exit;
+    d.runYr = d.ins + d.maint + d.charge;
+    d.run5 = d.runYr * 5;
+    d.total = d.dep + d.run5;
+    d.perYear = d.total / 5;
+  });
+  data.sort(function (a, b) { return a.total - b.total; });
+
+  var svgNS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("chart");
+  var root = document.querySelector(".viz-root");
+  var cs = getComputedStyle(root);
+  var tooltip = document.getElementById("tooltip");
+
+  var W = 900, ML = 210, MR = 24, MT = 12, MB = 44;
+  var rowH = 30, rowGap = 12;
+  var plotW = W - ML - MR;
+  var plotH = data.length * (rowH + rowGap) - rowGap;
+  var H = plotH + MT + MB;
+
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+
+  var xMax = 34000;
+  function xPix(v) { return ML + (v / xMax) * plotW; }
+
+  function el(tag, attrs) {
+    var e = document.createElementNS(svgNS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  function fmtE(v) { return "€" + Math.round(v).toLocaleString("en-GB"); }
+
+  var xTicks = [0, 5000, 10000, 15000, 20000, 25000, 30000];
+  xTicks.forEach(function (v) {
+    var x = xPix(v);
+    svg.appendChild(el("line", { class: "gridline", x1: x, x2: x, y1: MT, y2: MT + plotH }));
+    var t = el("text", { class: "axis-label", x: x, y: MT + plotH + 20, "text-anchor": "middle" });
+    t.textContent = "€" + (v / 1000) + "k";
+    svg.appendChild(t);
+  });
+  svg.appendChild(el("line", { class: "baseline", x1: ML, x2: ML, y1: MT, y2: MT + plotH }));
+
+  var xTitle = el("text", { class: "axis-title", x: ML + plotW / 2, y: H - 8, "text-anchor": "middle" });
+  xTitle.textContent = "Total 5-year cost of ownership (€)";
+  svg.appendChild(xTitle);
+
+  var chartCard = svg.closest(".card");
+  chartCard.style.position = "relative";
+  chartCard.appendChild(tooltip);
+
+  data.forEach(function (d, i) {
+    var cy = MT + i * (rowH + rowGap);
+    var depColor = cs.getPropertyValue("--c-dep").trim();
+
+    var label = el("text", { class: "row-label", x: ML - 10, y: cy + rowH / 2 - 2, "text-anchor": "end" });
+    label.textContent = d.name;
+    svg.appendChild(label);
+    var sub = el("text", { class: "row-sub", x: ML - 10, y: cy + rowH / 2 + 12, "text-anchor": "end" });
+    sub.textContent = d.entryLabel;
+    svg.appendChild(sub);
+
+    var g = el("g", { class: "bar", tabindex: "0" });
+
+    var depX2 = xPix(d.dep);
+    var depRect = el("rect", { x: ML, y: cy, width: depX2 - ML, height: rowH, fill: depColor, opacity: 0.88 });
+    g.appendChild(depRect);
+
+    var totalX2 = xPix(d.total);
+    var hatchId = "hatch-tco-" + i;
+    var pattern = el("pattern", { id: hatchId, width: 6, height: 6, patternTransform: "rotate(45)", patternUnits: "userSpaceOnUse" });
+    pattern.appendChild(el("rect", { width: 6, height: 6, fill: depColor, opacity: 0.25 }));
+    pattern.appendChild(el("rect", { width: 3, height: 6, fill: depColor, opacity: 0.55 }));
+    svg.appendChild(pattern);
+    var runRect = el("rect", { x: depX2, y: cy, width: totalX2 - depX2, height: rowH, fill: "url(#" + hatchId + ")" });
+    g.appendChild(runRect);
+
+    var totalLabel = el("text", { class: "bar-label", x: totalX2 + 8, y: cy + rowH / 2 - 1 });
+    totalLabel.textContent = fmtE(d.total);
+    g.appendChild(totalLabel);
+    var perYearLabel = el("text", { class: "bar-peryear", x: totalX2 + 8, y: cy + rowH / 2 + 12 });
+    perYearLabel.textContent = fmtE(d.perYear) + "/yr";
+    g.appendChild(perYearLabel);
+
+    function show() {
+      tooltip.innerHTML = '<div class="t-name">' + d.name + '</div>' +
+        '<div class="t-row"><span>Entry (' + d.entryLabel + ')</span><span>' + fmtE(d.entry) + '</span></div>' +
+        '<div class="t-row"><span>− 5yr resale' + (d.exitOk ? '' : ' (est.)') + '</span><span>' + fmtE(d.exit) + '</span></div>' +
+        '<div class="t-row"><span><b>= Depreciation</b></span><span><b>' + fmtE(d.dep) + '</b></span></div>' +
+        '<div class="t-row"><span>Insurance' + (d.insOk ? '' : ' (est.)') + ' × 5</span><span>' + fmtE(d.ins * 5) + '</span></div>' +
+        '<div class="t-row"><span>Maintenance' + (d.maintOk ? '' : ' (est.)') + ' × 5</span><span>' + fmtE(d.maint * 5) + '</span></div>' +
+        '<div class="t-row"><span>Charging (est.) × 5</span><span>' + fmtE(d.charge * 5) + '</span></div>' +
+        '<div class="t-row"><span><b>Total, 5yr</b></span><span><b>' + fmtE(d.total) + '</b></span></div>' +
+        '<div class="t-flag">' + d.exitNote + '</div>';
+      var cardR = chartCard.getBoundingClientRect();
+      var svgR = svg.getBoundingClientRect();
+      var scale = svgR.width / W;
+      var barMidPix = xPix(d.total / 2);
+      tooltip.style.left = ((barMidPix * scale) + (svgR.left - cardR.left)) + "px";
+      tooltip.style.top = ((cy * scale) + (svgR.top - cardR.top)) + "px";
+      tooltip.classList.add("show");
+    }
+    function hide() { tooltip.classList.remove("show"); }
+    g.addEventListener("mouseenter", show);
+    g.addEventListener("mouseleave", hide);
+    g.addEventListener("focus", show);
+    g.addEventListener("blur", hide);
+
+    svg.appendChild(g);
+  });
+
+  // data table
+  var table = document.getElementById("table");
+  var thead = document.createElement("thead");
+  var headRow = document.createElement("tr");
+  ["Car", "Entry", "5yr resale", "Depreciation", "Ins/yr", "Maint/yr", "Charge/yr", "Total 5yr", "€/yr"].forEach(function (h) {
+    var th = document.createElement("th");
+    th.textContent = h;
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+  var tbody = document.createElement("tbody");
+  data.forEach(function (d) {
+    var tr = document.createElement("tr");
+    function cell(text, ok, num) {
+      var td = document.createElement("td");
+      if (num) td.className = "num";
+      if (ok === false) { var span = document.createElement("span"); span.className = "est"; span.textContent = text; td.appendChild(span); }
+      else td.textContent = text;
+      return td;
+    }
+    var tdModel = document.createElement("td");
+    tdModel.className = "model";
+    tdModel.textContent = d.name + " (" + d.entryLabel + ")";
+    tr.appendChild(tdModel);
+    tr.appendChild(cell(fmtE(d.entry), d.entryOk, true));
+    tr.appendChild(cell(fmtE(d.exit), d.exitOk, true));
+    tr.appendChild(cell(fmtE(d.dep), d.entryOk && d.exitOk, true));
+    tr.appendChild(cell(fmtE(d.ins), d.insOk, true));
+    tr.appendChild(cell(fmtE(d.maint), d.maintOk, true));
+    tr.appendChild(cell(fmtE(d.charge), d.chargeOk, true));
+    tr.appendChild(cell(fmtE(d.total), d.entryOk && d.exitOk && d.insOk && d.maintOk && d.chargeOk, true));
+    tr.appendChild(cell(fmtE(d.perYear), false, true));
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+})();
+</script>

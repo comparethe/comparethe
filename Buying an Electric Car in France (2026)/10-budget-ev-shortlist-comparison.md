@@ -37,7 +37,7 @@ Worth explaining, since a 0-1 star result on a car sold today is genuinely surpr
 
 ## Same data, as a chart
 
-Base price with 3 years of maintenance stacked on top, per car, sorted cheapest-total-first: [11-budget-shortlist-cost-bars.html](11-budget-shortlist-cost-bars.html).
+Base price with 3 years of maintenance stacked on top, per car, sorted cheapest-total-first: [11-budget-shortlist-cost-bars.html](11-budget-shortlist-cost-bars.html). Three years, not one, because a single year of maintenance is too small to see next to a car's price on the same bar. Maintenance-only, not the fuller running-cost figure above (charging + insurance + maintenance) — insurance and charging track distance driven, not the car itself, so they don't stack as meaningfully against a fixed price bar. Secondhand bars use the midpoint of the sourced price range, not a real listing — same caveat as the rest of this project's secondhand data. A more thorough version of this same idea — 5-year cost of ownership including depreciation — is in [13-five-year-cost-of-ownership.html](13-five-year-cost-of-ownership.html).
 
 ## Reading this table
 
