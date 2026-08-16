@@ -22,6 +22,8 @@ Wide spread by year/version/mileage. Rough bands (Tesla-Mag analysis, cross-chec
 
 **Read on this**: an early-2020s Model 3 (2021-22, 50-90k km, Propulsion/SR+) at ~€20-28k lands well inside the mainstream-new-car price band from [03-price-range-sketch.html](03-price-range-sketch.html) while likely beating everything on that chart for range/charging speed — worth putting on the frontier once feature weights exist.
 
+**On the price-vs-mileage chart ([06](06-secondhand-price-vs-mileage.html)):** Tesla points there are band midpoints from the table above, not real listings (e.g. "2021 Propulsion, 50-90k km, €19-25k" plots at 70,000km/€22,000) — treat the frontier's shape as directional, not exact. The other 12 points on that chart *are* real listings or sourced examples, gathered to close the gap after the budget end was found to be missing. Result: the frontier collapses to just two points, BYD Dolphin Surf and Dacia Spring — nothing else beats the Spring's price at any mileage. Same story as the new-car frontier: see [12-weighted-quality-score-notes.md](12-weighted-quality-score-notes.md) for why that's a problem, not a result to trust.
+
 ## Tesla Model Y — the other "look even though above new-car budget" candidate
 
 - Broad 2026 used range: **€28,000-33,000** depending on mileage — about €20k under a new one.

@@ -6,14 +6,170 @@ Facts and figures, sourced, instead of spammy SEO listicles or "it depends on yo
 
 **Neither track is final yet** — a real weighted frontier (safety, charging speed, boot space, not just range) and a deeper pass on individual used listings are still open. See [what's still open](plan.md).
 
-## The verdict, at a glance
+<style>
+  .ev-guide {
+    --page:          #f4f5f3;
+    --surface:       #ffffff;
+    --ink:           #14171a;
+    --ink-secondary: #4d5560;
+    --muted:         #8b9099;
+    --rule:          #dde1e4;
+    --rule-strong:   #c7ccd1;
+    --accent:        #2a78d6;
+    --track-a:       #2a78d6;
+    --track-b:       #1baf7a;
+    --tag-bg:        #eef2f6;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .ev-guide {
+      --page:          #0f1113;
+      --surface:       #17191c;
+      --ink:           #f2f3f1;
+      --ink-secondary: #b9bec4;
+      --muted:         #82878e;
+      --rule:          #2a2d31;
+      --rule-strong:   #383c41;
+      --accent:        #3987e5;
+      --track-a:       #3987e5;
+      --track-b:       #1fbf82;
+      --tag-bg:        #1d2b3a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] .ev-guide {
+    --page:          #0f1113;
+    --surface:       #17191c;
+    --ink:           #f2f3f1;
+    --ink-secondary: #b9bec4;
+    --muted:         #82878e;
+    --rule:          #2a2d31;
+    --rule-strong:   #383c41;
+    --accent:        #3987e5;
+    --track-a:       #3987e5;
+    --track-b:       #1fbf82;
+    --tag-bg:        #1d2b3a;
+    color-scheme: dark;
+  }
+  .ev-guide {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    margin: 8px 0 26px;
+  }
+  .ev-guide .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+  .ev-guide .pick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .ev-guide .pick-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 18px 20px 16px;
+  }
+  .ev-guide .pick-card.track-a { border-top: 3px solid var(--track-a); }
+  .ev-guide .pick-card.track-b { border-top: 3px solid var(--track-b); }
+  .ev-guide .pick-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 4px;
+  }
+  .pick-card.track-a .pick-label { color: var(--track-a); }
+  .pick-card.track-b .pick-label { color: var(--track-b); }
+  .ev-guide .pick-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 6px 0 10px;
+  }
+  .ev-guide .pick-icon { color: var(--ink-secondary); flex-shrink: 0; }
+  .pick-card.track-a .pick-icon { color: var(--track-a); }
+  .pick-card.track-b .pick-icon { color: var(--track-b); }
+  .ev-guide .pick-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+  }
+  .ev-guide .pick-sub {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin: 1px 0 0;
+  }
+  .ev-guide .pick-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 10px;
+  }
+  .ev-guide .stat {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--ink-secondary);
+  }
+  .ev-guide .pick-why {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink-secondary);
+    margin: 0 0 10px;
+  }
+  .ev-guide .pick-alt {
+    font-size: 12.5px;
+    color: var(--muted);
+    padding-top: 10px;
+    border-top: 1px solid var(--rule);
+    margin: 0;
+  }
+</style>
 
-| Track | Pick | Condition | Price | Range (WLTP) | Safety | Why |
-|---|---|---|---|---|---|---|
-| **A — budget, short-range** (school run, 50-200km trips) | **Nissan Leaf** | Secondhand | €11,500–22,500 | 220-340km | ★★★★★ (93%/86%) | Best safety-to-price ratio here, real used market, proper 5-door |
-| A — alt, if secondhand risk isn't wanted | Peugeot e-208 | New | €21,950 | 433km | ★★★★★ (93%/79%) | Longest range and best resale of anything surveyed |
-| **B — everyday family car**, not premium but a step up | **Tesla Model 3** (Propulsion/SR+) | Secondhand, 2021-22 | ~€19,000–25,000 | ~430-500km (trim/year dependent) | ★★★★★ | Beats several *new* mainstream cars on range and charging network at the same price |
-| B — alt, if secondhand risk isn't wanted | Peugeot e-208 | New | €21,950 | 433km | ★★★★★ | Holds resale so well that new barely costs more than used |
+<div class="ev-guide">
+<p class="eyebrow">The verdict, at a glance</p>
+<div class="pick-grid">
+
+<div class="pick-card track-a">
+<p class="pick-label">Track A — budget, short-range</p>
+<div class="pick-head">
+<svg class="pick-icon" viewBox="0 0 64 28" width="56" height="24" fill="none"><path d="M6 20 L9 11 Q10 8 14 8 H38 Q42 8 44 11 L50 18 H58 Q60 18 60 20 V22 H4 V20 Z" fill="currentColor" opacity="0.9"/><circle cx="16" cy="22" r="4.3" fill="var(--surface)" stroke="currentColor" stroke-width="2.4"/><circle cx="46" cy="22" r="4.3" fill="var(--surface)" stroke="currentColor" stroke-width="2.4"/></svg>
+<div><p class="pick-name">Nissan Leaf</p><p class="pick-sub">Secondhand</p></div>
+</div>
+<div class="pick-stats">
+<span class="stat">€11,500–22,500</span>
+<span class="stat">220-340km</span>
+<span class="stat">★★★★★ 93%/86%</span>
+</div>
+<p class="pick-why">Best safety-to-price ratio here, real used market, proper 5-door. School run and 50-200km trips, where range barely matters.</p>
+<p class="pick-alt">Alt, no secondhand risk: <b>Peugeot e-208</b>, new €21,950, 433km, ★★★★★ — longest range and best resale of anything surveyed.</p>
+</div>
+
+<div class="pick-card track-b">
+<p class="pick-label">Track B — everyday family car</p>
+<div class="pick-head">
+<svg class="pick-icon" viewBox="0 0 64 28" width="56" height="24" fill="none"><path d="M6 20 L9 11 Q10 8 14 8 H38 Q42 8 44 11 L50 18 H58 Q60 18 60 20 V22 H4 V20 Z" fill="currentColor" opacity="0.9"/><circle cx="16" cy="22" r="4.3" fill="var(--surface)" stroke="currentColor" stroke-width="2.4"/><circle cx="46" cy="22" r="4.3" fill="var(--surface)" stroke="currentColor" stroke-width="2.4"/></svg>
+<div><p class="pick-name">Tesla Model 3</p><p class="pick-sub">Secondhand, 2021-22 (Propulsion/SR+)</p></div>
+</div>
+<div class="pick-stats">
+<span class="stat">~€19,000–25,000</span>
+<span class="stat">~430-500km</span>
+<span class="stat">★★★★★</span>
+</div>
+<p class="pick-why">Not premium, but a step up. Beats several <i>new</i> mainstream cars on range and charging network at the same price.</p>
+<p class="pick-alt">Alt, no secondhand risk: <b>Peugeot e-208</b>, new €21,950, 433km, ★★★★★ — holds resale so well that new barely costs more than used.</p>
+</div>
+
+</div>
+</div>
 
 Two names are on the data but not yet ranked: **VW ID.3** (new €34,990-48,100 / secondhand €17,790-39,990, 5★, one of the fastest-charging cars surveyed) is a real Track B contender not yet weighed head-to-head against the Model 3 and e-208. **VW ID.7** (€49,990-57,490, 615-709km WLTP, 5★) is genuinely premium — it tops the efficient frontier below on range — but it's priced above both tracks' recommendations, so it's a data point, not a pick.
 
@@ -63,6 +219,16 @@ Not premium, but a step up — this is where a secondhand Tesla Model 3 lands in
 
 Trim matters enormously with the Model 3/Y — Grande Autonomie or Performance is a meaningfully different, pricier car than base Propulsion, and Performance doesn't touch daily running cost at all. Full comparison plus a real LeBonCoin listing priced against this research: [07-reading-a-real-listing.md](07-reading-a-real-listing.md).
 
+## What it actually costs, 5 years in
+
+Sticker price isn't the number that matters — depreciation over those 5 years usually dwarfs everything else. Entry basis matches how this project actually recommends buying each car (new where that's the pick, near-new secondhand for the Leaf, which isn't sold new in France in 2026). Two findings worth flagging, not settling: a secondhand **Leaf comes out cheapest of all 8**, beating even the Dacia Spring, because entering already-depreciated avoids the steep early loss every new-bought car takes; and **Model Y currently beats Model 3** on 5-year cost — real but thin data (one listing each), so treat that one as provisional.
+
+<div style="margin: 20px 0;">
+  <iframe src="13-five-year-cost-of-ownership.html" style="width:100%; height:760px; border:1px solid #dde1e4; border-radius:10px;" loading="lazy" title="5-year cost of ownership, 8 EVs sold in France"></iframe>
+</div>
+
+[Open the interactive chart →](13-five-year-cost-of-ownership.html)
+
 ## The research
 
 Everything behind the verdict above, for anyone who wants the sourcing:
@@ -74,6 +240,7 @@ Everything behind the verdict above, for anyone who wants the sourcing:
 - **[08 — Why buying a used car is hard](08-why-buying-a-used-car-is-hard.md):** stub piece on the general problem, growing out of the listing case study above.
 - **[09 — EV vs. ICE total cost](09-ev-vs-ice-total-cost.md):** is an EV actually better value than a cheap petrol car once purchase price and depreciation are counted, not just running costs? Yes, on both tracks, even before incentives, for anyone near French average annual mileage.
 - **[12 — Appendix: notes toward a real price/quality frontier](12-weighted-quality-score-notes.md):** two open axes, not one — a weighted quality score (safety, charging speed, degradation risk, reliability) to replace range/mileage, *and* annualized cost of ownership to replace sticker price. Not solved yet, just mapped.
+- **[13 — 5-year cost of ownership](13-five-year-cost-of-ownership.html):** the annualized-cost axis from 12, actually computed for 8 cars — see [above](#what-it-actually-costs-5-years-in).
 
 ## What's next
 

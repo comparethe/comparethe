@@ -146,8 +146,8 @@ The umbrella page for car-buying research on CompareThe＿ — facts and figures
   <p>New or secondhand, open budget, no segment preference. Charts, a real secondhand-vs-new comparison, tax incentives, Euro NCAP safety data, and a running verdict on what to actually buy — for a budget short-range family runabout and a nicer everyday family car.</p>
   <div class="status-row">
     <span class="pill">in progress</span>
-    <span class="pill">11 sub-pages</span>
-    <span class="pill">4 interactive charts</span>
+    <span class="pill">13 sub-pages</span>
+    <span class="pill">5 interactive charts</span>
   </div>
 </a>
 
