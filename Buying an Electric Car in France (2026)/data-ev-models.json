@@ -27,6 +27,8 @@
     { "name": "Tesla Model Y", "price": 45000, "range": 550, "seg": "premium", "priceOk": false, "rangeOk": true },
     { "name": "Peugeot E-3008", "price": 45000, "range": 701, "seg": "premium", "priceOk": false, "rangeOk": true },
     { "name": "Kia EV6", "price": 48000, "range": 490, "seg": "premium", "priceOk": false, "rangeOk": false },
-    { "name": "BMW iX3 (Neue Klasse)", "price": 65000, "range": 685, "seg": "premium", "priceOk": false, "rangeOk": true }
+    { "name": "BMW iX3 (Neue Klasse)", "price": 65000, "range": 685, "seg": "premium", "priceOk": false, "rangeOk": true },
+    { "name": "Volkswagen ID.7 (Pro)", "price": 49990, "range": 615, "seg": "premium", "priceOk": true, "rangeOk": true },
+    { "name": "Volkswagen ID.7 (Pro S)", "price": 57490, "range": 709, "seg": "premium", "priceOk": true, "rangeOk": true }
   ]
 }

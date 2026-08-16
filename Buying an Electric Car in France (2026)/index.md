@@ -35,7 +35,7 @@ Neither track is a final answer — the weighted frontier (charging speed, safet
 
 ## Price vs. range: the new-car market
 
-Range (WLTP) stands in for "quality" here because it's the one spec reported consistently across the market — not a weighted score. Price is the new sticker price, before incentives, depreciation or running costs. Twenty-two trims, city car to premium SUV. The Twingo E-Tech, e-208 and Tesla Model 3 are the three flagged as an early shortlist — cheap-and-decent-range, mid-price-and-strong-range, and expensive-but-dominant-range respectively.
+Range (WLTP) stands in for "quality" here because it's the one spec reported consistently across the market — not a weighted score. Price is the new sticker price, before incentives, depreciation or running costs. Twenty-four trims, city car to premium SUV — now including the Volkswagen ID.7 (Pro and Pro S), a large premium liftback added to round out the premium segment: €49,990-57,490, 615-709km WLTP (some of the best range-for-price in this whole survey), and 5-star Euro NCAP. It's priced above the Track A/B recommendations above, so it's here as a premium-segment data point, not a ranked pick. The Twingo E-Tech, e-208 and Tesla Model 3 are the three flagged as an early shortlist — cheap-and-decent-range, mid-price-and-strong-range, and expensive-but-dominant-range respectively.
 
 <div style="margin: 20px 0;">
   <iframe src="03-price-range-sketch.html" style="width:100%; height:660px; border:1px solid #dde1e4; border-radius:10px;" loading="lazy" title="Price vs. WLTP range, new EVs sold in France"></iframe>
