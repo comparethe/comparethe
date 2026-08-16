@@ -23,6 +23,8 @@ Working task list for this piece — the [index.md](index.md) article is the wri
 - [x] Stacked bar chart, base price + 3yr maintenance per car, sorted by total — see [11-budget-shortlist-cost-bars.html](11-budget-shortlist-cost-bars.html)
 - [x] Added VW ID.3 to Track B — new price (€34,990-48,100), secondhand (€17,790-39,990), 5-star Euro NCAP, fast charging — see [04-secondhand-market-survey.md](04-secondhand-market-survey.md) and index.md
 - [x] Created a top-level "Buy a Car" hub page — links here as the current project, highlights 4 key sub-pages as cards; a home for future car-buying research beyond just this one — see [../Buy a Car/index.md](../Buy%20a%20Car/)
+- [x] Added Volkswagen ID.7 (Pro/Pro S) to the premium segment in the price-vs-range dataset and chart
+- [x] Rewrote index.md as a proper article: verdict table up top, price-vs-range chart reframed as the computed 8-car efficient frontier (drawn as a connected line, replacing the old unlabelled scatter), tight comparison tables for both tracks, methodology moved down under "The research"
 
 ## Still to do
 

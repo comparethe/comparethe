@@ -1,4 +1,4 @@
-<title>Price vs. Range — EV Survey, France 2026</title>
+<title>The Efficient Frontier — EV Survey, France 2026</title>
 <style>
   .viz-root {
     --page:          #f4f5f3;
@@ -211,9 +211,9 @@
 <div class="viz-root">
   <div class="wrap">
     <p class="eyebrow">Electric Car Research &amp; Purchase — working sketch</p>
-    <h1>Starting price vs. range, 22 EVs sold in France</h1>
-    <p class="lede">Range (WLTP) stands in for "quality" here because it's the one spec that's consistently reported across the market — not a weighted score. Price is the new sticker price, not a full TCO figure: depreciation, incentives and running costs aren't priced in yet.</p>
-    <p class="lede">Hollow points are figures I couldn't confirm directly this session (typical/estimated) — filled points are sourced. Treat this as a first cut for shortlisting, not a final number.</p>
+    <h1>The efficient frontier: price vs. range, 24 EVs sold in France</h1>
+    <p class="lede">Of the 24 trims surveyed, only <b>8 are actually efficient</b> — for everything else, a cheaper car in this dataset also goes farther. Those 8 are marked ★ and joined by the dashed line: Dacia Spring, Leapmotor T03, Peugeot e-208, Renault Mégane E-Tech, Hyundai Ioniq 5, Tesla Model 3, Peugeot E-3008, and (new top-end pick) Volkswagen ID.7 Pro S. Everything below and to the right of that line is dominated — beaten on both price and range by something already on the list.</p>
+    <p class="lede">Range (WLTP) stands in for "quality" here because it's the one spec that's consistently reported across the market — not a weighted score. Price is the new sticker price, not a full TCO figure: depreciation, incentives and running costs aren't priced in yet. Hollow points are figures I couldn't confirm directly this session (typical/estimated) — filled points are sourced.</p>
 
     <div class="callout">
       <b>Correction (2026-08-09):</b> the Kia EV3 and BYD Dolphin Surf were originally each plotted as one point pairing a base trim's starting price with a higher trim's max range ("from €X, up to Ykm" language glued two different cars together). Both are now split into their real trims — Kia EV3 Air (€35,990/436km) vs. Earth Long Range (€44,990/571km); BYD Dolphin Surf Active (€19,990/220km) vs. Boost (€24,490/322km). Worth the same scrutiny on any "from/up to" spec you read elsewhere.
@@ -224,9 +224,9 @@
 
     <div class="card">
       <h2>Price vs. range</h2>
-      <p class="sub">€16.9k–€65k · 220–701km WLTP · bubble labels mark the three models discussed as an early shortlist</p>
+      <p class="sub">€16.9k–€65k · 220–709km WLTP · ★ marks the 8 cars on the efficient frontier, joined by the dashed line</p>
       <div class="chart-scroll">
-        <svg class="chart" id="chart" viewBox="0 0 900 540" role="img" aria-label="Scatter plot of starting price against WLTP range for 20 electric vehicles sold in France, coloured by price segment"></svg>
+        <svg class="chart" id="chart" viewBox="0 0 900 540" role="img" aria-label="Scatter plot of starting price against WLTP range for 24 electric vehicle trims sold in France, coloured by price segment, with the 8-car efficient frontier highlighted and connected by a dashed line"></svg>
       </div>
       <div class="legend">
         <div class="grp">
@@ -239,12 +239,16 @@
           <span class="item"><span class="swatch filled" style="border-color:var(--muted)"></span>Sourced</span>
           <span class="item"><span class="swatch hollow"></span>Estimated</span>
         </div>
+        <div class="divider-v"></div>
+        <div class="grp">
+          <span class="item">★ = on the efficient frontier (dashed line)</span>
+        </div>
       </div>
     </div>
 
     <div class="card">
       <h2>Full data</h2>
-      <p class="sub">Same 22 models/trims, sorted by segment then price — for exact lookup</p>
+      <p class="sub">Same 24 models/trims, sorted by segment then price — for exact lookup</p>
       <div class="table-scroll">
         <table id="table"></table>
       </div>
@@ -287,6 +291,19 @@
     { name: "Volkswagen ID.7 (Pro)",  price: 49990, range: 615, seg: "premium", priceOk: true, rangeOk: true },
     { name: "Volkswagen ID.7 (Pro S)",price: 57490, range: 709, seg: "premium", priceOk: true, rangeOk: true }
   ];
+
+  // Efficient frontier: a car only qualifies if no cheaper car in this dataset also goes farther.
+  // Computed by sorting on price and keeping only new range-highs as price rises.
+  (function markFrontier() {
+    var byPrice = data.slice().sort(function (a, b) { return a.price - b.price; });
+    var maxRangeSoFar = -Infinity;
+    byPrice.forEach(function (d) {
+      if (d.range > maxRangeSoFar) {
+        d.frontier = true;
+        maxRangeSoFar = d.range;
+      }
+    });
+  })();
 
   var segMeta = {
     budget:  { label: "Budget / city",  varName: "--s-budget" },
@@ -344,24 +361,37 @@
   var chartCard = svg.closest(".card");
   chartCard.style.position = "relative";
 
+  // frontier line, drawn under the points
+  var frontierPts = data.filter(function (d) { return d.frontier; })
+    .slice().sort(function (a, b) { return a.price - b.price; });
+  var pathD = frontierPts.map(function (d, i) {
+    return (i === 0 ? "M" : "L") + xPix(d.price) + "," + yPix(d.range);
+  }).join(" ");
+  svg.appendChild(el("path", {
+    d: pathD, fill: "none",
+    stroke: cs.getPropertyValue("--accent").trim(),
+    "stroke-width": 2, "stroke-dasharray": "5 4", opacity: 0.55
+  }));
+
   data.forEach(function (d) {
     var color = cs.getPropertyValue(segMeta[d.seg].varName).trim();
     var g = el("g", { class: "pt", tabindex: "0" });
     var estimated = !(d.priceOk && d.rangeOk);
     var circle = el("circle", {
-      cx: xPix(d.price), cy: yPix(d.range), r: 6.5,
+      cx: xPix(d.price), cy: yPix(d.range), r: d.frontier ? 8 : 6.5,
       fill: estimated ? "transparent" : color,
-      stroke: color
+      stroke: color,
+      "stroke-width": d.frontier ? 3 : 2
     });
     g.appendChild(circle);
 
-    if (d.shortlist) {
+    if (d.shortlist || d.frontier) {
       var label = el("text", {
         class: "ptlabel",
         x: xPix(d.price) + 10,
         y: yPix(d.range) - 10
       });
-      label.textContent = d.name;
+      label.textContent = d.name + (d.frontier ? " ★" : "");
       g.appendChild(label);
     }
 
@@ -369,7 +399,7 @@
       var flagText = estimated
         ? (!d.priceOk && !d.rangeOk ? "price & range estimated" : (!d.priceOk ? "price estimated" : "range estimated"))
         : "sourced";
-      tooltip.innerHTML = '<div class="t-name">' + d.name + '</div>' +
+      tooltip.innerHTML = '<div class="t-name">' + d.name + (d.frontier ? ' ★ on the frontier' : '') + '</div>' +
         '€' + d.price.toLocaleString('en-GB') + ' &middot; ' + d.range + 'km WLTP' +
         '<div class="t-flag">' + segMeta[d.seg].label + ' &middot; ' + flagText + '</div>';
       var r = circle.getBoundingClientRect();
@@ -413,7 +443,7 @@
 
     var tdModel = document.createElement("td");
     tdModel.className = "model";
-    tdModel.textContent = d.name + (d.shortlist ? " ★" : "");
+    tdModel.textContent = d.name + (d.frontier ? " ★" : "");
     tr.appendChild(tdModel);
 
     var tdSeg = document.createElement("td");
