@@ -230,7 +230,7 @@
 
     <div class="card">
       <h2>Price vs. mileage</h2>
-      <p class="sub">20 points · Tesla by trim tier + 2 other sourced examples · dashed line = Pareto frontier</p>
+      <p class="sub">21 points · Tesla by trim tier + 3 other sourced examples · dashed line = Pareto frontier</p>
       <div class="chart-scroll">
         <svg class="chart" id="chart" viewBox="0 0 900 560" role="img" aria-label="Scatter plot of used EV price against mileage, coloured by model and shaped by Tesla trim tier, with a Pareto frontier line"></svg>
       </div>
@@ -251,7 +251,7 @@
 
     <div class="card">
       <h2>Full data</h2>
-      <p class="sub">All 20 plotted points — frontier points flagged</p>
+      <p class="sub">All 21 plotted points — frontier points flagged</p>
       <div class="table-scroll">
         <table id="table"></table>
       </div>
@@ -296,7 +296,8 @@
     { model: "Tesla Model Y", ser: "modely", trim: "Performance",       tier: "perf", year: 2023, mileage: 35000,  price: 42500,  src: "2022-23, 20-50k km × €38-47k" },
 
     { model: "Hyundai Kona Electric", ser: "other", trim: null, tier: "base", year: 2022, mileage: 40000, price: 20000, src: "sourced example, not a band" },
-    { model: "Renault Mégane E-Tech", ser: "other", trim: "EV60 220", tier: "base", year: 2022, mileage: 57202, price: 15990, src: "sourced example, not a band" }
+    { model: "Renault Mégane E-Tech", ser: "other", trim: "EV60 220", tier: "base", year: 2022, mileage: 57202, price: 15990, src: "sourced example, not a band" },
+    { model: "BYD Dolphin Surf", ser: "other", trim: "Active 30kWh", tier: "base", year: 2025, mileage: 100, price: 19990, src: "real listing, SIPA Mérignac, 2026-08-12 — \"Occasion récente,\" priced at new" }
   ];
 
   var svgNS = "http://www.w3.org/2000/svg";

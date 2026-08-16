@@ -25,6 +25,7 @@ Working task list for this piece — the [index.md](index.md) article is the wri
 - [x] Created a top-level "Buy a Car" hub page — links here as the current project, highlights 4 key sub-pages as cards; a home for future car-buying research beyond just this one — see [../Buy a Car/index.md](../Buy%20a%20Car/)
 - [x] Added Volkswagen ID.7 (Pro/Pro S) to the premium segment in the price-vs-range dataset and chart
 - [x] Rewrote index.md as a proper article: verdict table up top, price-vs-range chart reframed as the computed 8-car efficient frontier (drawn as a connected line, replacing the old unlabelled scatter), tight comparison tables for both tracks, methodology moved down under "The research"
+- [x] Added the first real secondhand BYD Dolphin Surf listing (SIPA Mérignac, 2026-08-12, €19,990, 100km, "Occasion récente") to 04 and to the used price-vs-mileage Pareto chart — priced at new, not below it, which corrects the earlier "too new for a secondhand market" note; it becomes the new frontier anchor point at the low-mileage end
 
 ## Still to do
 
