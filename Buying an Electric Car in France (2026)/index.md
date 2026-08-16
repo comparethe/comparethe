@@ -72,10 +72,31 @@ Facts and figures, sourced, instead of spammy SEO listicles or "it depends on yo
     background: var(--surface);
     border: 1px solid var(--rule);
     border-radius: 12px;
-    padding: 18px 20px 16px;
+    overflow: hidden;
   }
-  .ev-guide .pick-card.track-a { border-top: 3px solid var(--track-a); }
-  .ev-guide .pick-card.track-b { border-top: 3px solid var(--track-b); }
+  .ev-guide .pick-card-body { padding: 16px 20px 16px; }
+  .ev-guide .pick-card.track-a .pick-card-body { border-top: 3px solid var(--track-a); }
+  .ev-guide .pick-card.track-b .pick-card-body { border-top: 3px solid var(--track-b); }
+  .ev-guide .pick-photo-wrap { position: relative; }
+  .ev-guide .pick-photo {
+    display: block;
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    background: var(--tag-bg);
+  }
+  .ev-guide .pick-credit {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    font-size: 10px;
+    color: #fff;
+    background: rgba(0,0,0,0.55);
+    padding: 2px 7px;
+    border-radius: 999px;
+    line-height: 1.4;
+  }
+  .ev-guide .pick-credit a { color: #fff; }
   .ev-guide .pick-label {
     font-size: 10.5px;
     font-weight: 700;
@@ -85,15 +106,7 @@ Facts and figures, sourced, instead of spammy SEO listicles or "it depends on yo
   }
   .pick-card.track-a .pick-label { color: var(--track-a); }
   .pick-card.track-b .pick-label { color: var(--track-b); }
-  .ev-guide .pick-head {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 6px 0 10px;
-  }
-  .ev-guide .pick-icon { color: var(--ink-secondary); flex-shrink: 0; }
-  .pick-card.track-a .pick-icon { color: var(--track-a); }
-  .pick-card.track-b .pick-icon { color: var(--track-b); }
+  .ev-guide .pick-head { margin: 6px 0 10px; }
   .ev-guide .pick-name {
     font-size: 18px;
     font-weight: 700;
@@ -139,11 +152,13 @@ Facts and figures, sourced, instead of spammy SEO listicles or "it depends on yo
 <div class="pick-grid">
 
 <div class="pick-card track-a">
-<p class="pick-label">Track A — budget, short-range</p>
-<div class="pick-head">
-<svg class="pick-icon" viewBox="0 0 64 28" width="56" height="24" fill="none"><path d="M6 20 L9 11 Q10 8 14 8 H38 Q42 8 44 11 L50 18 H58 Q60 18 60 20 V22 H4 V20 Z" fill="currentColor" opacity="0.9"/><circle cx="16" cy="22" r="4.3" fill="var(--surface)" stroke="currentColor" stroke-width="2.4"/><circle cx="46" cy="22" r="4.3" fill="var(--surface)" stroke="currentColor" stroke-width="2.4"/></svg>
-<div><p class="pick-name">Nissan Leaf</p><p class="pick-sub">Secondhand</p></div>
+<div class="pick-photo-wrap">
+<img class="pick-photo" src="assets/car-photos/nissan-leaf.jpg" alt="2018 Nissan Leaf Tekna, grey, front three-quarter view">
+<span class="pick-credit">Vauxford, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></span>
 </div>
+<div class="pick-card-body">
+<p class="pick-label">Track A — budget, short-range</p>
+<div class="pick-head"><p class="pick-name">Nissan Leaf</p><p class="pick-sub">Secondhand</p></div>
 <div class="pick-stats">
 <span class="stat">€11,500–22,500</span>
 <span class="stat">220-340km</span>
@@ -152,13 +167,16 @@ Facts and figures, sourced, instead of spammy SEO listicles or "it depends on yo
 <p class="pick-why">Best safety-to-price ratio here, real used market, proper 5-door. School run and 50-200km trips, where range barely matters.</p>
 <p class="pick-alt">Alt, no secondhand risk: <b>Peugeot e-208</b>, new €21,950, 433km, ★★★★★ — longest range and best resale of anything surveyed.</p>
 </div>
+</div>
 
 <div class="pick-card track-b">
-<p class="pick-label">Track B — everyday family car</p>
-<div class="pick-head">
-<svg class="pick-icon" viewBox="0 0 64 28" width="56" height="24" fill="none"><path d="M6 20 L9 11 Q10 8 14 8 H38 Q42 8 44 11 L50 18 H58 Q60 18 60 20 V22 H4 V20 Z" fill="currentColor" opacity="0.9"/><circle cx="16" cy="22" r="4.3" fill="var(--surface)" stroke="currentColor" stroke-width="2.4"/><circle cx="46" cy="22" r="4.3" fill="var(--surface)" stroke="currentColor" stroke-width="2.4"/></svg>
-<div><p class="pick-name">Tesla Model 3</p><p class="pick-sub">Secondhand, 2021-22 (Propulsion/SR+)</p></div>
+<div class="pick-photo-wrap">
+<img class="pick-photo" src="assets/car-photos/tesla-model-3.jpg" alt="2023 Tesla Model 3, red, front three-quarter view">
+<span class="pick-credit">Alexander Migl, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></span>
 </div>
+<div class="pick-card-body">
+<p class="pick-label">Track B — everyday family car</p>
+<div class="pick-head"><p class="pick-name">Tesla Model 3</p><p class="pick-sub">Secondhand, 2021-22 (Propulsion/SR+)</p></div>
 <div class="pick-stats">
 <span class="stat">~€19,000–25,000</span>
 <span class="stat">~430-500km</span>
@@ -166,6 +184,7 @@ Facts and figures, sourced, instead of spammy SEO listicles or "it depends on yo
 </div>
 <p class="pick-why">Not premium, but a step up. Beats several <i>new</i> mainstream cars on range and charging network at the same price.</p>
 <p class="pick-alt">Alt, no secondhand risk: <b>Peugeot e-208</b>, new €21,950, 433km, ★★★★★ — holds resale so well that new barely costs more than used.</p>
+</div>
 </div>
 
 </div>
