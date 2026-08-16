@@ -222,7 +222,7 @@
     <p class="lede">Bottom-left is the "good" corner — cheaper <i>and</i> lower mileage. A point above/right of the frontier is dominated: something else on the chart is at least as good on both axes.</p>
 
     <div class="callout">
-      <b>Data gap:</b> only Tesla (full trim/year bands) and two other models with a specific mileage figure sourced (Kona Electric, Mégane E-Tech) are plotted. The rest of the used candidates — Zoe, Leaf, e-208, ID.3, Atto 3, Dacia Spring — don't have mileage tied to their price ranges yet in <a href="04-secondhand-market-survey.md">04-secondhand-market-survey.md</a>; that's the next research pass before they can join this chart.
+      <b>Update: the budget gap is filled — and the frontier collapses to two points.</b> With real listings added for Spring, Leaf, e-208, ID.3, Atto 3, Zoe (plus a range-midpoint for the 500e), the price-vs-mileage frontier now runs through just <b>BYD Dolphin Surf</b> (100km, €19,990) and <b>Dacia Spring</b> (40,517km, €7,500) — nothing else in this table beats the Spring's price at any mileage, so everything past it is dominated on this axis alone, all the way out to 160,000km. <b>That's the flaw in judging used EVs on price-and-mileage only:</b> the Spring dominates this frontier the same way it dominates the new-car one, and it's ruled out elsewhere in this project on Euro NCAP safety (1★) — see <a href="04-secondhand-market-survey.md">04</a> and the Track A table in <a href="index.md">index.md</a>. A frontier that can't see safety, charging speed, or interior quality will keep recommending the Spring. Building a real quality-weighted frontier (not range/mileage as a stand-in) is now the top open item in <a href="plan.md">plan.md</a>.
     </div>
     <div class="callout">
       <b>Tesla points are band midpoints, not real listings:</b> each is the middle of a sourced mileage range and price range (e.g. "2021 Propulsion, 50-90k km, €19-25k" → plotted at 70,000km / €22,000), not an actual advertised car. Treat the shape of the frontier as directional, not exact — see the "still needed" section in the secondhand survey for the plan to replace this with real listings.
@@ -230,7 +230,7 @@
 
     <div class="card">
       <h2>Price vs. mileage</h2>
-      <p class="sub">21 points · Tesla by trim tier + 3 other sourced examples · dashed line = Pareto frontier</p>
+      <p class="sub">30 points · Tesla by trim tier + 12 other sourced examples · dashed line = Pareto frontier</p>
       <div class="chart-scroll">
         <svg class="chart" id="chart" viewBox="0 0 900 560" role="img" aria-label="Scatter plot of used EV price against mileage, coloured by model and shaped by Tesla trim tier, with a Pareto frontier line"></svg>
       </div>
@@ -238,7 +238,7 @@
         <div class="grp">
           <span class="item"><span class="swatch" style="background:var(--series-1)"></span>Tesla Model 3</span>
           <span class="item"><span class="swatch" style="background:var(--series-2)"></span>Tesla Model Y</span>
-          <span class="item"><span class="swatch" style="background:var(--series-3)"></span>Other (Kona Electric, Mégane E-Tech)</span>
+          <span class="item"><span class="swatch" style="background:var(--series-3)"></span>Other (Kona, Mégane, Dolphin Surf, Spring, Leaf, e-208, ID.3, Atto 3, Zoe, 500e)</span>
         </div>
         <div class="divider-v"></div>
         <div class="grp">
@@ -251,7 +251,7 @@
 
     <div class="card">
       <h2>Full data</h2>
-      <p class="sub">All 21 plotted points — frontier points flagged</p>
+      <p class="sub">All 30 plotted points — frontier points flagged</p>
       <div class="table-scroll">
         <table id="table"></table>
       </div>
@@ -297,7 +297,14 @@
 
     { model: "Hyundai Kona Electric", ser: "other", trim: null, tier: "base", year: 2022, mileage: 40000, price: 20000, src: "sourced example, not a band" },
     { model: "Renault Mégane E-Tech", ser: "other", trim: "EV60 220", tier: "base", year: 2022, mileage: 57202, price: 15990, src: "sourced example, not a band" },
-    { model: "BYD Dolphin Surf", ser: "other", trim: "Active 30kWh", tier: "base", year: 2025, mileage: 100, price: 19990, src: "real listing, SIPA Mérignac, 2026-08-12 — \"Occasion récente,\" priced at new" }
+    { model: "BYD Dolphin Surf", ser: "other", trim: "Active 30kWh", tier: "base", year: 2025, mileage: 100, price: 19990, src: "real listing, SIPA Mérignac, 2026-08-12 — \"Occasion récente,\" priced at new" },
+    { model: "Dacia Spring", ser: "other", trim: null, tier: "base", year: 2021, mileage: 40517, price: 7500, src: "real listing, LeBonCoin" },
+    { model: "Nissan Leaf", ser: "other", trim: null, tier: "base", year: 2019, mileage: 59546, price: 12990, src: "real listing, L'argus Occasion" },
+    { model: "Peugeot e-208", ser: "other", trim: "136ch 50kWh Allure", tier: "base", year: 2025, mileage: 5450, price: 21790, src: "real listing, La Centrale" },
+    { model: "Volkswagen ID.3", ser: "other", trim: null, tier: "base", year: 2022, mileage: 86804, price: 23480, src: "real listing" },
+    { model: "BYD Atto 3", ser: "other", trim: null, tier: "base", year: 2023, mileage: 29411, price: 27480, src: "real listing, L'argus Occasion" },
+    { model: "Renault Zoe", ser: "other", trim: "R110 (phase 2)", tier: "base", year: 2023, mileage: 46879, price: 17990, src: "real listing, LeBonCoin" },
+    { model: "Fiat 500e", ser: "other", trim: null, tier: "base", year: 2023, mileage: 20000, price: 16170, src: "range midpoint (5-35k km × €13,990-18,350), not a real listing" }
   ];
 
   var svgNS = "http://www.w3.org/2000/svg";
@@ -308,7 +315,7 @@
   var W = 900, H = 560, ML = 66, MR = 24, MT = 20, MB = 56;
   var plotW = W - ML - MR, plotH = H - MT - MB;
 
-  var xMin = 0, xMax = 160000, yMin = 10000, yMax = 50000;
+  var xMin = 0, xMax = 160000, yMin = 5000, yMax = 50000;
   function xPix(m) { return ML + (m - xMin) / (xMax - xMin) * plotW; }
   function yPix(p) { return MT + (yMax - p) / (yMax - yMin) * plotH; }
 
@@ -329,7 +336,7 @@
     t.textContent = (v / 1000) + "k";
     svg.appendChild(t);
   });
-  var yTicks = [10000, 20000, 30000, 40000, 50000];
+  var yTicks = [5000, 10000, 20000, 30000, 40000, 50000];
   yTicks.forEach(function (v) {
     var y = yPix(v);
     svg.appendChild(el("line", { class: "gridline", x1: ML, x2: ML + plotW, y1: y, y2: y }));
