@@ -27,6 +27,7 @@ Working task list for this piece — the [index.md](index.md) article is the wri
 - [x] Rewrote index.md as a proper article: verdict table up top, price-vs-range chart reframed as the computed 8-car efficient frontier (drawn as a connected line, replacing the old unlabelled scatter), tight comparison tables for both tracks, methodology moved down under "The research"
 - [x] Added the first real secondhand BYD Dolphin Surf listing (SIPA Mérignac, 2026-08-12, €19,990, 100km, "Occasion récente") to 04 and to the used price-vs-mileage Pareto chart — priced at new, not below it, which corrects the earlier "too new for a secondhand market" note; it becomes the new frontier anchor point at the low-mileage end
 - [x] Filled the [06](06-secondhand-price-vs-mileage.html) data gap — real listings sourced for Dacia Spring, Nissan Leaf, Peugeot e-208, VW ID.3, BYD Atto 3, Renault Zoe, plus a range-midpoint for Fiat 500e. Result: the price-vs-mileage frontier collapses to just Dolphin Surf + Dacia Spring, exposing why range/mileage alone is the wrong frontier axis (see top priority above)
+- [x] Added reader-facing caveats before both frontier charts (03, 06, and index.md) flagging that Dacia Spring anchors both frontiers on price/range or price/mileage alone despite its 1★ safety rating — plus a new appendix, [12-weighted-quality-score-notes.md](12-weighted-quality-score-notes.md), mapping candidate dimensions and open questions for a real weighted score. Design notes only — the top-priority item above is still not solved.
 
 ## Still to do
 
@@ -55,5 +56,6 @@ Working task list for this piece — the [index.md](index.md) article is the wri
 - `09-ev-vs-ice-total-cost.md` — is EV actually better value than petrol, purchase price + depreciation + running costs
 - `10-budget-ev-shortlist-comparison.md` — full table: new/secondhand, price, incentive-adjusted price, safety, range, running costs
 - `11-budget-shortlist-cost-bars.html` — stacked bar chart, base price + 3yr maintenance per car
+- `12-weighted-quality-score-notes.md` — appendix: design notes for a real weighted quality score, not yet built
 - `assets/leboncoin-model-y-listing.png` — the listing screenshot used in 07
 - `data-ev-models.json` / `data-used-ev-price-bands.json` — datasets behind the charts

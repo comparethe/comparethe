@@ -23,6 +23,8 @@ Two names are on the data but not yet ranked: **VW ID.3** (new €34,990-48,100 
 
 Twenty-four new-car trims, city car to premium SUV, plotted on starting price against WLTP range. Only 8 are efficient — for every other car here, something cheaper in this survey also goes farther. Those 8 (marked ★, joined by the dashed line below) are: **Dacia Spring, Leapmotor T03, Peugeot e-208, Renault Mégane E-Tech, Hyundai Ioniq 5, Tesla Model 3, Peugeot E-3008**, and now **Volkswagen ID.7 Pro S** at the top end.
 
+**A necessary caveat before reading too much into that ★ list: the Dacia Spring anchors this frontier's cheap end on price and range alone — and it's a 1-star Euro NCAP car, ruled out for family use in Track A below.** The used-market version of this same chart ([06](06-secondhand-price-vs-mileage.html)) makes the problem starker: once real secondhand listings are added, its frontier collapses to just two points, Dolphin Surf and Dacia Spring, with the Spring dominating on price at every mileage out to 160,000km. A frontier that can only see price and one other axis will keep recommending the Spring regardless of safety, charging speed, or anything else that actually separates these cars. Full notes on what a proper weighted score would need: [12 — building a real quality score](12-weighted-quality-score-notes.md).
+
 <div style="margin: 20px 0;">
   <iframe src="03-price-range-sketch.html" style="width:100%; height:660px; border:1px solid #dde1e4; border-radius:10px;" loading="lazy" title="Efficient frontier: price vs. WLTP range, new EVs sold in France"></iframe>
 </div>
@@ -71,7 +73,8 @@ Everything behind the verdict above, for anyone who wants the sourcing:
 - **[05 — Secondhand price bands](05-secondhand-price-bands.html)** and **[06 — price vs. mileage](06-secondhand-price-vs-mileage.html):** why trim matters more than nameplate for Tesla specifically, and a first (aggregator-sourced, not live-listing) Pareto cut on used prices.
 - **[08 — Why buying a used car is hard](08-why-buying-a-used-car-is-hard.md):** stub piece on the general problem, growing out of the listing case study above.
 - **[09 — EV vs. ICE total cost](09-ev-vs-ice-total-cost.md):** is an EV actually better value than a cheap petrol car once purchase price and depreciation are counted, not just running costs? Yes, on both tracks, even before incentives, for anyone near French average annual mileage.
+- **[12 — Appendix: notes toward a real weighted quality score](12-weighted-quality-score-notes.md):** why the current range/mileage-only frontiers can't be trusted as final, candidate dimensions (safety, charging speed, degradation risk, reliability), and the open methodological questions — not solved yet, just mapped.
 
 ## What's next
 
-The weighted frontier (charging speed, safety, boot space, brand reliability — not just range), a deeper pass on individual used listings, VW ID.3/ID.7 properly weighed against the current picks, and a final purchase decision. Tracked in [plan.md](plan.md).
+The weighted frontier (charging speed, safety, boot space, brand reliability — not just range; see the [design notes](12-weighted-quality-score-notes.md)), a deeper pass on individual used listings, VW ID.3/ID.7 properly weighed against the current picks, and a final purchase decision. Tracked in [plan.md](plan.md).
