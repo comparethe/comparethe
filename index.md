@@ -23,6 +23,7 @@ Examples
 - What are the best [[Website builders]]?
 - What are the best [[AI Website Builders]]?
 - [[Buy a Car|What car should I buy?]] — currently: [[Buying an Electric Car in France (2026)|which electric car should I buy in France?]]
+- [[E-book Readers|What's the best iOS e-book reader with highlight/annotation export to Markdown or Obsidian?]]
 
 ## Motivation
 

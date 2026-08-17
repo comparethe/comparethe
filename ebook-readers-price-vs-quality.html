@@ -1,0 +1,405 @@
+<title>The Efficient Frontier — iOS E-book Readers</title>
+<style>
+  .viz-root {
+    --page:          #f4f5f3;
+    --surface:       #ffffff;
+    --ink:           #14171a;
+    --ink-secondary: #4d5560;
+    --muted:         #8b9099;
+    --rule:          #dde1e4;
+    --rule-strong:   #c7ccd1;
+    --accent:        #2a78d6;
+    --s-native:      #1baf7a;
+    --s-builtin:     #2a78d6;
+    --s-workaround:  #eb6834;
+    --tag-bg:        #eef2f6;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .viz-root {
+      --page:          #0f1113;
+      --surface:       #17191c;
+      --ink:           #f2f3f1;
+      --ink-secondary: #b9bec4;
+      --muted:         #82878e;
+      --rule:          #2a2d31;
+      --rule-strong:   #383c41;
+      --accent:        #3987e5;
+      --s-native:      #1fbf82;
+      --s-builtin:     #3987e5;
+      --s-workaround:  #d95926;
+      --tag-bg:        #1d2b3a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] .viz-root {
+    --page:          #0f1113;
+    --surface:       #17191c;
+    --ink:           #f2f3f1;
+    --ink-secondary: #b9bec4;
+    --muted:         #82878e;
+    --rule:          #2a2d31;
+    --rule-strong:   #383c41;
+    --accent:        #3987e5;
+    --s-native:      #1fbf82;
+    --s-builtin:     #3987e5;
+    --s-workaround:  #d95926;
+    --tag-bg:        #1d2b3a;
+    color-scheme: dark;
+  }
+
+  .viz-root {
+    background: var(--page);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: 16px;
+    color: var(--ink-secondary);
+    max-width: 62ch;
+    margin: 0 0 6px;
+  }
+
+  .card {
+    margin-top: 32px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 20px 16px;
+  }
+  .card h2 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-secondary);
+    margin: 0 0 4px;
+  }
+  .card .sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+
+  .chart-scroll { overflow-x: auto; }
+  svg.chart { width: 100%; min-width: 640px; height: auto; display: block; overflow: visible; }
+  .axis-label { fill: var(--muted); font-size: 11px; }
+  .axis-title { fill: var(--ink-secondary); font-size: 12px; font-weight: 600; }
+  .gridline { stroke: var(--rule); stroke-width: 1; }
+  .baseline { stroke: var(--rule-strong); stroke-width: 1; }
+  .pt { cursor: pointer; }
+  .pt circle { stroke-width: 2; transition: r 0.12s ease; }
+  .pt:hover circle, .pt:focus circle { r: 9; }
+  .pt:focus { outline: none; }
+  .pt .ptlabel {
+    font-size: 11px;
+    font-weight: 600;
+    fill: var(--ink-secondary);
+    pointer-events: none;
+  }
+
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--page);
+    font-size: 12.5px;
+    line-height: 1.45;
+    padding: 8px 11px;
+    border-radius: 6px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 12px));
+    transition: opacity 0.1s ease;
+    white-space: nowrap;
+    z-index: 5;
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip .t-name { font-weight: 700; margin-bottom: 2px; }
+  .tooltip .t-flag { color: var(--muted); font-size: 11px; }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 18px 2px 4px;
+    font-size: 12.5px;
+    color: var(--ink-secondary);
+  }
+  .legend .grp { display: flex; align-items: center; gap: 14px; }
+  .legend .item { display: flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; border: 2px solid; box-sizing: border-box; }
+  .divider-v { width: 1px; align-self: stretch; background: var(--rule); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", monospace;
+    font-size: 12.5px;
+    margin-top: 8px;
+  }
+  th {
+    text-align: left;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--rule);
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  td.model { font-family: ui-sans-serif, system-ui, sans-serif; font-weight: 600; }
+  td.num { text-align: right; }
+  .seg-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 7px; }
+  .table-scroll { overflow-x: auto; }
+
+  footer {
+    margin-top: 28px;
+    font-size: 12.5px;
+    color: var(--muted);
+    max-width: 68ch;
+  }
+  footer p { margin: 6px 0; }
+  footer a { color: var(--accent); }
+</style>
+
+<div class="viz-root">
+  <div class="wrap">
+    <p class="eyebrow">E-book Readers (iOS) — working sketch</p>
+    <h1>The efficient frontier: price vs. quality, 6 iOS e-book readers</h1>
+    <p class="lede">★ marks the apps not beaten on both price and quality by anything cheaper. Quality blends reading UX, annotation UX, and Markdown/Obsidian export power — see <a href="E-book%20Readers.md">E-book Readers.md</a> for the full methodology and per-app notes.</p>
+
+    <div class="card">
+      <h2>Price (per year) vs. quality score</h2>
+      <p class="sub">$0–$120/yr · quality 0–10 · ★ marks the 3 apps on the efficient frontier, joined by the dashed line</p>
+      <div class="chart-scroll">
+        <svg class="chart" id="chart" viewBox="0 0 900 540" role="img" aria-label="Scatter plot of annual price against a 0-10 quality score for 6 iOS e-book reader apps, coloured by how they get highlights into Markdown/Obsidian, with the efficient frontier highlighted and connected by a dashed line"></svg>
+      </div>
+      <div class="legend">
+        <div class="grp">
+          <span class="item"><span class="swatch" style="border-color:var(--s-native)"></span>Native/automatic sync</span>
+          <span class="item"><span class="swatch" style="border-color:var(--s-builtin)"></span>Built-in one-tap export</span>
+          <span class="item"><span class="swatch" style="border-color:var(--s-workaround)"></span>Free third-party workaround</span>
+        </div>
+        <div class="divider-v"></div>
+        <div class="grp">
+          <span class="item">★ = on the efficient frontier (dashed line)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Full data</h2>
+      <p class="sub">Same 6 apps, sorted by price</p>
+      <div class="table-scroll">
+        <table id="table"></table>
+      </div>
+    </div>
+
+    <footer>
+      <p>Full write-up, scoring methodology, and per-app assessment: <a href="E-book%20Readers.md">E-book Readers.md</a>.</p>
+    </footer>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+(function () {
+  var data = [
+    { name: "Apple Books",      price: 0,   quality: 7.6, seg: "workaround", note: "Free · built in · export needs a Mac + free script", dx: 10, dy: -10 },
+    { name: "KOReader",         price: 0,   quality: 7.5, seg: "native",     note: "Free, open source · sideload only · community Obsidian plugins", dx: 10, dy: 16 },
+    { name: "Kindle app",       price: 0,   quality: 6.7, seg: "workaround", note: "Free app (books cost extra) · export via free 3rd-party tools", dx: 10, dy: -10 },
+    { name: "BookFusion",       price: 25,  quality: 7.1, seg: "builtin",    note: "Free tier (10 books) or ~$25/yr · built-in Markdown/CSV export", dx: 10, dy: -10 },
+    { name: "justRead.app",     price: 30,  quality: 8.4, seg: "builtin",    note: "$29.99/yr or $79.99 lifetime · one-tap Markdown + Readwise export", dx: 10, dy: -10 },
+    { name: "Readwise Reader",  price: 120, quality: 8.8, seg: "native",     note: "$9.99/mo billed annually · native automatic Obsidian sync", dx: -10, dy: -10, anchorEnd: true }
+  ];
+
+  // Efficient frontier: a reader only qualifies if no cheaper reader in this dataset also scores higher on quality.
+  (function markFrontier() {
+    var byPrice = data.slice().sort(function (a, b) { return a.price - b.price; });
+    var maxQSoFar = -Infinity;
+    byPrice.forEach(function (d) {
+      if (d.quality > maxQSoFar) {
+        d.frontier = true;
+        maxQSoFar = d.quality;
+      }
+    });
+  })();
+
+  var segMeta = {
+    native:     { label: "Native/automatic sync",   varName: "--s-native" },
+    builtin:    { label: "Built-in one-tap export",  varName: "--s-builtin" },
+    workaround: { label: "Free third-party workaround", varName: "--s-workaround" }
+  };
+
+  var svgNS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("chart");
+  var root = document.querySelector(".viz-root");
+  var cs = getComputedStyle(root);
+
+  var W = 900, H = 540, ML = 50, MR = 40, MT = 20, MB = 56;
+  var plotW = W - ML - MR, plotH = H - MT - MB;
+
+  var xMin = -6, xMax = 130, yMin = 6, yMax = 9.5;
+  function xPix(p) { return ML + (p - xMin) / (xMax - xMin) * plotW; }
+  function yPix(q) { return MT + (yMax - q) / (yMax - yMin) * plotH; }
+
+  function el(tag, attrs) {
+    var e = document.createElementNS(svgNS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  var xTicks = [0, 25, 50, 75, 100, 125];
+  xTicks.forEach(function (v) {
+    var x = xPix(v);
+    svg.appendChild(el("line", { class: "gridline", x1: x, x2: x, y1: MT, y2: MT + plotH }));
+    var t = el("text", { class: "axis-label", x: x, y: MT + plotH + 20, "text-anchor": "middle" });
+    t.textContent = "$" + v;
+    svg.appendChild(t);
+  });
+  var yTicks = [6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5];
+  yTicks.forEach(function (v) {
+    var y = yPix(v);
+    svg.appendChild(el("line", { class: "gridline", x1: ML, x2: ML + plotW, y1: y, y2: y }));
+    var t = el("text", { class: "axis-label", x: ML - 10, y: y + 4, "text-anchor": "end" });
+    t.textContent = v;
+    svg.appendChild(t);
+  });
+  svg.appendChild(el("line", { class: "baseline", x1: ML, x2: ML + plotW, y1: MT + plotH, y2: MT + plotH }));
+  svg.appendChild(el("line", { class: "baseline", x1: ML, x2: ML, y1: MT, y2: MT + plotH }));
+
+  var xTitle = el("text", { class: "axis-title", x: ML + plotW / 2, y: H - 8, "text-anchor": "middle" });
+  xTitle.textContent = "Price ($ / year)";
+  svg.appendChild(xTitle);
+
+  var yTitle = el("text", { class: "axis-title", x: 0, y: 0, "text-anchor": "middle", transform: "translate(16," + (MT + plotH / 2) + ") rotate(-90)" });
+  yTitle.textContent = "Quality score (0-10)";
+  svg.appendChild(yTitle);
+
+  var tooltip = document.getElementById("tooltip");
+  var chartCard = svg.closest(".card");
+  chartCard.style.position = "relative";
+
+  var frontierPts = data.filter(function (d) { return d.frontier; })
+    .slice().sort(function (a, b) { return a.price - b.price; });
+  var pathD = frontierPts.map(function (d, i) {
+    return (i === 0 ? "M" : "L") + xPix(d.price) + "," + yPix(d.quality);
+  }).join(" ");
+  svg.appendChild(el("path", {
+    d: pathD, fill: "none",
+    stroke: cs.getPropertyValue("--accent").trim(),
+    "stroke-width": 2, "stroke-dasharray": "5 4", opacity: 0.55
+  }));
+
+  data.forEach(function (d) {
+    var color = cs.getPropertyValue(segMeta[d.seg].varName).trim();
+    var g = el("g", { class: "pt", tabindex: "0" });
+    var circle = el("circle", {
+      cx: xPix(d.price), cy: yPix(d.quality), r: d.frontier ? 8 : 6.5,
+      fill: color,
+      stroke: color,
+      "stroke-width": d.frontier ? 3 : 2
+    });
+    g.appendChild(circle);
+
+    var label = el("text", {
+      class: "ptlabel",
+      x: xPix(d.price) + d.dx,
+      y: yPix(d.quality) + d.dy,
+      "text-anchor": d.anchorEnd ? "end" : "start"
+    });
+    label.textContent = d.name + (d.frontier ? " ★" : "");
+    g.appendChild(label);
+
+    function show() {
+      tooltip.innerHTML = '<div class="t-name">' + d.name + (d.frontier ? ' ★ on the frontier' : '') + '</div>' +
+        '$' + d.price + '/yr &middot; quality ' + d.quality.toFixed(1) + '/10' +
+        '<div class="t-flag">' + d.note + '</div>';
+      var r = circle.getBoundingClientRect();
+      var cardR = chartCard.getBoundingClientRect();
+      tooltip.style.left = (r.left - cardR.left + r.width / 2) + "px";
+      tooltip.style.top = (r.top - cardR.top) + "px";
+      tooltip.classList.add("show");
+    }
+    function hide() { tooltip.classList.remove("show"); }
+
+    g.addEventListener("mouseenter", show);
+    g.addEventListener("mouseleave", hide);
+    g.addEventListener("focus", show);
+    g.addEventListener("blur", hide);
+
+    svg.appendChild(g);
+  });
+
+  chartCard.appendChild(tooltip);
+
+  var sorted = data.slice().sort(function (a, b) { return a.price - b.price; });
+  var table = document.getElementById("table");
+  var thead = el("thead", {});
+  var headRow = document.createElement("tr");
+  ["App", "Export method", "Price/yr", "Quality"].forEach(function (h) {
+    var th = document.createElement("th");
+    th.textContent = h;
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+  var tbody = document.createElement("tbody");
+  sorted.forEach(function (d) {
+    var color = cs.getPropertyValue(segMeta[d.seg].varName).trim();
+    var tr = document.createElement("tr");
+
+    var tdModel = document.createElement("td");
+    tdModel.className = "model";
+    tdModel.textContent = d.name + (d.frontier ? " ★" : "");
+    tr.appendChild(tdModel);
+
+    var tdSeg = document.createElement("td");
+    tdSeg.innerHTML = '<span class="seg-dot" style="background:' + color + '"></span>' + segMeta[d.seg].label;
+    tr.appendChild(tdSeg);
+
+    var tdPrice = document.createElement("td");
+    tdPrice.className = "num";
+    tdPrice.textContent = "$" + d.price;
+    tr.appendChild(tdPrice);
+
+    var tdQ = document.createElement("td");
+    tdQ.className = "num";
+    tdQ.textContent = d.quality.toFixed(1);
+    tr.appendChild(tdQ);
+
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+})();
+</script>
