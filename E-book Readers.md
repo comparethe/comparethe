@@ -10,30 +10,34 @@ Readwise Reader (what prompted this — "Weedwise" 😄) does the export side be
 
 ## TL;DR
 
-- **Free and zero fuss:** Apple Books. Best reading experience of anything here, and if you have a Mac, highlights sync via iCloud and a free open-source script/Obsidian plugin can pull them into Markdown periodically. No native path if you're iPhone/iPad-only.
-- **The interesting cheap find:** [BookShelves](https://getbookshelves.app) — $6.99 one-time to unlock (free tier caps at 10 books). Built-in Markdown/JSON/CSV highlight export, iCloud sync across iPhone/iPad/Mac. Very new (10 App Store ratings as of this research) so treat as promising, not proven — but on paper it's the best $/quality ratio of anything on this page.
-- **Best value if you want a subscription with real polish:** [justRead.app](https://justread.app) — $29.99/yr (or $79.99 once, lifetime). One-tap Markdown export, one-tap Readwise sync, actively developed, reads like a proper successor to the now-discontinued Marvin.
-- **Best export power, cross-platform, worth it if you read a lot of articles too:** Readwise Reader, ~$120/yr. Only app here with fully automatic, native two-way Obsidian sync — everything else is an export button or a workaround.
-- **Free, most powerful, DIY:** KOReader — but it's not in the App Store, so you're sideloading it (AltStore or Xcode), which is real friction on iOS specifically.
+- **Probably the best all-round free pick:** [Readest](https://github.com/readest/readest) — free, open source (AGPLv3, 23.7k★ on GitHub), real iOS App Store app (no sideloading). Native Markdown export plus a free community Obsidian plugin that syncs straight from its local library files. Being open source is a real advantage over everything else on this page except KOReader: there's no company to shut down and no solo developer to walk away, which is exactly what killed Marvin and is quietly threatening KyBook 3.
+- **Free and the nicest to actually read:** Apple Books. If pure reading feel is what matters most to you, this still wins — see the honesty note below on why it drops off the "efficient frontier" once Readest is in the mix. If you have a Mac, highlights sync via iCloud and a free open-source script/Obsidian plugin can pull them into Markdown periodically; no native path if you're iPhone/iPad-only.
+- **The interesting cheap find:** [BookShelves](https://getbookshelves.app) — $6.99 one-time to unlock (free tier caps at 10 books). Built-in Markdown/JSON/CSV highlight export, iCloud sync across iPhone/iPad/Mac. Very new (10 App Store ratings) so treat as promising, not proven.
+- **Best value if you want a subscription with real polish:** [justRead.app](https://justread.app) — $29.99/yr (or $79.99 once, lifetime). One-tap Markdown export, one-tap Readwise sync, actively developed, reads like a proper successor to the now-discontinued Marvin. Now only a marginal quality gain over free Readest — see the frontier below.
+- **Best export power, cross-platform, worth it if you read a lot of articles too:** Readwise Reader, ~$120/yr. Only app here with fully automatic, *native* (first-party) two-way Obsidian sync — Readest's is a great community plugin, everything else is a manual export button or a workaround.
+- **Free, most powerful, DIY, but sideloaded:** KOReader — not in the App Store, so real friction to install (AltStore or Xcode) that Readest doesn't have.
 - **Power-user tool, use with caution:** KyBook 3 — $4.99 one-time, native Markdown export, CSS-level customization — but hasn't been meaningfully updated since 2019. Same abandonment risk that killed Marvin.
 
 ## The efficient frontier: price vs. quality
 
 <div style="margin: 20px 0;">
-  <iframe src="ebook-readers-price-vs-quality.html" style="width:100%; height:660px; border:1px solid #dde1e4; border-radius:10px;" loading="lazy" title="Efficient frontier: price vs. quality, 8 iOS e-book readers"></iframe>
+  <iframe src="ebook-readers-price-vs-quality.html" style="width:100%; height:660px; border:1px solid #dde1e4; border-radius:10px;" loading="lazy" title="Efficient frontier: price vs. quality, 9 iOS e-book readers"></iframe>
 </div>
 
 [Open the interactive chart →](ebook-readers-price-vs-quality.html)
 
-Three apps sit on the frontier: **Apple Books** (free, 7.6), **justRead.app** ($30/yr, 8.4), and **Readwise Reader** ($120/yr, 8.8). BookFusion, Kindle, Google Play Books, Neat Reader, and KOReader are all dominated in this scoring — something cheaper (or free) here scores as high or higher. That doesn't make them bad; see the notes below for why you might still pick KOReader (fully free, most hackable) or Kindle (if your library is already there) despite not being "efficient" on this particular chart.
+Three apps sit on the frontier: **Readest** (free, 8.2), **justRead.app** ($30/yr, 8.4), and **Readwise Reader** ($120/yr, 8.8). Apple Books, BookFusion, Kindle, Google Play Books, Neat Reader, and KOReader are all dominated in this scoring — something cheaper (or free) here scores as high or higher.
 
-Two apps aren't on the chart at all: **BookShelves** ($6.99 one-time) and **KyBook 3** ($4.99 one-time). A one-time purchase isn't directly comparable to a $/year subscription axis, so they're broken out separately below — but on quality alone, BookShelves' 8.2 for a single $6.99 payment is arguably the standout find of this whole page.
+**An honesty note on Apple Books dropping off the frontier:** it's dominated here on paper only because Readest matches its price ($0) and scores higher on the *composite*. Apple Books almost certainly still has the nicer reading feel — the composite gives export weight 30%, and Readest's export is simply much stronger (native Markdown + Obsidian plugin vs. Apple Books needing a Mac and a script). Weight export lower — say 10% — and Apple Books likely retakes the top free spot. The chart is only as right as the weighting choice in [methodology](#methodology); read the per-app notes, not just the star, before picking.
+
+Two apps aren't on the chart at all: **BookShelves** ($6.99 one-time) and **KyBook 3** ($4.99 one-time). A one-time purchase isn't directly comparable to a $/year subscription axis, so they're broken out separately below.
 
 ## Comparison table
 
 | App | Price | Reading UX | Markdown / Obsidian export | Quality score |
 |---|---|---|---|---|
 | **Apple Books** | Free | ★★★★★ Best-in-class native polish, page-turn, huge format support | Manual — no iOS export; needs a Mac + free script/plugin reading the local highlights database | **7.6** |
+| **Readest** | Free, open source (optional $4.99–9.99/mo for Readest's own hosted cloud sync — bring-your-own iCloud/WebDAV/etc. is free) | ★★★★☆ Modern, accessible (VoiceOver/TalkBack/NVDA), CarPlay, up to 4 books split-view on iPad; 4.5★/163 ratings | ★★★★★ Native Markdown export (filterable by color/style) + free community Obsidian plugin reading its local JSON library | **8.2** |
 | **Readwise Reader** | $9.99/mo billed annually (~$120/yr), $12.99/mo month-to-month | ★★★★☆ Clean, cross-platform; built for articles/newsletters first, EPUBs second | ★★★★★ Native, automatic, two-way Obsidian sync + Markdown/CSV export | **8.8** |
 | **justRead.app** | $29.99/yr, or $79.99 one-time (lifetime) | ★★★★☆ Modern, 200+ fonts, per-book layout memory, actively developed | ★★★★☆ One-tap Markdown export + one-tap Readwise sync (no native Obsidian plugin yet) | **8.4** |
 | **BookFusion** | Free (10 books), ~$25/yr for full sync/storage | ★★★☆☆ Functional, cross-platform sync, less polished | ★★★★☆ Built-in CSV / Markdown / HTML / PDF export | **7.1** |
@@ -67,6 +71,14 @@ Price on the chart is annualized cost — one-time/lifetime options (justRead's 
 ### Apple Books
 
 Free, built into iOS. Nothing beats it on raw reading feel — this is the bar everything else gets measured against. The catch is export: there's no built-in way to get highlights out as Markdown on iPhone/iPad alone. If you also have a Mac, Apple Books syncs highlights there via iCloud, and free tools exist to pull them into Obsidian: the [Apple Books Highlights](https://community.obsidian.md/plugins/apple-books-highlights) and [ibook](https://www.obsidianstats.com/plugins/ibook) Obsidian plugins, or a [standalone Python script](https://gist.github.com/eristoddle/5a8e7dd0597d09d00aa5de066788c303). No good answer for iOS-only users with no Mac.
+
+### Readest
+
+Free and open source under the AGPLv3 license — 23.7k★ on [GitHub](https://github.com/readest/readest), described by its own maintainers as "a modern rewrite of Foliate" (the well-regarded Linux EPUB reader), built on Next.js and Tauri. Real iOS/iPadOS App Store app plus macOS, Windows, Linux, Android, and web versions — one codebase, no sideloading. Reads EPUB, PDF, MOBI, KF8, FB2, CBZ, TXT, and Markdown; supports highlights, bookmarks, and structured notes; has genuinely deep accessibility support (VoiceOver, TalkBack, NVDA, Orca) plus a reading ruler and paragraph-by-paragraph mode. It can also sync reading progress, notes, and bookmarks directly with **KOReader devices**, which is a rare bridge between the two ecosystems.
+
+Export is the standout: highlights/notes export **natively to Markdown**, filterable by color or style, and there's a free, independent [Obsidian plugin](https://community.obsidian.md/plugins/readest-highlights) that reads Readest's local JSON library and renders highlights straight into your vault — one note per book or appended to an open note, with re-syncing that preserves your own edits. That's the same "automated, not manual" tier as KOReader's plugin ecosystem, without KOReader's sideloading friction.
+
+The core app and local Markdown export are entirely free; Readest also sells optional cloud-sync tiers ($4.99–9.99/mo, or storage add-ons) if you want its hosted sync instead of pointing it at your own iCloud/Google Drive/OneDrive/WebDAV/S3, which works for free. Being open source under a real copyleft license is the biggest differentiator versus everything else on this page except KOReader — nobody can quietly discontinue it the way Marvin's solo developer did, and even if the current maintainers stopped, the code stays forkable. Caveat: it's a cross-platform (Tauri/webview) app rather than hand-tuned native Swift, so it likely won't feel quite as buttery as Apple Books or justRead's SwiftUI animations — reflected in its slightly lower reading-UX sub-score here.
 
 ### Readwise Reader
 
@@ -122,13 +134,14 @@ Worth a mention if accessibility/text-to-speech is the priority rather than Mark
 
 ## What's not resolved
 
-- None of this is hands-on, day-to-day testing — it's built from docs, App Store listings, and reviews. A real usage pass (a week each with Apple Books, justRead, and Readwise Reader) would sharpen the UX scores a lot.
+- None of this is hands-on, day-to-day testing — it's built from docs, App Store listings, and reviews. A real usage pass (a week each with Apple Books, Readest, justRead, and Readwise Reader) would sharpen the UX scores a lot — Readest's reading-UX sub-score in particular is more of an estimate than the SwiftUI-native apps, since cross-platform frameworks are harder to judge from docs alone.
 - The export-quality weighting (30%) is a judgment call — someone who barely annotates might want it at 10%, someone building a serious Obsidian-based reading system might want it at 50%.
 - Kobo's app and hardware have a whole separate highlight-export ecosystem ([kobo-highlights-exporter](https://github.com/unripeapple/kobo-highlights-exporter), Obsidian's Kobo importer plugin) that wasn't scored here since Kobo's iOS app is thinner than its e-ink devices — worth a follow-up if Kobo hardware is in play, not just the iOS app.
 - PDF-heavy academic workflows (GoodReader, LiquidText, Zotero-adjacent tools) are a different comparison — this page is about ebook reading (EPUB-first), not PDF annotation specifically.
 
 ## Links
 
+- [Readest (GitHub)](https://github.com/readest/readest) · [App Store](https://apps.apple.com/us/app/readest-ebook-reader/id6738622779) · [Obsidian plugin](https://community.obsidian.md/plugins/readest-highlights) · [KOReader sync wiki](https://github.com/readest/readest/wiki)
 - [Readwise Reader](https://readwise.io/read) · [Reader export docs](https://docs.readwise.io/reader/docs/faqs/exporting) · [Obsidian export](https://readwise.io/changelog/obsidian-export)
 - [justRead.app](https://justread.app) · [justRead vs. Apple Books](https://medium.com/macoclock/justread-app-vs-apple-books-ff9937f14011)
 - [BookFusion](https://www.bookfusion.com) · [pricing](https://www.bookfusion.com/reading/pricing)
