@@ -34,6 +34,33 @@ Tools that count visitors and pageviews on your website, compared for a small te
 
 **Deciding factor: no banner and easier agent access, against $0.** If price comes first and you will add a banner, choose GA4. If you want every visitor counted, no banner and one-key agent access, choose Umami.
 
+## Bake-off: Umami vs Plausible
+
+Both are privacy-first, cookieless and open source, and they look alike.
+
+| | Umami | Plausible |
+|---|---|---|
+| **Hosted price, many sites** | $20 to 20 sites; $200 unlimited | $19 for up to 10 sites at the lowest tier; above 10 sites needs an Enterprise quote |
+| **API** | On every paid plan; reads stats and creates sites | Stats API on Business only; site creation needs a separate Sites API key |
+| **MCP server** | Official | Community only |
+| **Self-host** | Node + Postgres, ~1 GB RAM, ~$10/mo; MIT | Postgres + ClickHouse, 2 GB+ RAM; AGPL; releases twice a year; no sites API |
+| **Flowershow** | Native | Script tag |
+
+**Deciding factor: agent access and cost at many sites.** Plausible's dashboard is a little more polished. But its API sits behind the Business plan, more than 10 sites needs a quote, and self-hosting it is heavier.
+
+## Bake-off: Umami vs PostHog
+
+| | Umami | PostHog |
+|---|---|---|
+| **Price** | ~$10 self-hosted, $20 Cloud | $0 to 1M events (pageviews count as events) |
+| **Built for** | Traffic: pageviews, referrers, UTMs, simple events and funnels | Product analytics: funnels, feature flags, session replay, experiments |
+| **Script and cookies** | Tiny script, no cookies | Heavier SDK, cookies by default (cookieless option) |
+| **Many sites** | Unlimited self-hosted; 20 on Cloud Pro | 1 project free; more need a card |
+| **MCP server** | Official, read-only | Official, remote, SQL, read/write |
+| **Flowershow** | Native | Script tag |
+
+**Deciding factor: what you need to learn.** For "is anyone coming, and from where?" across many content sites, Umami is lighter and needs no banner. For how people use an app, PostHog is far deeper and free to start. Many teams run both: Umami on the marketing sites, PostHog in the app.
+
 ## All options
 
 ✅ good · 🟡 OK · ❌ poor · ❓ not confirmed
