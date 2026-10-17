@@ -1,81 +1,53 @@
 # Web Analytics
 
-Tools that count visitors and pageviews on your website.
-
-## What we were looking for
-
-One analytics tool for a portfolio of about 25 small sites, launched fast with AI. One site gets around 120k visitors a month; most get a few hundred. Roughly 150-400k pageviews a month in total.
-
-Criteria:
-
-- **Cost at that scale**, and what the free tier really allows
-- **API usable by AI agents**: create a site and pull numbers without a human logging in
-- **Multi-site and multi-org**: many sites, several teams
-- **Cookie-consent burden**: does it need a banner?
-- **[Flowershow](https://flowershow.app) support**: native, or just a script tag
-- **Open source and self-hostable**
-- **Effort to add a site**
-- **Data ownership**
+Tools that count visitors and pageviews on your website, compared for a small team that launches many small sites with AI agents.
 
 ## Our pick
 
-**Self-hosted [Umami](https://umami.is) on [Railway](https://railway.com), one instance for all sites, about $10 a month (our estimate, range $8-15).** Keep Google Analytics 4 where it is already installed, add it nowhere new.
+**[Umami](https://umami.is) Cloud Pro, $20 a month.** It is hosted, so there is nothing to run. One API key lets an agent read stats and create sites, it has an official MCP server, it sets no cookies (so no consent banner), and [Flowershow](https://flowershow.app) supports it natively.
 
-- Flowershow supports Umami natively (site ID plus a custom script URL for self-hosted).
-- Open source (MIT), sets no cookies, so no consent banner.
-- The self-hosted API takes API keys that don't expire. One key lets an agent create a site at launch and read every site's stats, with no per-site access grants.
-- No cap on sites. Umami Cloud's free plan allows 1 site with no API, and Pro ($20/mo) has the API but caps at 20 sites. At 25 sites, self-hosting is cheaper and uncapped.
-- The cost is running it ourselves: uptime and backups are ours.
-- **Fallback:** Umami Cloud Pro. Same tracker and API, so moving means changing the script URL and key.
-- **GA4 stays** on existing sites because it is free and holds history. Umami has nothing before its tag goes on.
-- **Cloudflare Web Analytics** is a handy zero-install extra on Cloudflare-proxied sites, but it samples and keeps detailed data for only 7 days, so we don't use it as the standard.
+- **Free alternative:** Google Analytics 4 costs nothing, but it needs a cookie banner for EU and UK visitors, Google Cloud set-up for each account, and its MCP server is experimental. It wins on price only.
+- **More than 20 sites:** self-host Umami (about $10 a month on Railway, plus your own upgrades and backups), since Pro caps at 20 sites.
+
+## What we compared on
+
+Scale assumed: about 15 sites, 150k pageviews a month, most of them on one site.
+
+1. **Price** per month at that scale.
+2. **Hassle**: setup, upkeep (upgrades, backups, uptime), and the steps to add a site. If you have little time, an hour of upkeep a quarter costs more than a $10 a month saving.
+3. **Agent ease** (the key criterion): how many steps to give an AI agent access, whether there is a long-lived key, whether the API can both read stats and create sites, and whether there is an official MCP server.
+4. Secondary: is a **cookie banner** needed, and is there **native support** in your site builder (here, Flowershow supports GA4 and Umami)?
+
+## Comparison
+
+✅ good · 🟡 OK · ❌ poor · ❓ not confirmed
+
+| Tool | Price / month | Hassle | Agent ease (key) | Cookie banner | Flowershow |
+|---|---|---|---|---|---|
+| **Umami Cloud Pro** | 🟡 $20 (1M events, 20 sites) | ✅ Nothing to run; new site = 1 API call | ✅ 1 key; read + create API; official remote MCP | ✅ None | ✅ Native |
+| Umami self-hosted (Railway) | ✅ ~$10 (estimate) | ❌ You run upgrades, backups, uptime | ✅ Same API and MCP (enable a flag) | ✅ None | ✅ Native |
+| Google Analytics 4 | ✅ $0 | 🟡 New property per site; one Google account per org | 🟡 6–8 setup steps per account; MCP local, experimental | ❌ Needed in EU/UK | ✅ Native |
+| PostHog | ✅ $0 to 1M events | 🟡 Heavier script; 1 free project | ✅ Scoped key; official remote MCP with SQL | ❓ Cookies by default; cookieless option | 🟡 Script tag |
+| Fathom | ❌ $25 (200k pageviews) | ✅ Nothing to run | 🟡 Scoped key; community MCP only | ✅ None | 🟡 Script tag |
+| GoatCounter | ✅ $0 (fair use) | ✅ Nothing to run | 🟡 Key, REST, CSV export; community MCP | ❓ | 🟡 Script tag |
+| Plausible Cloud | ❌ Quote for >10 sites | ✅ Nothing to run | 🟡 API only on Business plan; community MCP | ✅ None | 🟡 Script tag |
+| Cloudflare Web Analytics | ✅ $0 | ✅ Auto on proxied sites; 10-site default cap | ❌ 8–10 step token; sampled data; analytics MCP deprecated | ❓ | 🟡 Beacon tag |
+| Matomo | ❌ Cloud from $29 | ❌ Self-host is PHP + MySQL | 🟡 Token API; official MCP in preview | 🟡 Cookieless setting | 🟡 Script tag |
+| Pirsch | ❓ $6 for 10k pageviews; 200k not shown | ✅ Nothing to run | 🟡 REST API; community MCP | ✅ None | 🟡 Script tag |
 
 ## If you're different
 
-- **One site:** Umami Cloud Hobby (free, 1 site, no API) or GoatCounter (free, any number of sites).
-- **No ops wanted, up to 50 sites:** Fathom, $25/mo for 200k pageviews.
-- **Need product analytics** (funnels, events, session replay): PostHog. Umami and the others here are for traffic stats.
-- **Already on Cloudflare and want zero setup:** Cloudflare Web Analytics.
-- **Want the hosted original of an open source tool:** Plausible Cloud, but the API is Business plan only and 25 sites needs an Enterprise quote.
+- **One site:** Umami Cloud Hobby (free, 1 site, no API) or GoatCounter (free).
+- **Price above all:** GA4 or GoatCounter, both $0.
+- **Need product analytics** (funnels, feature flags, session replay): PostHog. The rest here are traffic stats.
+- **No ops, up to 50 sites, no API needs:** Fathom, $25 a month.
 
-## Prices
+## Does GA4 still need a cookie banner?
 
-Monthly cost for about 25 sites and 150-400k pageviews a month.
+Yes, for EU and UK visitors. GA4 sets `_ga` cookies. In the EU, Google's Consent Mode still sends pings with device data when consent is refused, and no regulator says that removes the need for a banner. The UK's Data (Use and Access) Act 2025 added an exemption for analytics cookies, but only where the provider acts purely for you and does not use the data for its own purposes; default GA4 is unlikely to qualify. France's CNIL exemption effectively excludes GA. Umami sets no cookies. Not legal advice.
 
-| Tool | Cost / month at this scale | Free tier |
-|---|---|---|
-| **Umami self-hosted on Railway** | ~$10 estimate (Railway Hobby $5 includes $5 usage; RAM $10/GB, vCPU $20, volume $0.15/GB per month; Umami plus Postgres is about 1 GB) | n/a |
-| Umami Cloud | $20 Pro (1M events, 20 sites, API); more than 20 sites not priced | Hobby: 100k events, 1 site, no API, 6-month retention |
-| GA4 | $0 | Free |
-| Plausible Cloud | Enterprise quote (Business $19 covers up to 10 sites) | Trial only |
-| Plausible CE (self-hosted) | ~$10-20 (needs at least 2 GB RAM: Postgres + ClickHouse) | n/a |
-| GoatCounter | $0 hosted (asks for "reasonable public usage", donations welcome) | Free, no stated cap |
-| PostHog | $0 (1M events free; whether pageviews count as events is unverified) | 1M events, 1 project, 1-year retention without a card |
-| Cloudflare Web Analytics | $0 | All plans |
-| Matomo | Cloud from $29 (lowest tier; the tier for 300k hits is not priced); On-Premise free | Free trial |
-| Pirsch | From $6 for 10k pageviews, 50 sites; 200k price not shown | Trial |
-| Fathom | $25 (200k pageviews, 50 sites; $15 for 100k) | Trial |
+Sources: [Google Analytics cookie usage](https://support.google.com/analytics/answer/11397207), [consent mode](https://support.google.com/analytics/answer/9976101), [ICO exceptions](https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guidance-on-the-use-of-storage-and-access-technologies/what-are-the-exceptions/), [CNIL sheet 16](https://www.cnil.fr/en/sheet-ndeg16-use-analytics-your-websites-and-applications).
 
-## Features
+## Checked 17 Oct 2026
 
-| Tool | API for agents | Multi-site | Cookies / banner | Flowershow | Open source | Add a site | Data ownership |
-|---|---|---|---|---|---|---|---|
-| **Umami self-hosted** | REST; non-expiring API keys, or login token | Unlimited sites, teams | None (per their FAQ) | Native (ID + script URL) | MIT | One API call, one config line | Yours |
-| Umami Cloud | REST, API key (Pro only) | Pro: 20 sites, 10 members | None | Native | Same code as self-hosted | Same | Theirs; export available |
-| GA4 | Data API, OAuth per Google account; 200k tokens per property per day | One Google account per org | Sets cookies; EU/UK likely needs consent (unverified) | Native | No | Create property and stream by hand, or Admin API | Google |
-| Plausible Cloud | Stats API v2, Business plan only, 600 req/h | Up to 10 sites below Enterprise | None (unverified) | Script tag | AGPL | Dashboard | Theirs |
-| Plausible CE | Stats API (unverified in CE); no sites API | Yes | None | Script tag | AGPL | Dashboard only | Yours |
-| GoatCounter | REST, Bearer key, 4 req/s; CSV export | One site per code; sites API | None (unverified) | Script tag | Yes (licence unverified, likely EUPL) | API or dashboard | Theirs, or yours if self-hosted (single binary, SQLite) |
-| PostHog | HogQL query API, personal key (unverified) | More projects need a card on file | Cookies by default; cookieless option (unverified) | Script tag | MIT core | New project per site | Theirs (EU or US cloud) |
-| Cloudflare Web Analytics | GraphQL, token with Analytics Read; sampled | 10 sites per account by default | Cookieless (unverified) | Beacon tag, or automatic on proxied sites | No | Dashboard toggle | Cloudflare; 6 months, detailed data 7 days |
-| Matomo | Reporting API, `token_auth` (unverified) | Yes; 30 sites on Cloud | Cookieless config possible | Script tag | GPL | Dashboard or API | Yours if self-hosted (PHP + MySQL) |
-| Pirsch | REST API and SDKs | 50 sites (Standard) | None | Script tag | No | Dashboard | Theirs |
-| Fathom | API on all plans | 50+ sites | None | Script tag | No | Dashboard or API | Theirs |
-
-"Unverified" means the vendor's page did not say. Check before relying on it.
-
-## Prices checked 17 Oct 2026
-
-Sources: umami.is/pricing, docs.umami.is (install, FAQ, API authentication), railway.com/pricing, railway.com/deploy/umami, docs.fly.io/about/pricing (alternative host to Railway: Fly with self-run Postgres, roughly $8-15 a month; managed Postgres from $38), plausible.io (pricing, Stats API docs, CE README), goatcounter.com (home, API help), posthog.com/pricing, developers.cloudflare.com/web-analytics (overview, FAQ), matomo.org/pricing, pirsch.io/pricing, usefathom.com/pricing, Google Analytics Data API quotas page, and the Flowershow analytics docs.
-
-The Umami self-hosting figure is our estimate from Railway's published rates, not a measured bill.
+Sources: [Umami pricing](https://umami.is/pricing), [Umami docs](https://docs.umami.is) (FAQ, API auth, MCP), [Railway pricing](https://railway.com/pricing), [PostHog pricing](https://posthog.com/pricing) and [MCP](https://posthog.com/docs/model-context-protocol), [Google Analytics MCP](https://github.com/googleanalytics/google-analytics-mcp), [Fathom](https://usefathom.com/pricing), [GoatCounter](https://www.goatcounter.com/help/api), [Plausible](https://plausible.io/docs/stats-api), [Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/) and [MCP servers](https://github.com/cloudflare/mcp-server-cloudflare), [Matomo](https://matomo.org/pricing/) and its [MCP plugin](https://plugins.matomo.org/McpServer), [Pirsch](https://pirsch.io/pricing) and its [MCP](https://docs.pirsch.io/integrations/mcp). The Railway figure is an estimate from published rates, not a measured bill.
