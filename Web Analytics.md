@@ -15,7 +15,24 @@ Tools that count visitors and pageviews on your website, compared for a small te
 1. **Price** per month at our scale: dozens of sites, about 150k pageviews a month, most of them on one site.
 2. **Hassle**: setup, upkeep (upgrades, backups, uptime), and the steps to add a site. If you have little time, an hour of upkeep a quarter costs more than a $10 a month saving.
 3. **Agent ease** (the key criterion): how many steps to give an AI agent access, whether there is a long-lived key, whether the API can both read stats and create sites, and whether there is an official MCP server.
-4. Secondary: is a **cookie banner** needed, and is there **native support** in your site builder (here, Flowershow supports GA4 and Umami)?
+4. **Features**, scored 1–5: how many of the features below it covers well. The reason for each score is in the fine print.
+5. Secondary: is a **cookie banner** needed, and is there **native support** in your site builder (here, Flowershow supports GA4 and Umami)?
+
+### Key analytics features
+
+| Feature | What it tells you |
+|---|---|
+| Visitors and pageviews | How many people came, and to which pages |
+| Sources and referrers | Where they came from: search, social, other sites |
+| UTM campaigns | Which tagged link or post brought them |
+| Custom events and goals | Sign-ups, clicks, downloads: the things that count as success |
+| Funnels | Where people drop out of a multi-step path |
+| Retention and cohorts | Whether people come back |
+| Real-time | Who is on the site now, for example during a launch |
+| Search Console link | Search queries and impressions next to visits |
+| Session replay and heatmaps | Where people click and scroll, per visit |
+| Product analytics | Feature flags, experiments, per-user paths inside an app |
+| Export and SQL | Raw data out, so an agent can ask anything |
 
 ## Bake-off: Umami vs Google Analytics 4
 
@@ -65,20 +82,32 @@ Both are privacy-first, cookieless and open source, and they look alike.
 
 ✅ good · 🟡 OK · ❌ poor · ❓ not confirmed
 
-| Tool | Price / month | Hassle | Agent ease (key) | Cookie banner | Flowershow |
-|---|---|---|---|---|---|
-| **Umami self-hosted (Railway)** | ✅ ~$10 (estimate) | 🟡 Updates and backups automated; major upgrades yours | ✅ 1 key; read + create API; official MCP | ✅ None | ✅ Native |
-| Umami Cloud Pro | 🟡 $20 to 20 sites; $200 unlimited | ✅ Nothing to run | ✅ Same, MCP remote | ✅ None | ✅ Native |
-| Google Analytics 4 | ✅ $0 | 🟡 Property per site; account per org | 🟡 6–8 steps per account; MCP experimental | ❌ Needed in EU/UK | ✅ Native |
-| PostHog | ✅ $0 to 1M events | 🟡 Heavier script; 1 free project | ✅ Scoped key; official remote MCP with SQL | ❓ Cookies by default | 🟡 Script tag |
-| Fathom | ❌ $25 (200k pageviews) | ✅ Nothing to run | 🟡 Scoped key; community MCP | ✅ None | 🟡 Script tag |
-| GoatCounter | ✅ $0 (fair use) | ✅ Nothing to run | 🟡 Key, REST, CSV export; community MCP | ❓ | 🟡 Script tag |
-| Plausible Cloud | ❌ Quote for >10 sites | ✅ Nothing to run | 🟡 API on Business plan only; community MCP | ✅ None | 🟡 Script tag |
-| Cloudflare Web Analytics | ✅ $0 | ❌ 6 months max; no events, no UTMs | ❌ 8–10 step token; sampled | ❓ | 🟡 Beacon tag |
-| Matomo | ❌ Cloud from $29 | ❌ Self-host is PHP + MySQL | 🟡 Token API; official MCP in preview | 🟡 Cookieless setting | 🟡 Script tag |
-| Pirsch | ❓ $6 for 10k; 200k not shown | ✅ Nothing to run | 🟡 REST API; community MCP | ✅ None | 🟡 Script tag |
+| Tool | Price / month | Hassle | Agent ease (key) | Features (1–5) | Cookie banner | Flowershow |
+|---|---|---|---|---|---|---|
+| **Umami self-hosted (Railway)** | ✅ ~$10 (estimate) | 🟡 Updates and backups automated; major upgrades yours | ✅ 1 key; read + create API; official MCP | 4 | ✅ None | ✅ Native |
+| Umami Cloud Pro | 🟡 $20 to 20 sites; $200 unlimited | ✅ Nothing to run | ✅ Same, MCP remote | 4 | ✅ None | ✅ Native |
+| Google Analytics 4 | ✅ $0 | 🟡 Property per site; account per org | 🟡 6–8 steps per account; MCP experimental | 5 | ❌ Needed in EU/UK | ✅ Native |
+| PostHog | ✅ $0 to 1M events | 🟡 Heavier script; 1 free project | ✅ Scoped key; official remote MCP with SQL | 5 | ❓ Cookies by default | 🟡 Script tag |
+| Fathom | ❌ $25 (200k pageviews) | ✅ Nothing to run | 🟡 Scoped key; community MCP | 3 | ✅ None | 🟡 Script tag |
+| GoatCounter | ✅ $0 (fair use) | ✅ Nothing to run | 🟡 Key, REST, CSV export; community MCP | 2 | ❓ | 🟡 Script tag |
+| Plausible Cloud | ❌ Quote for >10 sites | ✅ Nothing to run | 🟡 API on Business plan only; community MCP | 4 | ✅ None | 🟡 Script tag |
+| Cloudflare Web Analytics | ✅ $0 | ✅ Auto on proxied sites; 10-site cap | ❌ 8–10 step token; sampled | 1 | ❓ | 🟡 Beacon tag |
+| Matomo | ❌ Cloud from $29 | ❌ Self-host is PHP + MySQL | 🟡 Token API; official MCP in preview | 5 | 🟡 Cookieless setting | 🟡 Script tag |
+| Pirsch | ❓ $6 for 10k; 200k not shown | ✅ Nothing to run | 🟡 REST API; community MCP | 3 | ✅ None | 🟡 Script tag |
 
 ### Fine print
+
+**Feature scores, briefly:**
+- **GA4 5:** covers everything above except replay, and links to Search Console and Ads. Explorations are clunky.
+- **PostHog 5:** product analytics, replay, flags, experiments and SQL. Basic web stats are a secondary view.
+- **Matomo 5:** close to GA4, with heatmaps and replay as paid plugins.
+- **Umami 4:** traffic, UTMs, events, goals, funnels, retention, journeys, attribution, revenue and Web Vitals. No Search Console link or replay.
+- **Plausible 4:** traffic, UTMs, goals, funnels and a Search Console link. Funnels and revenue need the Business plan.
+- **Fathom 3:** traffic, UTMs and events. No funnels or retention.
+- **Pirsch 3:** traffic, UTMs, events and funnels. A small product.
+- **GoatCounter 2:** pageviews, referrers and campaigns. Events only as fake paths.
+- **Cloudflare 1:** pageviews, referrers and Web Vitals. The dashboard shows only the last 6 months, with no custom events and no UTMs.
+
 
 - **Umami self-hosted on Railway:**
   - The ~$10 is our estimate from Railway's rates, not a measured bill. Railway Hobby is $5 a month including $5 of usage; RAM is about $10/GB, and Umami plus Postgres is about 1 GB.
@@ -103,9 +132,20 @@ Both are privacy-first, cookieless and open source, and they look alike.
 - **Matomo:** the Cloud price for 300k hits isn't shown. On-premise is free (GPL) but needs PHP and MySQL. Its [MCP plugin](https://plugins.matomo.org/McpServer) is an early preview.
 - **Pirsch:** $6 for 10k pageviews with 50 sites; the price at 200k isn't shown. The MCP is [community-maintained](https://docs.pirsch.io/integrations/mcp).
 
-## Does GA4 still need a cookie banner?
+## Can GA4 run without a cookie banner?
 
-Yes, for EU and UK visitors. GA4 sets `_ga` cookies. In the EU, Google's Consent Mode still sends pings with device data when consent is refused, and no regulator says that removes the need for a banner. The UK's Data (Use and Access) Act 2025 added an exemption for analytics cookies, but only where the provider acts purely for you and does not use the data for its own purposes; default GA4 is unlikely to qualify. France's CNIL exemption effectively excludes GA. Umami sets no cookies. Not legal advice.
+Mostly no, for EU and UK visitors. GA4 sets `_ga` cookies. Ways people try, from safest to riskiest (not legal advice):
+
+| Route | How | Safe without a banner? |
+|---|---|---|
+| Audience outside the EU and UK | Turn Google signals and ad features off; honour opt-outs under US state laws | ✅ No federal US banner rule |
+| UK statistics exemption (Data (Use and Access) Act 2025) | Turn off Google signals, data sharing and Ads links; accept Google's data processing terms; tell visitors and give a free opt-out | 🟡 Plausible but untested; the ICO doesn't name GA, and some commentators say GA4 can't qualify |
+| Server-side only (Measurement Protocol, nothing stored in the browser) | Your server sends hits to GA4 | 🟡 Arguably outside the cookie rule, but you lose sessions and attribution, and GDPR still applies |
+| Consent Mode v2 "advanced", defaulting to denied | No cookies; cookieless pings that Google models | ❌ The pings still read device data; the EU regulators' 2023 guidance covers tracking pixels too |
+| Cookie-blocking hacks (random ID per page) | Unsupported workaround | ❌ Data still goes to Google; breaks visitor counts |
+| France | GA isn't on the CNIL's exempt audience-measurement list | ❌ Consent needed |
+
+So if you want no banner and EU visitors, use a cookieless tool such as Umami, Plausible or Fathom.
 
 Sources: [Google Analytics cookie usage](https://support.google.com/analytics/answer/11397207), [consent mode](https://support.google.com/analytics/answer/9976101), [ICO exceptions](https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guidance-on-the-use-of-storage-and-access-technologies/what-are-the-exceptions/), [CNIL sheet 16](https://www.cnil.fr/en/sheet-ndeg16-use-analytics-your-websites-and-applications).
 
