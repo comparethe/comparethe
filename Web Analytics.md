@@ -149,6 +149,27 @@ So if you want no banner and EU visitors, use a cookieless tool such as Umami, P
 
 Sources: [Google Analytics cookie usage](https://support.google.com/analytics/answer/11397207), [consent mode](https://support.google.com/analytics/answer/9976101), [ICO exceptions](https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guidance-on-the-use-of-storage-and-access-technologies/what-are-the-exceptions/), [CNIL sheet 16](https://www.cnil.fr/en/sheet-ndeg16-use-analytics-your-websites-and-applications).
 
+## Appendix: why does Google Analytics still use cookies and need a banner?
+
+GA4 could count visitors without cookies. Google chooses not to, because GA4 is built to serve its ads business.
+
+**How Umami counts without cookies.** It stores nothing in the browser. It builds a visitor ID by hashing data the browser sends anyway: IP address, browser details and the site, plus a secret value that it replaces periodically. That's enough to count unique visitors and sessions within that window. Once the secret changes, the same person looks new.
+
+**Why GA4 doesn't do the same.** GA4 is designed around a long-lived visitor ID in a cookie, kept for up to 2 years, plus Google signals, which links visitors across devices for signed-in Google users. That persistent ID is what feeds:
+
+- Ads conversion tracking and remarketing audiences, the main reason Google offers GA free;
+- returning-user and retention reports per person over months;
+- cross-device journeys and demographics.
+
+A rotating hash would break all of these. Google's answer for people who refuse cookies is Consent Mode: send limited pings and estimate the missing visitors with a model.
+
+**What you lose with Umami's approach:**
+
+- **For content sites: little.** Visitors, pageviews, referrers, UTMs, events and funnels all work fine.
+- **Real losses:** accurate "same person came back 3 months later" counts, cross-device tracking, demographics, and Ads audiences and attribution. None of these matter unless you run Google Ads or need long-term retention per person.
+
+One caveat: Umami's approach still processes IP addresses. Most EU and UK guidance treats it as not needing a banner, but EU regulators' 2023 guidance on what counts as accessing a device is broad, so "no banner" is the common reading rather than a ruling.
+
 ## Checked 17 Oct 2026
 
 Sources: [Umami pricing](https://umami.is/pricing), [Umami docs](https://docs.umami.is) (FAQ, API auth, MCP), [Railway pricing](https://railway.com/pricing), [PostHog pricing](https://posthog.com/pricing), [Fathom](https://usefathom.com/pricing), [GoatCounter](https://www.goatcounter.com/help/api), [Plausible](https://plausible.io/docs/stats-api), [Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/) and [MCP servers](https://github.com/cloudflare/mcp-server-cloudflare), [Matomo](https://matomo.org/pricing/), [Pirsch](https://pirsch.io/pricing), plus the links in the fine print.
