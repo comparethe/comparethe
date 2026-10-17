@@ -32,7 +32,7 @@ Criteria:
 
 ## If you're different
 
-- **One or two sites:** Umami Cloud Hobby (free, 1 site, no API) or GoatCounter (free).
+- **One site:** Umami Cloud Hobby (free, 1 site, no API) or GoatCounter (free, any number of sites).
 - **No ops wanted, up to 50 sites:** Fathom, $25/mo for 200k pageviews.
 - **Need product analytics** (funnels, events, session replay): PostHog. Umami and the others here are for traffic stats.
 - **Already on Cloudflare and want zero setup:** Cloudflare Web Analytics.
